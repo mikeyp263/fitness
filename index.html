@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0d10" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Recomp 14" />
+  <title>Recomp 14</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <style>
+    :root {
+      --bg:#0b0d10; --card:#15191f; --card2:#1b2027; --text:#f5f7fa; --muted:#9aa4b2;
+      --accent:#79f2a5; --accent2:#8cc8ff; --danger:#ff8585; --line:#2a313b;
+      --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+    body{min-height:100vh;padding-top:var(--safe-top);padding-bottom:calc(76px + var(--safe-bottom))}
+    button,input,textarea{font:inherit}
+    .app{max-width:760px;margin:0 auto}
+    header{position:sticky;top:0;z-index:10;background:rgba(11,13,16,.92);backdrop-filter:blur(14px);padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+    .eyebrow{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    h1{font-size:28px;line-height:1.1;margin:5px 0 4px}.sub{color:var(--muted);font-size:14px}
+    main{padding:14px}
+    .screen{display:none}.screen.active{display:block}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:12px}
+    .card h2{font-size:18px;margin:0 0 12px}.card h3{font-size:15px;margin:16px 0 8px;color:var(--accent2)}
+    .hero{background:linear-gradient(145deg,#182119,#141a22);border-color:#2b4734}
+    .date-nav{display:flex;gap:8px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}.date-nav::-webkit-scrollbar{display:none}
+    .date-pill{border:1px solid var(--line);background:var(--card2);color:var(--text);border-radius:14px;min-width:64px;padding:9px 8px;text-align:center}
+    .date-pill strong{display:block;font-size:15px}.date-pill span{font-size:11px;color:var(--muted)}
+    .date-pill.active{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset}
+    .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.metric{background:rgba(255,255,255,.04);border-radius:14px;padding:12px}.metric b{display:block;font-size:18px}.metric span{color:var(--muted);font-size:12px}
+    .checklist{display:grid;gap:8px}.check{display:flex;align-items:flex-start;gap:11px;background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:12px}
+    .check input{width:21px;height:21px;accent-color:var(--accent);margin-top:1px;flex:0 0 auto}.check label{line-height:1.35}.check small{display:block;color:var(--muted);margin-top:3px}
+    .exercise{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.exercise:last-child{border-bottom:0}.exercise .sets{color:var(--accent);font-weight:800;white-space:nowrap}.exercise small{display:block;color:var(--muted);margin-top:3px}
+    .notice{border-left:4px solid var(--accent2);background:#151c24;padding:12px;border-radius:10px;color:#dce8f5;font-size:14px}
+    .warning{border-left-color:var(--danger);background:#241719}
+    details{background:var(--card2);border:1px solid var(--line);border-radius:14px;margin-bottom:9px;overflow:hidden}summary{padding:14px;font-weight:800;cursor:pointer}details .inside{padding:0 14px 14px}
+    .progress-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.field label{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}.field input,.field textarea{width:100%;background:#0e1115;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px}.field textarea{min-height:90px;resize:vertical}
+    .btn{border:0;border-radius:13px;background:var(--accent);color:#07100a;font-weight:900;padding:12px 15px;width:100%;margin-top:10px}.btn.secondary{background:var(--card2);color:var(--text);border:1px solid var(--line)}
+    .bottom{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(14,17,21,.96);backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:8px 10px calc(8px + var(--safe-bottom));display:flex;justify-content:center}
+    .bottom-inner{display:grid;grid-template-columns:repeat(4,1fr);max-width:760px;width:100%;gap:5px}
+    .nav-btn{border:0;background:transparent;color:var(--muted);padding:8px 3px;border-radius:12px;font-size:12px}.nav-btn b{display:block;font-size:20px;line-height:1.1;margin-bottom:3px}.nav-btn.active{color:var(--accent);background:rgba(121,242,165,.08)}
+    .tag{display:inline-block;border-radius:999px;padding:5px 9px;background:rgba(121,242,165,.1);color:var(--accent);font-size:12px;font-weight:800;margin:2px 4px 2px 0}
+    .muted{color:var(--muted)} .hidden{display:none!important}
+    @media (max-width:430px){h1{font-size:25px}.summary-grid,.progress-row{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="eyebrow">July 22 – August 4</div>
+    <h1>Recomp 14</h1>
+    <div class="sub">Lift hard. Eat enough. Build the business.</div>
+  </header>
+  <main>
+    <section id="today" class="screen active">
+      <div id="dateNav" class="date-nav"></div>
+      <div id="todayContent"></div>
+    </section>
+
+    <section id="plan" class="screen">
+      <div class="card hero">
+        <h2>Simple daily structure</h2>
+        <div class="checklist">
+          <div class="check"><div>⏰</div><label><b>5:00 AM — Wake</b><small>Water, weigh in, no scrolling.</small></label></div>
+          <div class="check"><div>💼</div><label><b>5:10 AM — Business block</b><small>One Patterson Growth task only.</small></label></div>
+          <div class="check"><div>🏋️</div><label><b>6:00 AM — Training</b><small>Workout shown on the Today screen.</small></label></div>
+          <div class="check"><div>🍳</div><label><b>7:30 AM — Breakfast</b><small>Large protein-and-carb meal.</small></label></div>
+          <div class="check"><div>🥤</div><label><b>12:30 PM — Protein shake</b><small>One scoop isolate. Milk on lifting days.</small></label></div>
+          <div class="check"><div>🍚</div><label><b>6:15 PM — Dinner</b><small>Lean beef, rice, vegetables, yogurt as needed.</small></label></div>
+          <div class="check"><div>🚶</div><label><b>7:15 PM — Easy walk</b><small>15–20 minutes.</small></label></div>
+          <div class="check"><div>😴</div><label><b>9:15 PM — Bed</b><small>Recovery is part of the plan.</small></label></div>
+        </div>
+      </div>
+
+      <details open><summary>Meals</summary><div class="inside">
+        <h3>Breakfast</h3>
+        <p>3 whole eggs, 1 cup egg whites, ¾–1 cup dry oats, one banana or berries, and 8 oz whole milk.</p>
+        <h3>12:30 shake</h3>
+        <p>1 scoop Body Fortress Isolate. Use 8–12 oz whole milk on lifting days; water on recovery days.</p>
+        <h3>Dinner</h3>
+        <p>10–12 oz cooked 93/7 or leaner ground beef, 1½–2 cups cooked rice, vegetables, and Greek yogurt when needed.</p>
+        <div class="notice">Target: roughly 185–200 g protein. Lifting days: about 2,600–2,750 calories. Recovery days: about 2,400–2,500.</div>
+      </div></details>
+
+      <details><summary>Supplements</summary><div class="inside">
+        <p><b>Jekyll & Hyde:</b> On lifting mornings, start with 1 blue scoop from the pink side + 1 red scoop from the white side in water, 15–30 minutes before training. That is half of each label serving. Do not combine with coffee or other stimulants.</p>
+        <p><b>Body Fortress Isolate:</b> One scoop at midday. A second scoop only when food will not get you near the protein target.</p>
+        <p><b>Clean Gainer:</b> Not automatic. Use half a labeled serving only when you are clearly short on calories, especially after legs or chest/back. Mix with water and reduce dinner rice if needed.</p>
+        <div class="notice warning">Do not exceed any label serving. Stop stimulant use for chest pain, faintness, severe dizziness, or sustained palpitations.</div>
+      </div></details>
+
+      <details><summary>Training rules</summary><div class="inside">
+        <p>Compounds: stop with 1–2 clean reps left. Isolation exercises: the last set may reach technical failure.</p>
+        <p>Rest 2–3 minutes for heavy lifts and 60–90 seconds for accessories. Add weight only after reaching the top of the rep range with clean form.</p>
+        <p><b>Incline finisher means walking:</b> 10–15% incline, about 2.8–3.3 mph.</p>
+      </div></details>
+    </section>
+
+    <section id="progress" class="screen">
+      <div class="card">
+        <h2>Progress log</h2>
+        <div class="progress-row">
+          <div class="field"><label>Morning weight</label><input id="weightInput" type="number" step="0.1" placeholder="193.0"></div>
+          <div class="field"><label>Waist (optional)</label><input id="waistInput" type="number" step="0.1" placeholder="inches"></div>
+        </div>
+        <div class="field" style="margin-top:10px"><label>Notes</label><textarea id="notesInput" placeholder="Energy, strength, sleep, soreness..."></textarea></div>
+        <button class="btn" id="saveProgress">Save today's entry</button>
+      </div>
+      <div class="card"><h2>Saved entries</h2><div id="progressList" class="muted">No entries yet.</div></div>
+    </section>
+
+    <section id="settings" class="screen">
+      <div class="card">
+        <h2>Home Screen setup</h2>
+        <p>Once this app is hosted, open it in Safari, tap the Share button, then choose <b>Add to Home Screen</b>.</p>
+        <p class="muted">Your checkmarks, notes and progress stay on this device.</p>
+      </div>
+      <div class="card">
+        <h2>Reset</h2>
+        <button class="btn secondary" id="resetToday">Reset selected day checkmarks</button>
+        <button class="btn secondary" id="resetAll">Reset all app data</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<nav class="bottom"><div class="bottom-inner">
+  <button class="nav-btn active" data-screen="today"><b>●</b>Today</button>
+  <button class="nav-btn" data-screen="plan"><b>▤</b>Plan</button>
+  <button class="nav-btn" data-screen="progress"><b>↗</b>Progress</button>
+  <button class="nav-btn" data-screen="settings"><b>⚙</b>Setup</button>
+</div></nav>
+
+<script>
+const days = [
+  {date:'2026-07-22', day:'Wed', title:'Legs A', type:'lift', business:'Write the Patterson Growth offer in one clean sentence and choose one primary niche.', exercises:[
+    ['Back squat','4 × 5–8'],['Romanian deadlift','3 × 6–10'],['Leg press','3 × 10–12'],['Bulgarian split squat','2 × 10/leg'],['Leg curl','3 × 10–15'],['Leg extension','3 × 12–15'],['Standing calf raise','4 × 10–15'],['Cable crunch','3 × 12–15'] ], finish:'5-minute easy cooldown only.'},
+  {date:'2026-07-23', day:'Thu', title:'Shoulders + Arms A', type:'lift', business:'Finish the client onboarding checklist: billing, business info, social accounts, GHL, calendar, lead sources and A2P.', exercises:[
+    ['Seated DB shoulder press','4 × 6–10'],['Machine shoulder press','3 × 8–12'],['Cable lateral raise','4 × 12–20'],['DB lateral raise','3 × 15–20'],['Reverse pec deck','4 × 15–20'],['Close-grip bench','3 × 6–10'],['Rope pressdown','3 × 10–15'],['EZ-bar curl','3 × 8–12'],['Incline DB curl','3 × 10–12'],['Hammer curl','2 × 12–15'] ], finish:'10-minute incline walk.'},
+  {date:'2026-07-24', day:'Fri', title:'Chest + Back A', type:'lift', business:'Map the reusable lead system from new lead through response, follow-up, booking and human handoff.', exercises:[
+    ['Barbell bench press','4 × 5–7'],['Pull-up or heavy pulldown','4 × 6–8'],['Incline DB press','3 × 8–10'],['Chest-supported row','3 × 8–10'],['Machine chest press','3 × 10–12'],['One-arm cable row','3 × 10–12/side'],['Cable fly','2 × 12–15'],['Straight-arm pulldown','2 × 12–15'],['Face pull','3 × 15–20'] ], finish:'10-minute incline walk.'},
+  {date:'2026-07-25', day:'Sat', title:'Recovery + Core', type:'recovery', business:'Spend 90 minutes completing one client onboarding asset from start to finish.', exercises:[
+    ['Zone 2 cardio','45 minutes'],['Hanging knee raise','3 × 12–15'],['Cable crunch','3 × 15'],['Plank','3 × 60 sec'],['Side plank','3 × 30 sec/side'] ], finish:'No second hard workout.'},
+  {date:'2026-07-26', day:'Sun', title:'Push A', type:'lift', business:'Build a list of 25 prospects in your chosen niche with contact details and one visible weakness.', exercises:[
+    ['Incline barbell press','4 × 6–8'],['Flat DB press','3 × 8–10'],['Seated overhead press','3 × 6–10'],['Machine chest press','3 × 10–12'],['Cable fly','3 × 12–15'],['Cable lateral raise','4 × 15–20'],['Rope pressdown','3 × 10–15'],['Overhead cable extension','3 × 10–15'],['Push-ups','2 near failure'] ], finish:'10-minute incline walk.'},
+  {date:'2026-07-27', day:'Mon', title:'Pull B', type:'lift', business:'Write one short outreach message and send it to 10 prospects.', exercises:[
+    ['Pull-up or heavy pulldown','4 × 6–10'],['T-bar row','4 × 8–10'],['Single-arm lat pulldown','3 × 10–12/side'],['Seated cable row','3 × 10–12'],['Straight-arm pulldown','3 × 12–15'],['Reverse pec deck','3 × 15–20'],['EZ-bar curl','3 × 8–12'],['Preacher curl','3 × 10–12'],['Rope hammer curl','3 × 12–15'] ], finish:'10-minute incline walk.'},
+  {date:'2026-07-28', day:'Tue', title:'Legs B', type:'lift', business:'Complete one section of the demonstration GoHighLevel account.', exercises:[
+    ['Hack squat or front squat','4 × 6–8'],['Romanian deadlift','3 × 8–10'],['Hip thrust','3 × 8–10'],['Leg press','3 × 10–15'],['Walking lunge','2 × 10/leg'],['Seated leg curl','3 × 10–15'],['Leg extension','3 × 12–15'],['Seated calf raise','4 × 12–20'],['Hanging knee raise','3 × 12–15'] ], finish:'5-minute easy cooldown only.'},
+  {date:'2026-07-29', day:'Wed', title:'Recovery Cardio', type:'recovery', business:'Follow up Monday’s prospects and record each reply, objection and next action.', exercises:[
+    ['Zone 2 cardio','45 minutes'],['Mobility','10 minutes'] ], finish:'Keep the cardio conversational.'},
+  {date:'2026-07-30', day:'Thu', title:'Shoulders + Arms B', type:'lift', business:'Record a short demo showing a lead entering, being answered, moved through the pipeline and booked.', exercises:[
+    ['Machine shoulder press','4 × 8–10'],['Arnold press','3 × 8–12'],['Cable lateral raise','5 × 12–20'],['Leaning DB lateral raise','3 × 12–15'],['Rear-delt cable fly','4 × 15–20'],['Close-grip bench','3 × 8–10'],['Preacher curl','3 × 8–12'],['Rope pressdown','3 × 10–15'],['Incline DB curl','3 × 10–12'],['Overhead rope extension','3 × 10–15'],['Hammer curl','2 × 12–15'] ], finish:'10-minute incline walk.'},
+  {date:'2026-07-31', day:'Fri', title:'Chest + Back B', type:'lift', business:'Rewrite the landing page around the problem, solution, audience, result and one call to action.', exercises:[
+    ['Incline barbell bench','4 × 6–8'],['Weighted pull-up or pulldown','4 × 6–8'],['Flat DB press','3 × 8–10'],['T-bar row','3 × 8–10'],['Machine chest press','3 × 10–12'],['Chest-supported row','3 × 10–12'],['Cable fly','3 × 12–15'],['Neutral-grip pulldown','3 × 10–12'],['Push-ups','2 near failure'],['Face pull','2 × 15–20'] ], finish:'10-minute incline walk.'},
+  {date:'2026-08-01', day:'Sat', title:'Recovery + Core', type:'recovery', business:'Finish the client-ready offer package: pricing, intake, access checklist, implementation, demo and follow-up.', exercises:[
+    ['Zone 2 cardio','45 minutes'],['Ab wheel','3 × 8–12'],['Cable crunch','3 × 15'],['Side plank','3 × 30 sec/side'] ], finish:'No Clean Gainer today.'},
+  {date:'2026-08-02', day:'Sun', title:'Push B', type:'lift', business:'Contact 15 new prospects and follow up every warm lead.', exercises:[
+    ['Incline DB press','4 × 8–10'],['Flat machine or barbell press','3 × 8–10'],['Seated shoulder press','3 × 8–10'],['Cable fly','3 × 12–15'],['Cable lateral raise','4 × 15–20'],['Rope pressdown','3 × 12–15'],['Overhead cable extension','3 × 12–15'],['Push-ups','2 controlled near failure'] ], finish:'10-minute incline walk.'},
+  {date:'2026-08-03', day:'Mon', title:'Pull Pump', type:'lift', business:'Follow up all warm prospects, schedule next actions and set the next three business priorities.', exercises:[
+    ['Neutral-grip pulldown','3 × 10–12'],['Chest-supported row','3 × 10–12'],['Single-arm cable pulldown','3 × 12/side'],['Seated cable row','3 × 12–15'],['Straight-arm pulldown','2 × 15'],['Reverse pec deck','3 × 15–20'],['Cable curl','3 × 12–15'],['Rope hammer curl','3 × 12–15'] ], finish:'5–10 minutes easy incline walking.'},
+  {date:'2026-08-04', day:'Tue', title:'Upper Pump', type:'lift', business:'Review contacts, replies, meetings and completed assets; set one measurable seven-day revenue target.', exercises:[
+    ['Machine chest press','3 × 12–15'],['Neutral-grip pulldown','3 × 12–15'],['Seated cable row','3 × 12–15'],['Cable fly','3 × 15'],['Lateral raise','3 × 15–20'],['Cable curl','3 × 12–15'],['Rope pressdown','3 × 12–15'],['Push-ups + pulldown + laterals','2 pump rounds'] ], finish:'No long cardio. Leave pumped, not exhausted.'}
+];
+
+const $ = s => document.querySelector(s);
+const storage = {
+  get:k=>{try{return JSON.parse(localStorage.getItem(k))}catch{return null}},
+  set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))
+};
+let selected = (()=>{
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+  const idx = days.findIndex(d=>d.date===today);
+  return idx>=0 ? idx : 0;
+})();
+
+function shortDate(iso){return new Date(iso+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'})}
+function renderDateNav(){
+  $('#dateNav').innerHTML = days.map((d,i)=>`<button class="date-pill ${i===selected?'active':''}" data-i="${i}"><strong>${d.day}</strong><span>${shortDate(d.date)}</span></button>`).join('');
+  document.querySelectorAll('.date-pill').forEach(b=>b.onclick=()=>{selected=+b.dataset.i;renderDateNav();renderToday();b.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
+}
+function taskKey(date,key){return `recomp14:${date}:${key}`}
+function renderToday(){
+  const d=days[selected], isLift=d.type==='lift';
+  const schedule = [
+    ['wake','5:00 AM — Wake','Water, weigh in, no scrolling.'],
+    ['business','5:10 AM — Business','Complete today’s single business task.'],
+    ['training',isLift?'6:00 AM — Lift':'6:30 AM — Recovery work',d.title],
+    ['breakfast','After training — Breakfast','Eggs, egg whites, oats, fruit and whole milk.'],
+    ['shake','12:30 PM — Protein shake','One scoop isolate.'],
+    ['dinner','6:15 PM — Dinner','Lean beef, rice, vegetables.'],
+    ['walk','7:15 PM — Easy walk','15–20 minutes.'],
+    ['bed','9:15 PM — Bed','Prepare tomorrow first.']
+  ];
+  $('#todayContent').innerHTML = `
+    <div class="card hero">
+      <div class="eyebrow">${d.day} · ${shortDate(d.date)}</div>
+      <h2 style="font-size:25px;margin:5px 0 2px">${d.title}</h2>
+      <div class="tag">${isLift?'Lifting day':'Recovery day'}</div>
+      <div class="summary-grid"><div class="metric"><b>${isLift?'2,600–2,750':'2,400–2,500'}</b><span>Calories</span></div><div class="metric"><b>185–200 g</b><span>Protein</span></div></div>
+    </div>
+    <div class="card"><h2>Today’s checklist</h2><div class="checklist">${schedule.map(([k,t,s])=>{
+      const checked=storage.get(taskKey(d.date,k))?'checked':'';
+      return `<div class="check"><input type="checkbox" data-task="${k}" ${checked}><label><b>${t}</b><small>${s}</small></label></div>`
+    }).join('')}</div></div>
+    <div class="card"><h2>Business task</h2><p>${d.business}</p></div>
+    <div class="card"><h2>${d.title}</h2>${d.exercises.map(e=>`<div class="exercise"><div><b>${e[0]}</b></div><div class="sets">${e[1]}</div></div>`).join('')}<div class="notice" style="margin-top:12px">${d.finish}</div></div>
+    <div class="card"><h2>Supplements today</h2>
+      ${isLift?`<p><b>Pre-workout:</b> 1 blue scoop from pink + 1 red scoop from white, in water. No coffee with it.</p>`:`<p><b>No pre-workout needed.</b> Coffee is optional.</p>`}
+      <p><b>Midday:</b> 1 scoop Body Fortress Isolate.</p>
+      <p><b>Clean Gainer:</b> ${isLift && ['Legs A','Legs B','Chest + Back A','Chest + Back B'].includes(d.title)?'Half serving only if food leaves you short on calories.':'Usually skip it today.'}</p>
+    </div>`;
+  document.querySelectorAll('[data-task]').forEach(cb=>cb.onchange=()=>storage.set(taskKey(d.date,cb.dataset.task),cb.checked));
+}
+
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.screen===id));
+  if(id==='progress') renderProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.nav-btn').forEach(b=>b.onclick=()=>showScreen(b.dataset.screen));
+
+$('#saveProgress').onclick=()=>{
+  const date=days[selected].date;
+  const all=storage.get('recomp14:progress')||{};
+  all[date]={weight:$('#weightInput').value,waist:$('#waistInput').value,notes:$('#notesInput').value};
+  storage.set('recomp14:progress',all); renderProgress();
+};
+function renderProgress(){
+  const d=days[selected], all=storage.get('recomp14:progress')||{}, current=all[d.date]||{};
+  $('#weightInput').value=current.weight||''; $('#waistInput').value=current.waist||''; $('#notesInput').value=current.notes||'';
+  const entries=Object.entries(all).sort((a,b)=>a[0].localeCompare(b[0]));
+  $('#progressList').innerHTML=entries.length?entries.map(([date,v])=>`<div class="exercise"><div><b>${shortDate(date)}</b><small>${v.notes||'No notes'}</small></div><div class="sets">${v.weight?`${v.weight} lb`:''}${v.waist?` · ${v.waist} in`:''}</div></div>`).join(''):'No entries yet.';
+}
+$('#resetToday').onclick=()=>{if(confirm('Reset checkmarks for this day?')){Object.keys(localStorage).filter(k=>k.startsWith(`recomp14:${days[selected].date}:`)).forEach(k=>localStorage.removeItem(k));renderToday()}};
+$('#resetAll').onclick=()=>{if(confirm('Reset all Recomp 14 data?')){Object.keys(localStorage).filter(k=>k.startsWith('recomp14:')).forEach(k=>localStorage.removeItem(k));renderToday();renderProgress()}};
+
+renderDateNav();renderToday();
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));}
+</script>
+</body>
+</html>
