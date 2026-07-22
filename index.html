@@ -36,14 +36,16 @@ input,textarea{width:100%;background:#0f1216;border:1px solid var(--line);color:
 <section id="today" class="screen active"><div id="datebar" class="datebar"></div><div id="todayBody"></div></section>
 
 <section id="meals" class="screen">
-<div class="card hero"><h2>Your actual food plan</h2><p class="muted">Big breakfast, one portable protein snack, big dinner. No lunch and no drink carried to work.</p></div>
+<div class="card hero"><h2>Your actual food plan</h2><p class="muted">Post-workout shake and big breakfast at home, one portable protein bar at work, big dinner. No lunch and no drink carried to work.</p></div>
 
 <details open><summary>Monday–Friday</summary><div class="inside">
 <h3>5:10 AM — Business + black coffee</h3>
 <p>Have black coffee while working on Patterson Growth. This coffee is also your workout caffeine.</p>
 
-<h3>After training — Large breakfast</h3>
-<p><b>3 whole eggs + 1½ cups liquid egg whites</b></p>
+<h3>After morning training — At home</h3>
+<p><b>On lifting days:</b> drink one scoop of Body Fortress with 8–12 oz whole milk immediately after the workout. Have it with or just before breakfast. Never take the shake to work.</p>
+<p><b>On recovery-cardio days:</b> no automatic shake. Use Body Fortress at home only if needed to reach the protein target.</p>
+<p><b>Large breakfast:</b> 3 whole eggs + 1½ cups liquid egg whites.</p>
 <p><b>Choose one:</b> 1½ cups Protein Cheerios with 8–12 oz whole milk, or ¾–1 cup dry oatmeal.</p>
 <p>Add a banana. Add Greek yogurt at home when you need more protein.</p>
 
@@ -54,15 +56,15 @@ input,textarea{width:100%;background:#0f1216;border:1px solid var(--line);color:
 <h3>After work — Large dinner</h3>
 <p><b>10–12 oz cooked 93/7 or leaner ground beef, chicken or turkey</b></p>
 <p><b>1½–2 cups cooked rice</b> plus vegetables.</p>
-<p>If the day is still below the protein target, use one scoop of Body Fortress with whole milk at home.</p>
+<p>If the day is still below the protein target after the scheduled post-workout shake, use additional food at home. A second scoop is only for a day when food cannot close the gap.</p>
 </div></details>
 
 <details open><summary>Saturday–Sunday</summary><div class="inside">
 <p><b>No lunch on weekends either.</b></p>
 <h3>7:00 AM</h3><p>Black coffee during the longer business block.</p>
-<h3>After training</h3><p>Same large breakfast.</p>
+<h3>After training</h3><p>On lifting days, have one scoop of Body Fortress with 8–12 oz whole milk at home, then the same large breakfast. On recovery days, have breakfast and use the shake only if needed.</p>
 <h3>Mid-afternoon</h3><p>Protein bar, Greek yogurt, or fruit only if hungry.</p>
-<h3>7:00 PM</h3><p>Same large dinner. Use Body Fortress at home only when needed.</p>
+<h3>7:00 PM</h3><p>Same large dinner. A second shake is not automatic.</p>
 </div></details>
 
 <div class="card"><h2>Targets</h2><div class="metrics"><div class="metric"><b>185–200 g</b><small>Protein</small></div><div class="metric"><b>Small deficit</b><small>Lose fat, support muscle</small></div></div>
@@ -71,7 +73,7 @@ input,textarea{width:100%;background:#0f1216;border:1px solid var(--line);color:
 <div class="card"><h2>Supplements</h2>
 <p><b>Default caffeine:</b> black coffee during the business block.</p>
 <p><b>Jekyll & Hyde:</b> use it only on a morning when you skip coffee. Do not stack it with coffee.</p>
-<p><b>Body Fortress:</b> one scoop at home when breakfast, snack and dinner will not reach protein.</p>
+<p><b>Body Fortress:</b> one scoop at home immediately after lifting, with or just before breakfast. On recovery days, use it only if needed. Never bring it to work.</p>
 <p><b>Clean Gainer:</b> usually skip. It is for a day when you missed substantial food—not an automatic post-workout drink.</p>
 </div>
 </section>
@@ -112,15 +114,20 @@ const key=(d,k)=>`recomp14:${d}:${k}`;
 
 function scheduleFor(d){
  const lift=d.type==='lift';
+ const postTraining=lift?[
+  ['shake','Immediately after lifting — Protein shake','At home: one scoop Body Fortress with 8–12 oz whole milk. Do not take it to work.'],
+  ['breakfast','Right after shake — Large breakfast','Eggs, egg whites, cereal or oats, fruit and milk.']
+ ]:[
+  ['breakfast','After recovery work — Large breakfast','No automatic shake. Eat breakfast and use Body Fortress at home only if needed.']
+ ];
  if(d.weekend){
    return [
     ['wake','7:00 AM — Wake','Water and weigh in.'],
     ['business','7:10–8:30 AM — Business + black coffee','Complete today’s Patterson Growth task.'],
     ['training',lift?'8:45 AM — Lift':'8:45 AM — Recovery work',d.title],
-    ['breakfast','After training — Large breakfast','Eggs, egg whites, cereal or oats, fruit and milk.'],
+    ...postTraining,
     ['snack','Mid-afternoon — Optional protein snack','Protein bar, Greek yogurt or fruit. No lunch.'],
     ['dinner','7:00 PM — Large dinner','Lean protein, rice and vegetables.'],
-    ['protein','At home — Protein check','Body Fortress only if needed to reach protein.'],
     ['bed','10:00 PM — Bed','Prepare Monday if it is Sunday.']
    ];
  }
@@ -128,10 +135,9 @@ function scheduleFor(d){
   ['wake','5:00 AM — Wake','Water and weigh in.'],
   ['business','5:10–5:45 AM — Business + black coffee','Complete today’s single Patterson Growth task.'],
   ['training',lift?'6:00 AM — Lift':'6:15 AM — Recovery work',d.title],
-  ['breakfast','After training — Large breakfast','Eggs, egg whites, cereal or oats, fruit and milk.'],
-  ['snack','At work — Portable protein bar','One 20 g bar, or two pictured Nature Valley Protein bars. No lunch.'],
+  ...postTraining,
+  ['snack','At work — Portable protein bar','One 20 g bar, or two pictured Nature Valley Protein bars. No lunch. No shake at work.'],
   ['dinner','6:15 PM — Large dinner','10–12 oz lean protein, rice and vegetables.'],
-  ['protein','At home — Protein check','Body Fortress with whole milk only if needed.'],
   ['walk','7:15 PM — Easy walk','15–20 minutes if your back feels good.'],
   ['bed','9:15 PM — Bed','Prepare tomorrow first.']
  ];
@@ -146,18 +152,18 @@ function renderToday(){
  const d=days[selected],lift=d.type==='lift',sched=scheduleFor(d);
  $('#todayBody').innerHTML=`
  <div class="card hero"><div class="eyebrow">${d.day} · ${short(d.date)}</div><h2 style="font-size:24px;margin:5px 0">${d.title}</h2><span class="pill">${d.weekend?'Weekend':'Workday'} · ${lift?'Lift':'Recovery'}</span>
- <div class="metrics"><div class="metric"><b>185–200 g</b><small>Protein</small></div><div class="metric"><b>No lunch</b><small>Breakfast · bar · dinner</small></div></div></div>
+ <div class="metrics"><div class="metric"><b>185–200 g</b><small>Protein</small></div><div class="metric"><b>No lunch</b><small>${lift?'Shake · breakfast · bar · dinner':'Breakfast · bar · dinner'}</small></div></div></div>
  <div class="card"><h2>Today</h2>${sched.map(([k,t,s])=>`<div class="check"><input type="checkbox" data-task="${k}" ${store.get(key(d.date,k))?'checked':''}><div><b>${t}</b><small>${s}</small></div></div>`).join('')}</div>
  <div class="card"><h2>Business task</h2><p>${d.business}</p></div>
  <div class="card"><h2>${d.title}</h2>${d.ex.map(e=>`<div class="row"><div><b>${e[0]}</b></div><div class="sets">${e[1]}</div></div>`).join('')}<div class="notice" style="margin-top:11px">${d.finish}</div><div class="notice warning" style="margin-top:9px"><b>Back rule:</b> supported and upright. Stop any movement that increases back or leg symptoms.</div></div>
  <div class="card"><h2>Supplements</h2><p><b>Caffeine:</b> black coffee during business is the default.</p>
  <p><b>Jekyll & Hyde:</b> only if you skip coffee that morning. Do not combine them.</p>
- <p><b>Body Fortress:</b> only at home if breakfast, bar and dinner leave you under protein.</p><p><b>Clean Gainer:</b> usually skip.</p></div>`;
+ <p><b>Body Fortress:</b> ${lift?'one scoop at home immediately after lifting. Do not bring it to work.':'only at home if needed to reach protein. Do not bring it to work.'}</p><p><b>Clean Gainer:</b> usually skip.</p></div>`;
  document.querySelectorAll('[data-task]').forEach(c=>c.onchange=()=>store.set(key(d.date,c.dataset.task),c.checked));
 }
 
 function renderAll(){
- $('#allDays').innerHTML=days.map(d=>`<details><summary>${d.day} ${short(d.date)} — ${d.title}</summary><div class="inside"><p><b>Schedule:</b> ${d.weekend?'Weekend—coffee + business, training at 8:45 AM, no lunch.':'Workday—coffee + business at 5:10 AM, training before work, no lunch.'}</p><p><b>Business:</b> ${d.business}</p>${d.ex.map(e=>`<div class="row"><div>${e[0]}</div><div class="sets">${e[1]}</div></div>`).join('')}<div class="notice" style="margin-top:10px">${d.finish}</div></div></details>`).join('');
+ $('#allDays').innerHTML=days.map(d=>`<details><summary>${d.day} ${short(d.date)} — ${d.title}</summary><div class="inside"><p><b>Schedule:</b> ${d.weekend?`Weekend—coffee + business, ${d.type==='lift'?'lift at 8:45 AM then shake at home':'recovery work at 8:45 AM'}, no lunch.`:`Workday—coffee + business at 5:10 AM, ${d.type==='lift'?'lift before work then shake at home':'recovery work before work'}, no lunch.`}</p><p><b>Business:</b> ${d.business}</p>${d.ex.map(e=>`<div class="row"><div>${e[0]}</div><div class="sets">${e[1]}</div></div>`).join('')}<div class="notice" style="margin-top:10px">${d.finish}</div></div></details>`).join('');
 }
 
 function show(id){
