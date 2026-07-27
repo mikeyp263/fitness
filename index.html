@@ -16,184 +16,70 @@ body{padding-bottom:84px}.app{max-width:720px;margin:auto}header{position:sticky
 h1{margin:2px 0;font-size:27px}.eyebrow{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green)}.muted{color:var(--muted)}
 main{padding:13px}.screen{display:none}.screen.active{display:block}.card,details{background:var(--card);border:1px solid var(--line);border-radius:17px;margin-bottom:11px}.card{padding:15px}
 .hero{background:linear-gradient(145deg,#18241c,#151b23)}h2{font-size:18px;margin:0 0 11px}h3{font-size:15px;color:var(--blue);margin:15px 0 7px}
-.datebar{display:flex;gap:7px;overflow:auto;padding-bottom:9px}.daybtn{min-width:60px;border:1px solid var(--line);border-radius:13px;background:var(--card2);color:var(--text);padding:8px}
-.daybtn.active{border-color:var(--green)}.daybtn b,.daybtn small{display:block}.daybtn small{color:var(--muted);margin-top:2px}
+.datebar{display:flex;gap:7px;overflow:auto;padding-bottom:9px}.daybtn{min-width:60px;border:1px solid var(--line);border-radius:13px;background:var(--card2);color:var(--text);padding:8px}.daybtn.active{border-color:var(--green)}.daybtn b,.daybtn small{display:block}.daybtn small{color:var(--muted);margin-top:2px}
 .row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.sets{color:var(--green);font-weight:800;white-space:nowrap}
-.check{display:flex;gap:10px;align-items:flex-start;background:var(--card2);border:1px solid var(--line);padding:11px;border-radius:13px;margin:7px 0}.check input{width:21px;height:21px;accent-color:var(--green)}
-.check small{display:block;color:var(--muted);margin-top:3px;line-height:1.3}.notice{border-left:4px solid var(--blue);background:#151d26;border-radius:10px;padding:11px;font-size:14px}.warning{border-left-color:var(--red);background:#24191b}
-summary{padding:14px;font-weight:800}details .inside{padding:0 14px 14px}p{line-height:1.45}.pill{display:inline-block;background:#183124;color:var(--green);border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800}
+.check{display:flex;gap:10px;align-items:flex-start;background:var(--card2);border:1px solid var(--line);padding:11px;border-radius:13px;margin:7px 0}.check input{width:21px;height:21px;accent-color:var(--green)}.check small{display:block;color:var(--muted);margin-top:3px;line-height:1.3}
+.notice{border-left:4px solid var(--blue);background:#151d26;border-radius:10px;padding:11px;font-size:14px}.warning{border-left-color:var(--red);background:#24191b}summary{padding:14px;font-weight:800}details .inside{padding:0 14px 14px}p{line-height:1.45}.pill{display:inline-block;background:#183124;color:var(--green);border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800}
 .metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}.metric{background:#ffffff0a;border-radius:12px;padding:11px}.metric b{display:block;font-size:17px}.metric small{color:var(--muted)}
-input,textarea{width:100%;background:#0f1216;border:1px solid var(--line);color:var(--text);border-radius:11px;padding:11px;font:inherit}textarea{min-height:85px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{width:100%;border:0;border-radius:12px;padding:12px;background:var(--green);font-weight:900;margin-top:10px}
-.bottom{position:fixed;left:0;right:0;bottom:0;background:#0e1115f5;border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center}
-.nav{max-width:720px;width:100%;display:grid;grid-template-columns:repeat(5,1fr);gap:2px}.nav button{border:0;background:transparent;color:var(--muted);padding:9px 1px;border-radius:11px;font-size:12px}.nav button.active{color:var(--green);background:#79f2a514}
+input,textarea{width:100%;background:#0f1216;border:1px solid var(--line);color:var(--text);border-radius:11px;padding:11px;font:inherit}textarea{min-height:85px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{width:100%;border:0;border-radius:12px;padding:12px;background:var(--green);font-weight:900;margin-top:10px}
+.bottom{position:fixed;left:0;right:0;bottom:0;background:#0e1115f5;border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center}.nav{max-width:720px;width:100%;display:grid;grid-template-columns:repeat(5,1fr);gap:2px}.nav button{border:0;background:transparent;color:var(--muted);padding:9px 1px;border-radius:11px;font-size:12px}.nav button.active{color:var(--green);background:#79f2a514}
 </style>
 </head>
 <body>
 <div class="app">
-<header><div class="eyebrow">July 22 – August 4</div><h1>Recomp 14</h1><div class="muted">Monday starts with Push. Three gradual impact days. Easy means conversational.</div></header>
+<header><div class="eyebrow">July 22 – August 4</div><h1>Recomp 14</h1><div class="muted">Fitness only. Monday starts with Push. Sunday is complete rest.</div></header>
 <main>
 <section id="today" class="screen active"><div id="datebar" class="datebar"></div><div id="todayBody"></div></section>
 
 <section id="cardio" class="screen">
-<div class="card hero"><div class="eyebrow">Current phase</div><h2>Return to Running</h2><p class="muted">Run/walk Monday, Thursday and Saturday. Use bike or elliptical for extra aerobic work without adding impact.</p></div>
-<div class="card"><h2>Before you jog</h2><p>You should be able to briskly walk for 30 minutes on flat ground without worsening pain, leg symptoms or changing your stride. If not, stay with walking, bike or elliptical.</p></div>
-<details open><summary>30-minute run/walk stages</summary><div class="inside">
-<div class="row"><div><b>Stage 1</b></div><div class="sets">5 W / 1 J × 5</div></div>
-<div class="row"><div><b>Stage 2</b></div><div class="sets">4 W / 2 J × 5</div></div>
-<div class="row"><div><b>Stage 3</b></div><div class="sets">3 W / 3 J × 5</div></div>
-<div class="row"><div><b>Stage 4</b></div><div class="sets">2 W / 4 J × 5</div></div>
-<p class="muted">W = brisk walk. J = very easy jog. Stay at a stage for at least two symptom-free sessions. Do not advance during a workout.</p>
-</div></details>
-<details open><summary>Daniels-style rules</summary><div class="inside">
-<p><b>Train current fitness, not old PR fitness.</b> No pace target yet. Every jog should be fully conversational.</p>
-<p><b>Easy only for now.</b> No threshold, intervals, hills, sprints or hard finishes while rebuilding impact tolerance.</p>
-<p><b>Use time before mileage.</b> First earn 30 continuous easy minutes. Then increase total running gradually, normally no more than about 10% in a good week.</p>
-<p><b>Long run later:</b> keep it at roughly 25–30% of weekly mileage.</p>
-<p><b>Strides later:</b> after several stable weeks, add 4–6 relaxed 15–20 second strides with full recovery. They are not sprints.</p>
-<p><b>Threshold much later:</b> when continuous easy mileage is stable and the back tolerates it, one controlled session may be added; total threshold running should stay around 10% of weekly mileage.</p>
-</div></details>
-<details><summary>Long-term mileage path</summary><div class="inside">
-<p><b>Phase 1:</b> three run/walk days until 30 continuous easy minutes is comfortable.</p>
-<p><b>Phase 2:</b> three easy runs per week, roughly 8–15 miles per week.</p>
-<p><b>Phase 3:</b> add a fourth short easy day, building toward 15–22 miles per week.</p>
-<p><b>Phase 4:</b> four to five days, gradually building toward 22–30 miles per week.</p>
-<p><b>Phase 5:</b> only after a long stable stretch, build toward 30–40 miles per week. At 35–40, the long run would usually remain around 9–12 miles rather than becoming half the week.</p>
-</div></details>
-<div class="card"><h2>Back stop rules</h2><p>Stop impact work if pain gets worse as you continue, changes your stride, produces new numbness or weakness, or leaves you clearly worse the next morning. New bowel/bladder trouble, saddle numbness or progressive leg weakness needs urgent medical evaluation.</p></div>
+<div class="card hero"><div class="eyebrow">Current running block</div><h2>Experienced Runner Return</h2><p class="muted">Three normal easy runs per week. No run/walk plan. Build impact tolerance without pretending you are a beginner.</p></div>
+<div class="card"><h2>Starting week</h2><div class="row"><div><b>Tuesday</b></div><div class="sets">3 mi easy</div></div><div class="row"><div><b>Thursday</b></div><div class="sets">3 mi easy</div></div><div class="row"><div><b>Saturday</b></div><div class="sets">4 mi easy</div></div><p><b>Total:</b> 10 miles per week.</p></div>
+<details open><summary>Daniels-style rules</summary><div class="inside"><p><b>Train current fitness.</b> Start around 8:00–8:30 per mile, but effort overrides the watch. Easy must stay conversational.</p><p><b>Hold before adding.</b> Keep 10 miles per week for several stable weeks before increasing.</p><p><b>No workouts yet.</b> No threshold, intervals, hills, sprints or hard finishes while rebuilding back and impact tolerance.</p><p><b>Progression:</b> 10 → roughly 13 → 16–18 miles, then consider adding a fourth short easy day.</p><p><b>Long run:</b> keep Saturday controlled and generally around 25–30% of weekly mileage as volume grows.</p></div></details>
+<details><summary>Long-term path</summary><div class="inside"><p><b>Phase 1:</b> three runs, 10–13 miles per week.</p><p><b>Phase 2:</b> add a fourth short run and build toward 15–22.</p><p><b>Phase 3:</b> gradually build through the 20s.</p><p><b>Phase 4:</b> 30–40 miles only after a long stable stretch. It is optional, not required.</p></div></details>
+<div class="card"><h2>Back stop rules</h2><p>Stop or shorten the run if symptoms worsen as you continue, alter your stride, radiate down the leg, or produce numbness or weakness. Sunday remains fully off.</p></div>
 </section>
 
 <section id="meals" class="screen">
-<div class="card hero"><h2>Your actual food plan</h2><p class="muted">Post-workout shake and big breakfast at home, one portable protein bar at work, big dinner. No lunch and no drink carried to work.</p></div>
-<details open><summary>Monday–Friday</summary><div class="inside">
-<h3>5:10 AM — Business + black coffee</h3><p>Have black coffee while working on Patterson Growth. This coffee is also your workout caffeine.</p>
-<h3>After morning training — At home</h3>
-<p><b>On lifting days:</b> drink one scoop of Body Fortress with 8–12 oz whole milk immediately after the workout. Have it with or just before breakfast. Never take the shake to work.</p>
-<p><b>On recovery-cardio days:</b> no automatic shake. Use Body Fortress at home only if needed to reach the protein target.</p>
-<p><b>Large breakfast:</b> 3 whole eggs + 1½ cups liquid egg whites.</p>
-<p><b>Choose one:</b> 1½ cups Protein Cheerios with 8–12 oz whole milk, or ¾–1 cup dry oatmeal.</p>
-<p>Add a banana. Add Greek yogurt at home when you need more protein.</p>
-<h3>At work — Portable protein snack</h3><p>Bring <b>one bar with about 20 g protein</b>. The pictured Nature Valley Protein bars are lighter-protein snacks; use two of those if they are your only work food.</p>
-<p>Fruit is optional. Peanuts are fine only as a measured one-ounce serving.</p>
-<h3>After work — Large dinner</h3><p><b>10–12 oz cooked 93/7 or leaner ground beef, chicken or turkey</b></p><p><b>1½–2 cups cooked rice</b> plus vegetables.</p>
-<p>If the day is still below the protein target after the scheduled post-workout shake, use additional food at home. A second scoop is only for a day when food cannot close the gap.</p>
-</div></details>
-<details open><summary>Saturday–Sunday</summary><div class="inside">
-<p><b>No lunch on weekends either.</b></p><h3>7:00 AM</h3><p>Black coffee during the longer business block.</p>
-<h3>After training</h3><p>Have breakfast after training. Use Body Fortress after lifting, or only as needed after recovery work.</p>
-<h3>Mid-afternoon</h3><p>Protein bar, Greek yogurt, or fruit only if hungry.</p><h3>7:00 PM</h3><p>Same large dinner. A second shake is not automatic.</p>
-</div></details>
-<div class="card"><h2>Targets</h2><div class="metrics"><div class="metric"><b>185–200 g</b><small>Protein</small></div><div class="metric"><b>Small deficit</b><small>Lose fat, support muscle</small></div></div>
-<p class="muted">The goal is not starvation. Keep training performance stable and adjust portions from progress.</p></div>
-<div class="card"><h2>Supplements</h2>
-<p><b>Default caffeine:</b> black coffee during the business block.</p>
-<p><b>Jekyll & Hyde:</b> use it only on a morning when you skip coffee. Do not stack it with coffee.</p>
-<p><b>Body Fortress:</b> one scoop at home immediately after lifting, with or just before breakfast. On recovery days, use it only if needed. Never bring it to work.</p>
-<p><b>Clean Gainer:</b> usually skip. It is for a day when you missed substantial food—not an automatic post-workout drink.</p>
-</div>
+<div class="card hero"><h2>Your food plan</h2><p class="muted">Big breakfast after training, one portable protein snack at work, big dinner. No business tasks live in R14 anymore.</p></div>
+<details open><summary>Monday–Friday</summary><div class="inside"><h3>Before training</h3><p>Water. Black coffee is optional. Use Jekyll & Hyde only when skipping coffee.</p><h3>After training</h3><p><b>Lifting days:</b> one scoop Body Fortress with 8–12 oz whole milk, followed by breakfast.</p><p><b>Breakfast:</b> 3 whole eggs + 1½ cups liquid egg whites, Protein Cheerios or oatmeal, banana, and milk.</p><h3>At work</h3><p>One protein bar with about 20 g protein. Fruit is optional.</p><h3>Dinner</h3><p>10–12 oz lean protein, 1½–2 cups cooked rice, and vegetables.</p></div></details>
+<details open><summary>Saturday–Sunday</summary><div class="inside"><p><b>Saturday:</b> eat after the long easy run and use a shake only if needed.</p><p><b>Sunday:</b> complete rest. Eat normally and prioritize recovery.</p></div></details>
+<div class="card"><h2>Targets</h2><div class="metrics"><div class="metric"><b>185–200 g</b><small>Protein</small></div><div class="metric"><b>Small deficit</b><small>Lose fat, support muscle</small></div></div></div>
 </section>
 
 <section id="plan" class="screen"><div id="allDays"></div></section>
-
-<section id="progress" class="screen">
-<div class="card"><h2>Progress</h2><div class="grid2"><input id="weight" type="number" step=".1" placeholder="Weight"><input id="waist" type="number" step=".1" placeholder="Waist"></div><textarea id="notes" placeholder="Strength, energy, sleep, back symptoms..."></textarea><button class="btn" id="save">Save selected day</button></div>
-<div class="card"><h2>Saved entries</h2><div id="entries" class="muted">No entries yet.</div></div>
-</section>
+<section id="progress" class="screen"><div class="card"><h2>Progress</h2><div class="grid2"><input id="weight" type="number" step=".1" placeholder="Weight"><input id="waist" type="number" step=".1" placeholder="Waist"></div><textarea id="notes" placeholder="Strength, energy, sleep, back symptoms..."></textarea><button class="btn" id="save">Save selected day</button></div><div class="card"><h2>Saved entries</h2><div id="entries" class="muted">No entries yet.</div></div></section>
 </main>
 </div>
-
 <nav class="bottom"><div class="nav"><button class="active" data-screen="today">Today</button><button data-screen="cardio">Cardio</button><button data-screen="meals">Meals</button><button data-screen="plan">All Days</button><button data-screen="progress">Progress</button></div></nav>
-
 <script>
 const days=[
-{date:'2026-07-22',day:'Wed',title:'Legs A — Back Friendly',type:'lift',weekend:false,business:'Write the Patterson Growth offer in one clean sentence and choose one primary niche.',finish:'5-minute easy walk. No squats, deadlifts, hinges or loaded bending.',cardio:['No impact today','5–10 minutes easy bike only as a warm-up.'],ex:[['Hack squat machine','4 × 8–12'],['Leg press','4 × 10–15'],['Seated leg curl','4 × 10–15'],['Leg extension','4 × 12–15'],['Hip abductor machine','3 × 15–20'],['Calf press or seated calf raise','4 × 12–20'],['Pallof press','3 × 10/side']]},
-{date:'2026-07-23',day:'Thu',title:'Shoulders + Arms A',type:'lift',weekend:false,business:'Finish the client onboarding checklist: billing, business info, social accounts, GHL, calendar, lead sources and A2P.',finish:'Lift with back support.',cardio:['Non-impact aerobic work','Bike or elliptical 20–25 minutes at easy conversational effort.'],ex:[['Seated machine shoulder press with back support','4 × 6–10'],['Cable lateral raise','4 × 12–20'],['DB lateral raise seated','3 × 15–20'],['Reverse pec deck','4 × 15–20'],['Machine dip or pressdown','3 × 8–12'],['Rope pressdown','3 × 10–15'],['Preacher curl','3 × 8–12'],['Seated incline curl','3 × 10–12'],['Hammer curl','2 × 12–15']]},
-{date:'2026-07-24',day:'Fri',title:'Chest + Back A',type:'lift',weekend:false,business:'Map the reusable lead system from new lead through response, follow-up, booking and human handoff.',finish:'Keep every row supported and upright.',cardio:['Optional easy movement','15–20 minute flat walk only if comfortable.'],ex:[['Machine chest press','4 × 6–10'],['Neutral-grip lat pulldown','4 × 6–10'],['Incline machine or supported DB press','3 × 8–10'],['Chest-supported row','4 × 8–12'],['Pec deck','3 × 12–15'],['Seated cable row — upright','3 × 10–12'],['Reverse pec deck','3 × 15–20']]},
-{date:'2026-07-25',day:'Sat',title:'Recovery + Back-Friendly Core',type:'recovery',weekend:true,business:'Spend 90 minutes completing one client onboarding asset from start to finish.',finish:'No second hard workout.',cardio:['Zone 2 recovery','Bike, elliptical or flat walk for 35–45 minutes. Keep it conversational.'],ex:[['Dead bug','3 × 8/side'],['Bird dog','3 × 8/side'],['Pallof press','3 × 10/side'],['Easy mobility','5–10 minutes']]},
-{date:'2026-07-26',day:'Sun',title:'Recovery Cardio',type:'recovery',weekend:true,business:'Build a list of 25 prospects in your chosen niche with contact details and one visible weakness.',finish:'Finish feeling better than you started.',cardio:['Easy aerobic recovery','Bike or elliptical 30–40 minutes. No running.'],ex:[['Dead bug or bird dog','3 easy sets'],['Gentle mobility','5–10 minutes']]},
-{date:'2026-07-27',day:'Mon',title:'Push A',type:'lift',weekend:false,business:'Write one short outreach message and send it to 10 prospects.',finish:'Keep the lifting controlled; the run/walk is the only impact.',cardio:['Return Run 1 — Stage 1','5 rounds of 5 minutes brisk walking + 1 minute very easy jogging. Flat surface, 30 minutes total, fully conversational.'],ex:[['Incline machine chest press','4 × 6–10'],['Flat machine chest press','3 × 8–12'],['Seated shoulder press with back support','3 × 8–10'],['Pec deck or cable fly','3 × 12–15'],['Seated lateral raise','4 × 15–20'],['Rope pressdown','3 × 10–15'],['Overhead cable extension only if back stays comfortable','3 × 10–15'],['Push-ups only if pain-free','2 near failure']]},
-{date:'2026-07-28',day:'Tue',title:'Pull A — Supported',type:'lift',weekend:false,business:'Complete one section of the demonstration GoHighLevel account.',finish:'Everything supported and upright.',cardio:['Non-impact aerobic work','Bike or elliptical 25–35 minutes at easy conversational effort. No running.'],ex:[['Neutral-grip pulldown','4 × 6–10'],['Chest-supported machine row','4 × 8–12'],['Single-arm cable pulldown — upright','3 × 10–12/side'],['Seated cable row — upright','3 × 10–12'],['Reverse pec deck','4 × 15–20'],['Preacher curl','3 × 8–12'],['Seated dumbbell curl','3 × 10–12'],['Rope hammer curl','3 × 12–15']]},
-{date:'2026-07-29',day:'Wed',title:'Legs B — Back Friendly',type:'lift',weekend:false,business:'Follow up Monday’s prospects and record each reply, objection and next action.',finish:'Stop any machine that aggravates your back or leg symptoms.',cardio:['No run today','5–10 minutes easy bike as a warm-up only.'],ex:[['Hack squat machine','4 × 10–12'],['Leg press','4 × 10–15'],['Single-leg press','3 × 10/leg'],['Seated leg curl','4 × 10–15'],['Leg extension','4 × 12–15'],['Hip abductor machine','3 × 15–20'],['Calf press on leg press','4 × 12–20']]},
-{date:'2026-07-30',day:'Thu',title:'Shoulders + Arms B',type:'lift',weekend:false,business:'Record a short demo showing a lead entering, being answered, moved through the pipeline and booked.',finish:'Do not turn the run/walk into a workout.',cardio:['Return Run 2','Repeat Stage 1. Only if Monday and the next morning were symptom-free, use Stage 2: 5 rounds of 4 minutes walking + 2 minutes easy jogging.'],ex:[['Machine shoulder press with back support','4 × 8–10'],['Cable lateral raise','5 × 12–20'],['Seated DB lateral raise','3 × 12–15'],['Reverse pec deck','4 × 15–20'],['Machine dip or close-grip machine press','3 × 8–12'],['Preacher curl','3 × 8–12'],['Rope pressdown','3 × 10–15'],['Seated incline curl','3 × 10–12'],['Hammer curl','2 × 12–15']]},
-{date:'2026-07-31',day:'Fri',title:'Chest + Back B',type:'lift',weekend:false,business:'Rewrite the landing page around the problem, solution, audience, result and one call to action.',finish:'Keep every row supported and upright.',cardio:['Optional non-impact recovery','Bike or elliptical 20–30 minutes easy, or take full rest.'],ex:[['Incline machine chest press','4 × 6–10'],['Neutral-grip pulldown','4 × 6–10'],['Flat machine chest press','3 × 8–12'],['Chest-supported row','4 × 8–12'],['Pec deck','3 × 12–15'],['Seated cable row — upright','3 × 10–12'],['Reverse pec deck','3 × 15–20']]},
-{date:'2026-08-01',day:'Sat',title:'Recovery + Back-Friendly Core',type:'recovery',weekend:true,business:'Finish the client-ready offer package: pricing, intake, access checklist, implementation, demo and follow-up.',finish:'Use the stage you earned; do not advance halfway through.',cardio:['Return Run 3','Repeat Thursday’s run/walk stage for 30 minutes. Flat and conversational.'],ex:[['Dead bug','3 × 8/side'],['Bird dog','3 × 8/side'],['Pallof press','3 × 10/side']]},
-{date:'2026-08-02',day:'Sun',title:'Recovery Cardio',type:'recovery',weekend:true,business:'Contact 15 new prospects and follow up every warm lead.',finish:'Keep this restorative after Saturday’s impact.',cardio:['Non-impact Zone 2 or rest','Bike or elliptical 30–40 minutes easy. Full rest is allowed if the back is irritated.'],ex:[['Dead bug or bird dog','3 easy sets'],['Gentle mobility','5–10 minutes']]},
-{date:'2026-08-03',day:'Mon',title:'Push B',type:'lift',weekend:false,business:'Follow up all warm prospects, schedule next actions and set the next three business priorities.',finish:'Easy means easy. No pace chasing.',cardio:['Return Run 4','Continue your current 30-minute stage. Advance only after at least two symptom-free sessions at the current stage.'],ex:[['Incline machine press','4 × 8–10'],['Flat machine press','3 × 8–12'],['Seated shoulder press with back support','3 × 8–10'],['Pec deck','3 × 12–15'],['Seated lateral raise','4 × 15–20'],['Rope pressdown','3 × 12–15'],['Machine dip','3 × 10–15'],['Push-ups only if pain-free','2 controlled sets']]},
-{date:'2026-08-04',day:'Tue',title:'Pull B — Supported',type:'lift',weekend:false,business:'Review contacts, replies, meetings and completed assets; set one measurable seven-day revenue target.',finish:'Everything supported and upright.',cardio:['Non-impact aerobic work','Bike or elliptical 25–35 minutes at easy conversational effort. No running.'],ex:[['Neutral-grip pulldown','3 × 10–12'],['Chest-supported row','3 × 10–12'],['Single-arm cable pulldown — upright','3 × 12/side'],['Seated machine row','3 × 12–15'],['Reverse pec deck','3 × 15–20'],['Preacher curl','3 × 12–15'],['Seated hammer curl','3 × 12–15']]}
+{date:'2026-07-22',day:'Wed',title:'Legs A — Back Friendly',type:'lift',weekend:false,finish:'No squats, deadlifts, hinges or loaded bending.',cardio:['No run','5–10 minutes easy bike only as a warm-up.'],ex:[['Hack squat machine','4 × 8–12'],['Leg press','4 × 10–15'],['Seated leg curl','4 × 10–15'],['Leg extension','4 × 12–15'],['Hip abductor machine','3 × 15–20'],['Calf press or seated calf raise','4 × 12–20'],['Pallof press','3 × 10/side']]},
+{date:'2026-07-23',day:'Thu',title:'Shoulders + Arms A',type:'lift',weekend:false,finish:'Lift with back support.',cardio:['Easy run','3 miles at conversational effort. Start around 8:00–8:30 pace.'],ex:[['Seated machine shoulder press with back support','4 × 6–10'],['Cable lateral raise','4 × 12–20'],['DB lateral raise seated','3 × 15–20'],['Reverse pec deck','4 × 15–20'],['Machine dip or pressdown','3 × 8–12'],['Rope pressdown','3 × 10–15'],['Preacher curl','3 × 8–12'],['Seated incline curl','3 × 10–12'],['Hammer curl','2 × 12–15']]},
+{date:'2026-07-24',day:'Fri',title:'Chest + Back A',type:'lift',weekend:false,finish:'Keep every row supported and upright.',cardio:['No run','Optional 20–30 minutes easy bike or elliptical.'],ex:[['Machine chest press','4 × 6–10'],['Neutral-grip lat pulldown','4 × 6–10'],['Incline machine or supported DB press','3 × 8–10'],['Chest-supported row','4 × 8–12'],['Pec deck','3 × 12–15'],['Seated cable row — upright','3 × 10–12'],['Reverse pec deck','3 × 15–20']]},
+{date:'2026-07-25',day:'Sat',title:'Long Easy Run',type:'run',weekend:true,finish:'No lifting. Finish controlled.',cardio:['Long easy run','4 miles at conversational effort. Start around 8:00–8:30 pace.'],ex:[['Dead bug','3 × 8/side'],['Bird dog','3 × 8/side'],['Pallof press','3 × 10/side'],['Easy mobility','5–10 minutes']]},
+{date:'2026-07-26',day:'Sun',title:'Complete Rest',type:'rest',weekend:true,finish:'No gym. No running. Recover.',cardio:['Complete rest','No cardio required.'],ex:[]},
+{date:'2026-07-27',day:'Mon',title:'Push A',type:'lift',weekend:false,finish:'No running Monday.',cardio:['No run','Lift only. Easy walking is optional.'],ex:[['Incline machine chest press','4 × 6–10'],['Flat machine chest press','3 × 8–12'],['Seated shoulder press with back support','3 × 8–10'],['Pec deck or cable fly','3 × 12–15'],['Seated lateral raise','4 × 15–20'],['Rope pressdown','3 × 10–15'],['Overhead cable extension only if comfortable','3 × 10–15'],['Push-ups only if pain-free','2 near failure']]},
+{date:'2026-07-28',day:'Tue',title:'Pull A — Supported',type:'lift',weekend:false,finish:'Everything supported and upright.',cardio:['Easy run','3 miles at conversational effort. Start around 8:00–8:30 pace.'],ex:[['Neutral-grip pulldown','4 × 6–10'],['Chest-supported machine row','4 × 8–12'],['Single-arm cable pulldown — upright','3 × 10–12/side'],['Seated cable row — upright','3 × 10–12'],['Reverse pec deck','4 × 15–20'],['Preacher curl','3 × 8–12'],['Seated dumbbell curl','3 × 10–12'],['Rope hammer curl','3 × 12–15']]},
+{date:'2026-07-29',day:'Wed',title:'Legs B — Back Friendly',type:'lift',weekend:false,finish:'Stop any machine that aggravates your back or leg symptoms.',cardio:['No run','5–10 minutes easy bike only as a warm-up.'],ex:[['Hack squat machine','4 × 10–12'],['Leg press','4 × 10–15'],['Single-leg press','3 × 10/leg'],['Seated leg curl','4 × 10–15'],['Leg extension','4 × 12–15'],['Hip abductor machine','3 × 15–20'],['Calf press on leg press','4 × 12–20']]},
+{date:'2026-07-30',day:'Thu',title:'Shoulders + Arms B',type:'lift',weekend:false,finish:'Keep the run easy.',cardio:['Easy run','3 miles at conversational effort. Start around 8:00–8:30 pace.'],ex:[['Machine shoulder press with back support','4 × 8–10'],['Cable lateral raise','5 × 12–20'],['Seated DB lateral raise','3 × 12–15'],['Reverse pec deck','4 × 15–20'],['Machine dip or close-grip machine press','3 × 8–12'],['Preacher curl','3 × 8–12'],['Rope pressdown','3 × 10–15'],['Seated incline curl','3 × 10–12'],['Hammer curl','2 × 12–15']]},
+{date:'2026-07-31',day:'Fri',title:'Chest + Back B',type:'lift',weekend:false,finish:'Keep every row supported and upright.',cardio:['No run','Optional 20–30 minutes easy bike or elliptical.'],ex:[['Incline machine chest press','4 × 6–10'],['Neutral-grip pulldown','4 × 6–10'],['Flat machine chest press','3 × 8–12'],['Chest-supported row','4 × 8–12'],['Pec deck','3 × 12–15'],['Seated cable row — upright','3 × 10–12'],['Reverse pec deck','3 × 15–20']]},
+{date:'2026-08-01',day:'Sat',title:'Long Easy Run',type:'run',weekend:true,finish:'No lifting. Finish controlled.',cardio:['Long easy run','4 miles at conversational effort. Start around 8:00–8:30 pace.'],ex:[['Dead bug','3 × 8/side'],['Bird dog','3 × 8/side'],['Pallof press','3 × 10/side']]},
+{date:'2026-08-02',day:'Sun',title:'Complete Rest',type:'rest',weekend:true,finish:'No gym. No running. Recover.',cardio:['Complete rest','No cardio required.'],ex:[]},
+{date:'2026-08-03',day:'Mon',title:'Push B',type:'lift',weekend:false,finish:'No running Monday.',cardio:['No run','Lift only. Easy walking is optional.'],ex:[['Incline machine press','4 × 8–10'],['Flat machine press','3 × 8–12'],['Seated shoulder press with back support','3 × 8–10'],['Pec deck','3 × 12–15'],['Seated lateral raise','4 × 15–20'],['Rope pressdown','3 × 12–15'],['Machine dip','3 × 10–15'],['Push-ups only if pain-free','2 controlled sets']]},
+{date:'2026-08-04',day:'Tue',title:'Pull B — Supported',type:'lift',weekend:false,finish:'Everything supported and upright.',cardio:['Easy run','3 miles at conversational effort. Start around 8:00–8:30 pace.'],ex:[['Neutral-grip pulldown','3 × 10–12'],['Chest-supported row','3 × 10–12'],['Single-arm cable pulldown — upright','3 × 12/side'],['Seated machine row','3 × 12–15'],['Reverse pec deck','3 × 15–20'],['Preacher curl','3 × 12–15'],['Seated hammer curl','3 × 12–15']]}
 ];
-
 const $=s=>document.querySelector(s),store={get:k=>{try{return JSON.parse(localStorage.getItem(k))}catch{return null}},set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
 let selected=(()=>{const n=new Date(),t=`${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`,i=days.findIndex(d=>d.date===t);return i<0?0:i})();
-const short=d=>new Date(d+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'});
-const key=(d,k)=>`recomp14:${d}:${k}`;
-
-function scheduleFor(d){
- const lift=d.type==='lift';
- const postTraining=lift?[
-  ['shake','Immediately after lifting — Protein shake','At home: one scoop Body Fortress with 8–12 oz whole milk. Do not take it to work.'],
-  ['breakfast','Right after shake — Large breakfast','Eggs, egg whites, cereal or oats, fruit and milk.']
- ]:[
-  ['breakfast','After recovery work — Large breakfast','No automatic shake. Eat breakfast and use Body Fortress at home only if needed.']
- ];
- if(d.weekend){
-   return [
-    ['wake','7:00 AM — Wake','Water and weigh in.'],
-    ['business','7:10–8:30 AM — Business + black coffee','Complete today’s Patterson Growth task.'],
-    ['training',lift?'8:45 AM — Lift':'8:45 AM — Recovery work',d.title],
-    ...postTraining,
-    ['snack','Mid-afternoon — Optional protein snack','Protein bar, Greek yogurt or fruit. No lunch.'],
-    ['dinner','7:00 PM — Large dinner','Lean protein, rice and vegetables.'],
-    ['bed','10:00 PM — Bed','Prepare Monday if it is Sunday.']
-   ];
- }
- return [
-  ['wake','5:00 AM — Wake','Water and weigh in.'],
-  ['business','5:10–5:45 AM — Business + black coffee','Complete today’s single Patterson Growth task.'],
-  ['training',lift?'6:00 AM — Lift':'6:15 AM — Recovery work',d.title],
-  ...postTraining,
-  ['snack','At work — Portable protein bar','One 20 g bar, or two pictured Nature Valley Protein bars. No lunch. No shake at work.'],
-  ['dinner','6:15 PM — Large dinner','10–12 oz lean protein, rice and vegetables.'],
-  ['walk','7:15 PM — Easy walk','15–20 minutes if your back feels good.'],
-  ['bed','9:15 PM — Bed','Prepare tomorrow first.']
- ];
-}
-
-function renderDatebar(){
- $('#datebar').innerHTML=days.map((d,i)=>`<button class="daybtn ${i===selected?'active':''}" data-i="${i}"><b>${d.day}</b><small>${short(d.date)}</small></button>`).join('');
- document.querySelectorAll('.daybtn').forEach(b=>b.onclick=()=>{selected=+b.dataset.i;renderDatebar();renderToday();b.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})});
-}
-
-function renderToday(){
- const d=days[selected],lift=d.type==='lift',sched=scheduleFor(d);
- $('#todayBody').innerHTML=`
- <div class="card hero"><div class="eyebrow">${d.day} · ${short(d.date)}</div><h2 style="font-size:24px;margin:5px 0">${d.title}</h2><span class="pill">${d.weekend?'Weekend':'Workday'} · ${lift?'Lift':'Recovery'}</span>
- <div class="metrics"><div class="metric"><b>185–200 g</b><small>Protein</small></div><div class="metric"><b>3 impact days</b><small>Mon · Thu · Sat</small></div></div></div>
- <div class="card"><h2>Today</h2>${sched.map(([k,t,s])=>`<div class="check"><input type="checkbox" data-task="${k}" ${store.get(key(d.date,k))?'checked':''}><div><b>${t}</b><small>${s}</small></div></div>`).join('')}</div>
- <div class="card"><h2>Business task</h2><p>${d.business}</p></div>
- <div class="card"><h2>${d.title}</h2>${d.ex.map(e=>`<div class="row"><div><b>${e[0]}</b></div><div class="sets">${e[1]}</div></div>`).join('')}<div class="notice" style="margin-top:11px">${d.finish}</div><div class="notice warning" style="margin-top:9px"><b>Back rule:</b> supported and upright. Stop any movement that increases back or leg symptoms.</div></div>
- <div class="card"><div class="eyebrow">Cardio</div><h2>${d.cardio[0]}</h2><p>${d.cardio[1]}</p><div class="notice"><b>Intensity:</b> conversational. Current fitness only—never old PR pace.</div></div>
- <div class="card"><h2>Supplements</h2><p><b>Caffeine:</b> black coffee during business is the default.</p>
- <p><b>Jekyll & Hyde:</b> only if you skip coffee that morning. Do not combine them.</p>
- <p><b>Body Fortress:</b> ${lift?'one scoop at home immediately after lifting. Do not bring it to work.':'only at home if needed to reach protein. Do not bring it to work.'}</p><p><b>Clean Gainer:</b> usually skip.</p></div>`;
- document.querySelectorAll('[data-task]').forEach(c=>c.onchange=()=>store.set(key(d.date,c.dataset.task),c.checked));
-}
-
-function renderAll(){
- $('#allDays').innerHTML=days.map(d=>`<details><summary>${d.day} ${short(d.date)} — ${d.title}</summary><div class="inside"><p><b>Schedule:</b> ${d.weekend?`Weekend—coffee + business, ${d.type==='lift'?'lift at 8:45 AM then shake at home':'recovery work at 8:45 AM'}, no lunch.`:`Workday—coffee + business at 5:10 AM, ${d.type==='lift'?'lift before work then shake at home':'recovery work before work'}, no lunch.`}</p><p><b>Cardio:</b> ${d.cardio[0]} — ${d.cardio[1]}</p><p><b>Business:</b> ${d.business}</p>${d.ex.map(e=>`<div class="row"><div>${e[0]}</div><div class="sets">${e[1]}</div></div>`).join('')}<div class="notice" style="margin-top:10px">${d.finish}</div></div></details>`).join('');
-}
-
-function show(id){
- document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));
- document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.screen===id));
- if(id==='progress')renderProgress(); if(id==='plan')renderAll(); window.scrollTo({top:0,behavior:'smooth'});
-}
+const short=d=>new Date(d+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'}),key=(d,k)=>`recomp14:${d}:${k}`;
+function scheduleFor(d){if(d.type==='rest')return[['rest','Complete rest','No gym, no running, no required cardio.']];const lift=d.type==='lift';const items=[['wake',d.weekend?'7:00 AM — Wake':'5:00 AM — Wake','Water and weigh in.'],['training',lift?(d.weekend?'8:45 AM — Lift':'5:30 AM — Lift'):(d.weekend?'8:45 AM — Run':'5:30 AM — Run'),d.title]];if(lift)items.push(['shake','After lifting — Protein shake','One scoop Body Fortress at home, then breakfast.']);items.push(['breakfast','After training — Breakfast','Eggs, egg whites, cereal or oats, fruit and milk.'],['dinner',d.weekend?'7:00 PM — Dinner':'6:15 PM — Dinner','Lean protein, rice and vegetables.'],['bed',d.weekend?'10:00 PM — Bed':'9:15 PM — Bed','Prioritize recovery.']);return items}
+function renderDatebar(){$('#datebar').innerHTML=days.map((d,i)=>`<button class="daybtn ${i===selected?'active':''}" data-i="${i}"><b>${d.day}</b><small>${short(d.date)}</small></button>`).join('');document.querySelectorAll('.daybtn').forEach(b=>b.onclick=()=>{selected=+b.dataset.i;renderDatebar();renderToday();b.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'})})}
+function renderToday(){const d=days[selected],sched=scheduleFor(d),lift=d.type==='lift';$('#todayBody').innerHTML=`<div class="card hero"><div class="eyebrow">${d.day} · ${short(d.date)}</div><h2 style="font-size:24px;margin:5px 0">${d.title}</h2><span class="pill">${d.type==='rest'?'Complete rest':lift?'Lift day':'Run day'}</span><div class="metrics"><div class="metric"><b>185–200 g</b><small>Protein</small></div><div class="metric"><b>10 mi</b><small>Starting weekly run volume</small></div></div></div><div class="card"><h2>Today</h2>${sched.map(([k,t,s])=>`<div class="check"><input type="checkbox" data-task="${k}" ${store.get(key(d.date,k))?'checked':''}><div><b>${t}</b><small>${s}</small></div></div>`).join('')}</div>${d.ex.length?`<div class="card"><h2>${d.title}</h2>${d.ex.map(e=>`<div class="row"><div><b>${e[0]}</b></div><div class="sets">${e[1]}</div></div>`).join('')}<div class="notice" style="margin-top:11px">${d.finish}</div><div class="notice warning" style="margin-top:9px"><b>Back rule:</b> stop anything that increases back or leg symptoms.</div></div>`:''}<div class="card"><div class="eyebrow">Cardio</div><h2>${d.cardio[0]}</h2><p>${d.cardio[1]}</p></div>`;document.querySelectorAll('[data-task]').forEach(c=>c.onchange=()=>store.set(key(d.date,c.dataset.task),c.checked))}
+function renderAll(){$('#allDays').innerHTML=days.map(d=>`<details><summary>${d.day} ${short(d.date)} — ${d.title}</summary><div class="inside"><p><b>Cardio:</b> ${d.cardio[0]} — ${d.cardio[1]}</p>${d.ex.map(e=>`<div class="row"><div>${e[0]}</div><div class="sets">${e[1]}</div></div>`).join('')}<div class="notice" style="margin-top:10px">${d.finish}</div></div></details>`).join('')}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.screen===id));if(id==='progress')renderProgress();if(id==='plan')renderAll();window.scrollTo({top:0,behavior:'smooth'})}
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>show(b.dataset.screen));
-
 $('#save').onclick=()=>{const all=store.get('recomp14:progress')||{};all[days[selected].date]={weight:$('#weight').value,waist:$('#waist').value,notes:$('#notes').value};store.set('recomp14:progress',all);renderProgress()};
 function renderProgress(){const all=store.get('recomp14:progress')||{},cur=all[days[selected].date]||{};$('#weight').value=cur.weight||'';$('#waist').value=cur.waist||'';$('#notes').value=cur.notes||'';const arr=Object.entries(all).sort((a,b)=>a[0].localeCompare(b[0]));$('#entries').innerHTML=arr.length?arr.map(([d,v])=>`<div class="row"><div><b>${short(d)}</b><small class="muted">${v.notes||'No notes'}</small></div><div class="sets">${v.weight?`${v.weight} lb`:''}${v.waist?` · ${v.waist} in`:''}</div></div>`).join(''):'No entries yet.'}
-
-renderDatebar();renderToday();
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}))}
+renderDatebar();renderToday();if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}))}
 </script>
 </body>
 </html>
