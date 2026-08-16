@@ -3,294 +3,145 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#090b0e">
-<title>R14 Transformation</title>
+<meta name="theme-color" content="#0a0b0d">
+<title>R14</title>
 <style>
-:root{--bg:#090b0e;--card:#15191f;--card2:#1c222a;--text:#f7f8fa;--muted:#9ca6b3;--green:#7cf0a4;--blue:#8dcaff;--amber:#ffd27a;--line:#2b333d;--red:#ff8d8d}*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body{padding-bottom:86px}.app{max-width:780px;margin:auto}header{position:sticky;top:0;z-index:5;padding:16px;background:#090b0eee;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}h1{margin:2px 0;font-size:27px}.eyebrow{font-size:12px;font-weight:850;letter-spacing:.09em;text-transform:uppercase;color:var(--green)}.muted{color:var(--muted)}main{padding:13px}.screen{display:none}.screen.active{display:block}.card,details{background:var(--card);border:1px solid var(--line);border-radius:17px;margin-bottom:11px}.card{padding:15px}.hero{background:linear-gradient(145deg,#19261e,#141a22)}.hero h2{font-size:23px}.row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}.sets{color:var(--green);font-weight:800;white-space:nowrap}.datebar{display:flex;gap:7px;overflow:auto;padding-bottom:9px}.daybtn{min-width:63px;border:1px solid var(--line);border-radius:13px;background:var(--card2);color:var(--text);padding:8px}.daybtn.active{border-color:var(--green);box-shadow:0 0 0 1px #7cf0a433 inset}.daybtn b,.daybtn small{display:block}.daybtn small{color:var(--muted)}.check{display:flex;gap:10px;align-items:flex-start;background:var(--card2);border:1px solid var(--line);padding:11px;border-radius:13px;margin:7px 0}.check input{width:21px;height:21px;accent-color:var(--green);flex:0 0 auto}.check small{display:block;color:var(--muted);margin-top:3px}.pill{display:inline-block;background:#183124;color:var(--green);border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800;margin:0 5px 5px 0}.pill.blue{background:#172c3c;color:var(--blue)}.pill.amber{background:#332b18;color:var(--amber)}.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:11px}.metric{background:#ffffff09;border-radius:12px;padding:11px}.metric b{display:block;font-size:18px}.metric small{color:var(--muted)}.notice{border-left:4px solid var(--blue);background:#151d26;border-radius:10px;padding:11px;font-size:14px;line-height:1.45}.warning{border-left-color:var(--amber);background:#211d14}.success{border-left-color:var(--green);background:#152019}.mini{font-size:13px}.sectionTitle{font-size:19px;margin:0 0 10px}h2{font-size:19px;margin:0 0 10px}p{line-height:1.48;margin:8px 0}summary{padding:14px;font-weight:800;cursor:pointer}details .inside{padding:0 14px 14px}ul{padding-left:19px;line-height:1.48}li{margin:6px 0}input,textarea{width:100%;background:#0e1115;border:1px solid var(--line);color:var(--text);border-radius:11px;padding:11px;font:inherit}textarea{min-height:80px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{width:100%;border:0;border-radius:12px;padding:12px;background:var(--green);color:#07120a;font-weight:900;margin-top:10px}.bottom{position:fixed;left:0;right:0;bottom:0;background:#0d1014f5;border-top:1px solid var(--line);padding:8px 8px calc(8px + env(safe-area-inset-bottom));display:flex;justify-content:center}.nav{max-width:780px;width:100%;display:grid;grid-template-columns:repeat(5,1fr);gap:2px}.nav button{border:0;background:transparent;color:var(--muted);padding:9px 1px;border-radius:11px;font-size:12px}.nav button.active{color:var(--green);background:#7cf0a414}.spacer8{height:8px}@media(max-width:420px){.metrics{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr 1fr}header{padding:14px}main{padding:11px}}
+:root{--bg:#0a0b0d;--card:#15181c;--card2:#1b1f24;--text:#f7f8fa;--muted:#9aa3ad;--line:#2a3037;--green:#7cf0a4;--blue:#8bc9ff;--gold:#ffd27a;--red:#ff9b9b}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body{padding-bottom:84px}.app{max-width:760px;margin:auto}header{position:sticky;top:0;z-index:10;background:#0a0b0df2;border-bottom:1px solid var(--line);backdrop-filter:blur(14px);padding:14px 16px}.brand{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand h1{font-size:23px;margin:0}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.09em;font-weight:900;color:var(--green)}.muted{color:var(--muted)}main{padding:12px}.screen{display:none}.screen.active{display:block}.card,details{background:var(--card);border:1px solid var(--line);border-radius:18px;margin-bottom:11px}.card{padding:15px}.hero{background:linear-gradient(145deg,#17231b,#151a21)}h2{font-size:19px;margin:0 0 8px}h3{font-size:16px;margin:0 0 7px}p{line-height:1.45;margin:7px 0}.datebar{display:flex;gap:7px;overflow:auto;padding-bottom:10px}.daybtn{min-width:62px;background:var(--card2);border:1px solid var(--line);border-radius:13px;color:var(--text);padding:8px 6px}.daybtn.active{border-color:var(--green);background:#17221b}.daybtn b,.daybtn small{display:block}.daybtn small{font-size:11px;color:var(--muted);margin-top:2px}.big4{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.stat{background:#ffffff09;border:1px solid #ffffff08;border-radius:15px;padding:12px}.stat b{display:block;font-size:23px;line-height:1.05}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:5px}.stat.green b{color:var(--green)}.stat.blue b{color:var(--blue)}.stat.gold b{color:var(--gold)}.tag{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;background:#ffffff0b;color:var(--muted);font-size:12px;font-weight:800;margin:5px 4px 0 0}.notice{padding:12px;border-radius:13px;background:#141c24;border-left:4px solid var(--blue);font-size:13px;line-height:1.45}.notice.gold{background:#211d14;border-left-color:var(--gold)}.notice.green{background:#142019;border-left-color:var(--green)}.row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.sets{color:var(--green);font-weight:850;white-space:nowrap}.check{display:flex;gap:10px;align-items:flex-start;padding:11px;background:var(--card2);border:1px solid var(--line);border-radius:13px;margin:7px 0}.check input{width:21px;height:21px;accent-color:var(--green);flex:0 0 auto}.check small{display:block;color:var(--muted);margin-top:3px}.sectionLabel{font-size:12px;text-transform:uppercase;letter-spacing:.07em;font-weight:900;color:var(--muted);margin:17px 3px 8px}.week{overflow:hidden}.week .row{padding:12px 0}.week .dayName{font-weight:850}.week .sub{font-size:12px;color:var(--muted);margin-top:3px}.macrogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.macro{background:var(--card2);border-radius:13px;padding:11px;text-align:center}.macro b{display:block;font-size:19px}.macro small{color:var(--muted)}summary{padding:14px;font-weight:850;cursor:pointer}details .inside{padding:0 14px 14px}ul{margin:8px 0;padding-left:20px;line-height:1.45}li{margin:7px 0}.peakDay{border-top:3px solid var(--green)}.timeline{display:grid;gap:8px}.timeline div{background:var(--card2);border-radius:13px;padding:11px}.timeline b{display:block;margin-bottom:3px}input,textarea{width:100%;background:#0d1014;border:1px solid var(--line);color:var(--text);border-radius:12px;padding:11px;font:inherit}textarea{min-height:80px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btn{width:100%;border:0;border-radius:12px;padding:12px;background:var(--green);color:#07110a;font-weight:900;margin-top:10px}.bottom{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#0d1014f5;border-top:1px solid var(--line);padding:7px 8px calc(7px + env(safe-area-inset-bottom));display:flex;justify-content:center}.nav{max-width:760px;width:100%;display:grid;grid-template-columns:repeat(5,1fr);gap:2px}.nav button{border:0;background:transparent;color:var(--muted);padding:9px 2px;border-radius:11px;font-size:12px}.nav button.active{color:var(--green);background:#7cf0a413}.tiny{font-size:12px}.spacer{height:6px}@media(max-width:390px){.big4{grid-template-columns:1fr 1fr}.stat b{font-size:21px}.nav button{font-size:11px}}
 </style>
 </head>
 <body>
 <div class="app">
-<header>
-  <div class="eyebrow">Cut + Recomp · Aug 17–Sep 4</div>
-  <h1>R14 Transformation</h1>
-  <div class="muted">19-day push: visibly leaner waist while protecting strength and muscle.</div>
-</header>
+<header><div class="brand"><div><div class="eyebrow">Aug 17 → Sep 4</div><h1>R14 Cut + Recomp</h1></div><div class="tag">19 days</div></div></header>
 <main>
 <section id="today" class="screen active">
   <div id="datebar" class="datebar"></div>
   <div id="todayBody"></div>
 </section>
 
-<section id="plan" class="screen">
-  <div class="card hero">
-    <div class="eyebrow">Training priority</div>
-    <h2>Keep muscle. Keep strength. Lose fat.</h2>
-    <p class="muted">Four lifting days, two controlled recovery days, one complete rest day. No junk volume.</p>
-  </div>
-  <details open>
-    <summary>How every workout works</summary>
-    <div class="inside">
-      <p><b>Compounds:</b> stop with 1–2 reps in reserve. <b>Isolation:</b> 0–2 RIR; only the final safe isolation set may reach technical failure.</p>
-      <p><b>Rest:</b> 2–3 minutes on compounds, 60–90 seconds on isolation work.</p>
-      <p><b>Progression:</b> keep the same load until all working sets reach the top of the rep range cleanly, then add the smallest available load.</p>
-      <p><b>Cut rule:</b> strength should stay broadly stable. If multiple lifts fall hard for two sessions, recovery or calories are too low.</p>
-      <p><b>Back rule:</b> use supported/upright variations whenever possible. No loaded bending just to chase numbers.</p>
-    </div>
-  </details>
-  <div id="allDays"></div>
-</section>
-
-<section id="food" class="screen">
-  <div class="card hero">
-    <div class="eyebrow">Nutrition · 19 days</div>
-    <h2>Protein stays high. Deficit stays controlled.</h2>
-    <p class="muted">The goal is not the fastest scale loss. The goal is the most visible fat loss you can get without flattening out or sacrificing muscle.</p>
-  </div>
-  <div class="card">
-    <h2>Daily targets</h2>
-    <div class="metrics">
-      <div class="metric"><b>2,350</b><small>Lift-day calories</small></div>
-      <div class="metric"><b>2,150</b><small>Recovery/rest calories</small></div>
-      <div class="metric"><b>195 g</b><small>Protein every day</small></div>
-      <div class="metric"><b>5 g</b><small>Creatine every day</small></div>
-    </div>
-    <p><b>Lift-day macros:</b> about 195 g protein · 245 g carbs · 65 g fat.</p>
-    <p><b>Recovery/rest macros:</b> about 195 g protein · 190 g carbs · 67 g fat.</p>
-    <p><b>Fiber:</b> 25–35 g/day. <b>Water:</b> 3–4 L/day. Keep sodium normal and consistent.</p>
-  </div>
-  <details open>
-    <summary>Protein distribution</summary>
-    <div class="inside">
-      <p>Hit protein four times instead of saving most of it for dinner:</p>
-      <div class="row"><div>Meal 1</div><div class="sets">45–50 g</div></div>
-      <div class="row"><div>Meal 2</div><div class="sets">45–50 g</div></div>
-      <div class="row"><div>Meal 3</div><div class="sets">45–50 g</div></div>
-      <div class="row"><div>Meal 4</div><div class="sets">45–55 g</div></div>
-      <p class="muted mini">Total daily protein matters most. This split makes the target easier to hit and keeps protein spread across the day.</p>
-    </div>
-  </details>
-  <details open>
-    <summary>Example lift day · ~2,350 kcal</summary>
-    <div class="inside">
-      <p><b>Breakfast:</b> 2 whole eggs + 250 g liquid egg whites + 60 g oatmeal + banana.</p>
-      <p><b>Lunch:</b> 6 oz cooked chicken breast + 250 g cooked jasmine rice + vegetables + measured light sauce.</p>
-      <p><b>Meal 3:</b> 300 g 0% Greek yogurt + 1 scoop whey + berries + 2 rice cakes.</p>
-      <p><b>Dinner:</b> 6 oz lean beef, turkey, chicken or fish + 300–350 g potato or measured rice + vegetables.</p>
-      <p class="muted mini">Adjust carb portions to land on the calorie target. Do not cut protein to make calories fit.</p>
-    </div>
-  </details>
-  <details>
-    <summary>Easy protein swaps</summary>
-    <div class="inside">
-      <p>Chicken breast · 93–96% lean ground beef/turkey · shrimp · tuna · white fish · salmon · eggs · liquid egg whites · 0% Greek yogurt · cottage cheese · whey.</p>
-      <p>Use rice, potatoes, oats, fruit, bread/wraps and rice cakes as the main carb sources. Measure oils, nut butter, dressings and sauces.</p>
-    </div>
-  </details>
-  <details>
-    <summary>Emergency day · no time</summary>
-    <div class="inside">
-      <p><b>Immediately:</b> protein shake + banana.</p>
-      <p><b>Take with you:</b> high-protein Greek yogurt + protein bar.</p>
-      <p><b>Later:</b> lean protein + measured rice/potato + vegetables.</p>
-      <p>Missing a cooked meal never becomes a reason to abandon the calorie or protein target.</p>
-    </div>
-  </details>
-  <div class="card">
-    <h2>19-day rules</h2>
-    <ul>
-      <li>195 g protein every day.</li>
-      <li>Track everything, including oils, sauces, drinks and snacks.</li>
-      <li>No untracked cheat day.</li>
-      <li>No alcohol during the block.</li>
-      <li>Do not eat back watch-estimated exercise calories.</li>
-      <li>Keep restaurant meals rare and trackable.</li>
-      <li>Use zero/low-calorie drinks most of the time.</li>
-      <li>Keep sodium and water consistent instead of trying to dehydrate.</li>
-      <li>Sleep target: 8+ hours.</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h2>Adjustment checkpoints</h2>
-    <p><b>Aug 24:</b> compare the first 7-day average with your starting weight and waist.</p>
-    <p>If average weight is down roughly <b>0.5–1.0% of bodyweight/week</b> and strength is stable, change nothing.</p>
-    <p>If loss is slower and waist is not moving, reduce about <b>150 kcal/day</b> from carbs/fats. Keep protein at 195 g.</p>
-    <p>If loss is faster than ~1%/week and gym performance/recovery are clearly deteriorating, add <b>100–150 kcal/day</b>, mainly carbs.</p>
-    <p><b>Aug 31:</b> repeat the same check. No panic changes from one weigh-in.</p>
-  </div>
-  <div class="card">
-    <h2>Sep 2–4 · look your best without dehydration</h2>
-    <p>Keep water and sodium normal. Avoid a huge restaurant meal, alcohol, excessive carbonation and foods you know bloat you.</p>
-    <p><b>Sep 3:</b> upper-body session is reduced volume. Stay fresh.</p>
-    <p><b>Sep 4:</b> take progress photos/waist measurement before a large meal. Optional short upper-body pump only.</p>
-  </div>
-</section>
-
-<section id="back" class="screen">
-  <div class="card hero">
-    <div class="eyebrow">Mon–Sat mornings</div>
-    <h2>30-Minute Back Foundation</h2>
-    <p class="muted">Home routine. Mat + long band + psoas stretcher. Sunday completely off.</p>
-  </div>
-  <details open><summary>Reset · 4 min</summary><div class="inside">
+<section id="schedule" class="screen">
+  <div class="card hero"><div class="eyebrow">The entire block</div><h2>Everything in one schedule</h2><p class="muted">Four lifting days per week. Running is back, but all runs stay easy until September 4 so cardio helps the cut without stealing recovery.</p></div>
+  <div id="scheduleBody"></div>
+  <details><summary>Back / hip foundation</summary><div class="inside">
     <div class="row"><div>90/90 breathing</div><div class="sets">2 min</div></div>
     <div class="row"><div>Pelvic tilts</div><div class="sets">1 × 15</div></div>
     <div class="row"><div>Cat-camel</div><div class="sets">1 × 8</div></div>
-  </div></details>
-  <details open><summary>Hip mobility · 12 min</summary><div class="inside">
     <div class="row"><div>90/90 hip switches</div><div class="sets">2 × 8/side</div></div>
-    <div class="row"><div>Half-kneeling hip-flexor stretch</div><div class="sets">2 × 40 sec/side</div></div>
+    <div class="row"><div>Hip-flexor stretch</div><div class="sets">2 × 40 sec/side</div></div>
     <div class="row"><div>Psoas stretcher</div><div class="sets">2 × 45 sec/side</div></div>
     <div class="row"><div>Adductor rockbacks</div><div class="sets">2 × 10/side</div></div>
-    <div class="row"><div>Figure-4 stretch</div><div class="sets">1 × 45 sec/side</div></div>
-    <div class="row"><div>Couch stretch</div><div class="sets">1 × 45 sec/side</div></div>
-    <div class="row"><div>Frog stretch</div><div class="sets">1 × 45 sec</div></div>
-  </div></details>
-  <details open><summary>Hip activation · 8 min</summary><div class="inside">
     <div class="row"><div>Glute bridge</div><div class="sets">3 × 12</div></div>
     <div class="row"><div>Banded lateral walks</div><div class="sets">2 × 12/way</div></div>
-    <div class="row"><div>Banded clamshells</div><div class="sets">2 × 15/side</div></div>
-    <div class="row"><div>Standing band hip extension</div><div class="sets">2 × 12/side</div></div>
-  </div></details>
-  <details open><summary>Core stability · 6 min</summary><div class="inside">
-    <div class="row"><div>McGill curl-up</div><div class="sets">2 × 6/side</div></div>
     <div class="row"><div>Bird dog</div><div class="sets">2 × 6/side</div></div>
     <div class="row"><div>Side plank</div><div class="sets">2 × 20–30 sec/side</div></div>
-    <div class="row"><div>Band Pallof press</div><div class="sets">2 × 10/side</div></div>
+    <p class="muted tiny">Smooth ranges only. Stop for sharp/radiating pain, numbness or weakness.</p>
   </div></details>
-  <div class="card"><h2>Rules</h2><p>Smooth controlled ranges. Do not force the right-shifted painful position. Stop a movement for sharp/radiating pain, numbness or weakness. Recovery walking stays easy.</p></div>
 </section>
 
-<section id="progress" class="screen">
-  <div class="card hero">
-    <div class="eyebrow">Measure the result</div>
-    <h2>Daily data, weekly decisions.</h2>
-    <p class="muted">Morning weight is noisy. The 7-day trend, waist and gym performance decide whether the plan changes.</p>
+<section id="food" class="screen">
+  <div class="card hero"><div class="eyebrow">Nutrition</div><h2>Exact target appears on Today</h2><p class="muted">Protein never changes: <b style="color:var(--text)">195 g every day.</b> Calories and carbs rise only when training demand or the final peak calls for it.</p></div>
+  <div class="card"><h2>What “burn” means</h2><div class="notice"><b>Active burn = the active-calorie number from your watch/fitness tracker.</b> It is not your total daily calorie burn. Use the range as a guardrail, not a contest. If you finish the prescribed workout/cardio, do not add random extra cardio just because the watch is low.</div></div>
+  <div class="card"><h2>Macro targets by calorie level</h2>
+    <div class="row"><div><b>2,050 kcal</b><div class="muted tiny">Rest</div></div><div class="sets">195P · 175C · 63F</div></div>
+    <div class="row"><div><b>2,100 kcal</b><div class="muted tiny">Final-week easy day</div></div><div class="sets">195P · 180C · 67F</div></div>
+    <div class="row"><div><b>2,200 kcal</b><div class="muted tiny">Lower / medium day</div></div><div class="sets">195P · 220C · 60F</div></div>
+    <div class="row"><div><b>2,250 kcal</b><div class="muted tiny">Longer run-only day</div></div><div class="sets">195P · 230C · 61F</div></div>
+    <div class="row"><div><b>2,300 kcal</b><div class="muted tiny">Upper + run</div></div><div class="sets">195P · 250C · 58F</div></div>
+    <div class="row"><div><b>2,400 kcal</b><div class="muted tiny">Long run / Sep 3</div></div><div class="sets">195P · day-specific carbs</div></div>
   </div>
-  <div class="card">
-    <h2>Daily check-in</h2>
-    <div class="grid2"><input id="weight" type="number" step=".1" placeholder="Morning weight"><input id="waist" type="number" step=".1" placeholder="Waist at navel"></div>
-    <div class="grid2" style="margin-top:9px"><input id="calories" type="number" placeholder="Calories"><input id="protein" type="number" placeholder="Protein g"></div>
-    <div class="grid2" style="margin-top:9px"><input id="sleep" type="number" step=".1" placeholder="Sleep hours"><input id="steps" type="number" placeholder="Steps"></div>
-    <div class="grid2" style="margin-top:9px"><input id="pain" type="number" min="0" max="10" placeholder="Back 0–10"><input id="strength" type="number" min="1" max="5" placeholder="Strength 1–5"></div>
-    <textarea id="notes" placeholder="Pump, hunger, strength, back, appearance, anything unusual..."></textarea>
-    <button class="btn" id="save">Save day</button>
+  <details open><summary>Simple 4-meal structure</summary><div class="inside">
+    <div class="row"><div>Meal 1</div><div class="sets">45–50 g protein</div></div>
+    <div class="row"><div>Meal 2</div><div class="sets">45–50 g protein</div></div>
+    <div class="row"><div>Meal 3</div><div class="sets">45–50 g protein</div></div>
+    <div class="row"><div>Meal 4</div><div class="sets">45–55 g protein</div></div>
+    <p>Base meals around lean meat/fish, eggs/egg whites, Greek yogurt, cottage cheese or whey. Use rice, potatoes, oats, fruit, bread/wraps and rice cakes for carbs.</p>
+  </div></details>
+  <details><summary>Example 2,300-calorie day</summary><div class="inside">
+    <p><b>Breakfast:</b> 2 eggs + 250 g egg whites + oatmeal + banana.</p>
+    <p><b>Lunch:</b> chicken breast + measured jasmine rice + vegetables + measured sauce.</p>
+    <p><b>Meal 3:</b> 0% Greek yogurt + whey + berries + rice cakes.</p>
+    <p><b>Dinner:</b> lean beef/turkey/chicken/fish + measured potato/rice + vegetables.</p>
+    <p class="muted tiny">Adjust carb portions to hit the day’s calorie target. Never reduce protein to make the calories fit.</p>
+  </div></details>
+  <div class="card"><h2>Non-negotiables</h2><ul><li>195 g protein daily.</li><li>5 g creatine daily.</li><li>3–4 L water daily.</li><li>25–35 g fiber most days.</li><li>8+ hours sleep target.</li><li>No alcohol through September 4.</li><li>No untracked cheat day.</li><li>Measure oils, sauces, nut butter and calorie-dense snacks.</li><li>Do not eat back watch calories.</li></ul></div>
+  <div class="card"><h2>Adjustment rule</h2><p>Use your 7-day average weight plus waist and strength. If loss is roughly <b>0.5–1.0% of bodyweight per week</b> and strength is stable, change nothing. If weight/waist are not moving after a consistent week, cut ~100–150 kcal. If loss is >1%/week and strength/recovery are clearly dropping, add ~100–150 kcal.</p></div>
+</section>
+
+<section id="peak" class="screen">
+  <div class="card hero"><div class="eyebrow">Look your best</div><h2>September 3 + September 4</h2><p class="muted">No dehydration tricks. The goal is a tighter waist, full muscles, low stomach volume and a good pump.</p></div>
+  <div class="card peakDay"><div class="eyebrow">Thursday · Sep 3</div><h2>Fill out, don’t flatten out</h2>
+    <div class="big4"><div class="stat green"><b>2,400</b><span>eat kcal</span></div><div class="stat blue"><b>195 g</b><span>protein</span></div><div class="stat gold"><b>300 g</b><span>carbs</span></div><div class="stat"><b>0</b><span>running miles</span></div></div>
+    <ul><li><b>No running.</b> Only the reduced-volume Upper B/pump session.</li><li>Keep water normal: 3–4 L across the day. Do not cut water.</li><li>Keep salt normal and similar to the rest of the week. Do not slash sodium.</li><li>Keep fiber modest and familiar - roughly 15–20 g - and avoid foods that reliably bloat you.</li><li>No alcohol, huge restaurant meal, carbonated binge, or giant late-night meal.</li><li>Favor easy carbs: rice, potatoes, oats, bread, rice cakes, bananas.</li></ul>
   </div>
-  <div class="card">
-    <h2>Photo checkpoints</h2>
-    <p><b>Aug 17:</b> starting photos + waist.</p>
-    <p><b>Aug 24:</b> same lighting, distance and time of day.</p>
-    <p><b>Aug 31:</b> same setup again.</p>
-    <p><b>Sep 4:</b> final front, side and back photos + waist.</p>
+  <div class="card peakDay"><div class="eyebrow">Friday · Sep 4</div><h2>Photo / best-look day</h2>
+    <div class="big4"><div class="stat green"><b>2,300</b><span>full-day kcal target</span></div><div class="stat blue"><b>195 g</b><span>protein</span></div><div class="stat gold"><b>270 g</b><span>carbs</span></div><div class="stat"><b>0</b><span>hard cardio</span></div></div>
+    <div class="sectionLabel">Before you want to look your best</div>
+    <div class="timeline">
+      <div><b>Morning</b>Take waist + progress photos before a huge meal. Keep water and sodium normal.</div>
+      <div><b>2–3 hours before</b>Eat a normal, low-bloat meal: 35–45 g protein + 60–90 g easy carbs, low/moderate fat, normal salt.</div>
+      <div><b>45–75 minutes before</b>If hungry/flat, add 25–40 g easy carbs such as rice cakes, banana or bread. Sip water normally.</div>
+      <div><b>10–15 minutes before</b>Short pump: push-ups, cable rows, lateral raises, curls, pressdowns. 2–3 easy rounds. Stop well before fatigue.</div>
+    </div>
+    <p class="muted tiny">If your stomach feels full or bloated, use smaller meals - do not keep forcing food. Do not dehydrate yourself.</p>
   </div>
+</section>
+
+<section id="log" class="screen">
+  <div class="card hero"><div class="eyebrow">Track the cut</div><h2>One minute every day</h2><p class="muted">Use morning weight, waist, intake, active burn and strength to judge the trend.</p></div>
+  <div class="card"><div class="grid2"><input id="weight" type="number" step=".1" placeholder="Morning weight"><input id="waist" type="number" step=".1" placeholder="Waist at navel"></div>
+    <div class="grid2" style="margin-top:9px"><input id="calories" type="number" placeholder="Calories eaten"><input id="protein" type="number" placeholder="Protein g"></div>
+    <div class="grid2" style="margin-top:9px"><input id="burn" type="number" placeholder="Active calories"><input id="miles" type="number" step=".1" placeholder="Cardio miles"></div>
+    <div class="grid2" style="margin-top:9px"><input id="sleep" type="number" step=".1" placeholder="Sleep hours"><input id="strength" type="number" min="1" max="5" placeholder="Strength 1–5"></div>
+    <textarea id="notes" placeholder="Hunger, pump, soreness, back, appearance..."></textarea><button class="btn" id="save">Save today</button></div>
+  <div class="card"><h2>Checkpoints</h2><p><b>Aug 17:</b> weight + waist + front/side/back photos.</p><p><b>Aug 24:</b> 7-day average + waist + photos.</p><p><b>Aug 31:</b> repeat.</p><p><b>Sep 4:</b> final waist + same-lighting photos.</p></div>
   <div class="card"><h2>Saved entries</h2><div id="entries" class="muted">No entries yet.</div></div>
 </section>
 </main>
 </div>
-
-<nav class="bottom"><div class="nav">
-  <button class="active" data-screen="today">Today</button>
-  <button data-screen="plan">Plan</button>
-  <button data-screen="food">Food</button>
-  <button data-screen="back">Back</button>
-  <button data-screen="progress">Progress</button>
-</div></nav>
-
+<nav class="bottom"><div class="nav"><button class="active" data-screen="today">Today</button><button data-screen="schedule">Plan</button><button data-screen="food">Food</button><button data-screen="peak">Sep 4</button><button data-screen="log">Log</button></div></nav>
 <script>
-const templates={
-  Mon:{title:'Upper A',type:'lift',cal:2350,protein:195,cardio:'15–20 min easy walk after lifting · conversational',warm:['5 min easy cardio','Band pull-aparts × 15','Scapular pulldown × 12','2 ramp-up sets before first press and pulldown'],ex:[['Incline machine chest press','3 × 6–10'],['Neutral-grip lat pulldown','3 × 6–10'],['Chest-supported row','3 × 8–12'],['Cable fly','3 × 10–15'],['Cable lateral raise','3 × 12–20'],['Cable or EZ-bar curl','2 × 8–12'],['Rope pressdown','2 × 8–12'],['Cable crunch','3 × 10–15']],cool:'Easy walk only. No extra hard cardio.'},
-  Tue:{title:'Lower A',type:'lift',cal:2350,protein:195,cardio:'No required cardio',warm:['90/90 breathing · 1 min','Pelvic tilts × 10','Cat-camel × 6','Glute bridge × 12','Bodyweight squat × 10','2 ramp-up sets before first leg movement'],ex:[['Hack squat or leg press','3 × 6–10'],['Bulgarian split squat','2 × 8–12/leg'],['Seated leg curl','3 × 8–12'],['Leg extension','3 × 10–15'],['Hip-thrust machine','2 × 8–12'],['Calf raise','3 × 8–15'],['Pallof press','2 × 10/side']],cool:'5–10 min easy walk only if it feels good.'},
-  Wed:{title:'Recovery Walk',type:'recovery',cal:2150,protein:195,cardio:'40 min brisk walk · conversational pace',ex:[]},
-  Thu:{title:'Upper B',type:'lift',cal:2350,protein:195,cardio:'15–20 min easy walk after lifting · conversational',warm:['5 min easy cardio','Band pull-aparts × 15','Scapular pulldown × 12','2 ramp-up sets before first press and pulldown'],ex:[['Flat machine chest press','3 × 8–12'],['Pulldown or assisted pull-up','3 × 8–12'],['Seated cable row','3 × 8–12'],['Machine shoulder press','2 × 6–10'],['Cable lateral raise','3 × 12–20'],['Incline dumbbell curl','2 × 10–15'],['Overhead cable triceps extension','2 × 10–15'],['Reverse crunch','3 × 12–20']],cool:'Easy walk only. Leave the gym recovered, not destroyed.'},
-  Fri:{title:'Lower B',type:'lift',cal:2350,protein:195,cardio:'No required cardio',warm:['90/90 breathing · 1 min','Pelvic tilts × 10','Cat-camel × 6','Glute bridge × 12','Bodyweight reverse lunge × 6/side','2 ramp-up sets before first leg movement'],ex:[['Leg press','3 × 8–12'],['Reverse lunge','2 × 8–12/leg'],['Lying leg curl','3 × 10–15'],['Leg extension','3 × 10–15'],['Hip abduction machine','2 × 12–20'],['Calf raise','3 × 10–15'],['Bird dog','2 × 6/side']],cool:'5–10 min easy walk only if it feels good.'},
-  Sat:{title:'Recovery Walk',type:'recovery',cal:2150,protein:195,cardio:'45 min comfortable walk · conversational pace',ex:[]},
-  Sun:{title:'Complete Rest',type:'rest',cal:2150,protein:195,cardio:'Complete rest. No required walk or gym.',ex:[]}
-};
-
-const specials={
-  '2026-09-01':{note:'Final-week lower day: keep normal exercises but stop every set with 2 RIR. No grinders.'},
-  '2026-09-02':{title:'Recovery Walk',type:'recovery',cal:2150,protein:195,cardio:'35 min easy walk · conversational pace',ex:[],note:'Keep food, water and sodium normal. Avoid foods you know bloat you.'},
-  '2026-09-03':{title:'Upper B · Reduced Volume',type:'lift',cal:2350,protein:195,cardio:'10–15 min easy walk only',warm:['5 min easy cardio','1–2 ramp-up sets before first press and pulldown'],ex:[['Flat machine chest press','2 × 8–12'],['Pulldown or assisted pull-up','2 × 8–12'],['Seated cable row','2 × 8–12'],['Cable lateral raise','2 × 12–20'],['Incline dumbbell curl','2 × 10–15'],['Rope pressdown','2 × 10–15']],cool:'Stop fresh. No failure today.',note:'Reduced volume on purpose. The goal is to look and feel good tomorrow, not create fatigue.'},
-  '2026-09-04':{title:'Final Check + Optional Pump',type:'special',cal:2350,protein:195,cardio:'No hard cardio',warm:[],ex:[['Push-ups','3 × 15–20'],['Cable row','3 × 15'],['Lateral raise','3 × 15–20'],['Curl','3 × 15'],['Pressdown','3 × 15']],cool:'Nothing near failure. Take final photos/waist before a large meal.',note:'Final day: normal water and sodium. Optional pump only. No lower-body workout.'}
-};
-
-const start=new Date('2026-08-17T12:00:00');
-const end=new Date('2026-09-04T12:00:00');
-const days=[];
-for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){
-  const x=new Date(d);
-  const day=x.toLocaleDateString('en-US',{weekday:'short'});
-  const date=`${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`;
-  const base={...templates[day]};
-  const special=specials[date]||{};
-  days.push({date,day,...base,...special});
-}
-
-const $=s=>document.querySelector(s);
-const store={get:k=>{try{return JSON.parse(localStorage.getItem(k))}catch{return null}},set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
+const upperA=[['Incline machine chest press','3 × 6–10'],['Neutral-grip lat pulldown','3 × 6–10'],['Chest-supported row','3 × 8–12'],['Cable fly','3 × 10–15'],['Cable lateral raise','3 × 12–20'],['Cable/EZ-bar curl','2 × 8–12'],['Rope pressdown','2 × 8–12'],['Cable crunch','3 × 10–15']];
+const lowerA=[['Hack squat or leg press','3 × 6–10'],['Bulgarian split squat','2 × 8–12/leg'],['Seated leg curl','3 × 8–12'],['Leg extension','3 × 10–15'],['Hip-thrust machine','2 × 8–12'],['Calf raise','3 × 8–15'],['Pallof press','2 × 10/side']];
+const upperB=[['Flat machine chest press','3 × 8–12'],['Pulldown or assisted pull-up','3 × 8–12'],['Seated cable row','3 × 8–12'],['Machine shoulder press','2 × 6–10'],['Cable lateral raise','3 × 12–20'],['Incline dumbbell curl','2 × 10–15'],['Overhead cable triceps extension','2 × 10–15'],['Reverse crunch','3 × 12–20']];
+const lowerB=[['Leg press','3 × 8–12'],['Reverse lunge','2 × 8–12/leg'],['Lying leg curl','3 × 10–15'],['Leg extension','3 × 10–15'],['Hip abduction machine','2 × 12–20'],['Calf raise','3 × 10–15'],['Bird dog','2 × 6/side']];
+const peakUpper=[['Flat machine chest press','2 × 8–12'],['Pulldown','2 × 8–12'],['Seated cable row','2 × 10–12'],['Cable lateral raise','2 × 15–20'],['Incline curl','2 × 12–15'],['Rope pressdown','2 × 12–15']];
+const days=[
+{d:'2026-08-17',title:'Upper A + Easy Run',eat:2300,p:195,c:250,f:58,burn:'550–700',cardio:'3 mi easy',lift:'Upper A',ex:upperA,note:'Lift first. Run later if possible; if back-to-back, lift before the run.'},
+{d:'2026-08-18',title:'Lower A',eat:2200,p:195,c:220,f:60,burn:'350–500',cardio:'15 min incline walk',lift:'Lower A',ex:lowerA},
+{d:'2026-08-19',title:'Easy Run',eat:2200,p:195,c:220,f:60,burn:'500–650',cardio:'5 mi easy',lift:'None',ex:[]},
+{d:'2026-08-20',title:'Upper B + Easy Run',eat:2300,p:195,c:250,f:58,burn:'550–700',cardio:'3 mi easy',lift:'Upper B',ex:upperB,note:'Lift first. Keep the run conversational.'},
+{d:'2026-08-21',title:'Lower B',eat:2200,p:195,c:220,f:60,burn:'350–500',cardio:'15 min incline walk',lift:'Lower B',ex:lowerB},
+{d:'2026-08-22',title:'Long Easy Run',eat:2400,p:195,c:285,f:53,burn:'750–950',cardio:'7 mi easy',lift:'None',ex:[]},
+{d:'2026-08-23',title:'Rest',eat:2050,p:195,c:175,f:63,burn:'250–350',cardio:'No cardio · 8–10k normal steps',lift:'None',ex:[]},
+{d:'2026-08-24',title:'Upper A + Easy Run',eat:2300,p:195,c:250,f:58,burn:'600–750',cardio:'4 mi easy',lift:'Upper A',ex:upperA},
+{d:'2026-08-25',title:'Lower A',eat:2200,p:195,c:220,f:60,burn:'350–500',cardio:'15 min incline walk',lift:'Lower A',ex:lowerA},
+{d:'2026-08-26',title:'Easy Run',eat:2250,p:195,c:230,f:61,burn:'600–750',cardio:'6 mi easy',lift:'None',ex:[]},
+{d:'2026-08-27',title:'Upper B + Easy Run',eat:2300,p:195,c:250,f:58,burn:'600–750',cardio:'4 mi easy',lift:'Upper B',ex:upperB},
+{d:'2026-08-28',title:'Lower B',eat:2200,p:195,c:220,f:60,burn:'350–500',cardio:'15 min incline walk',lift:'Lower B',ex:lowerB},
+{d:'2026-08-29',title:'Long Easy Run',eat:2400,p:195,c:285,f:53,burn:'850–1,050',cardio:'8 mi easy',lift:'None',ex:[]},
+{d:'2026-08-30',title:'Rest',eat:2050,p:195,c:175,f:63,burn:'250–350',cardio:'No cardio · 8–10k normal steps',lift:'None',ex:[]},
+{d:'2026-08-31',title:'Upper A + Easy Run',eat:2300,p:195,c:250,f:58,burn:'600–750',cardio:'4 mi easy',lift:'Upper A',ex:upperA},
+{d:'2026-09-01',title:'Lower A · Controlled',eat:2200,p:195,c:220,f:60,burn:'350–500',cardio:'15 min incline walk',lift:'Lower A',ex:lowerA,note:'Final lower session. Stop every working set around 2 RIR. No grinders.'},
+{d:'2026-09-02',title:'Final Easy Run',eat:2100,p:195,c:180,f:67,burn:'400–550',cardio:'3 mi easy',lift:'None',ex:[],note:'Last run before photos. Keep it truly easy.'},
+{d:'2026-09-03',title:'Upper Pump · No Run',eat:2400,p:195,c:300,f:47,burn:'250–400',cardio:'No running',lift:'Reduced Upper B',ex:peakUpper,note:'Higher-carb, lower-fat day. Normal water and sodium. Leave the gym fresh.'},
+{d:'2026-09-04',title:'Photo Day',eat:2300,p:195,c:270,f:49,burn:'200–350',cardio:'No hard cardio',lift:'Optional 10–15 min pump',ex:[['Push-ups','2–3 × 15–20'],['Cable row','2–3 × 15'],['Lateral raise','2–3 × 15–20'],['Curl','2–3 × 15'],['Pressdown','2–3 × 15']],note:'Normal water + salt. Small, easy-to-digest meals. Take waist/photos before a huge meal.'}
+];
+const $=s=>document.querySelector(s);const store={get:k=>{try{return JSON.parse(localStorage.getItem(k))}catch{return null}},set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
 const todayKey=()=>{const n=new Date();return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`};
-let selected=(()=>{const t=todayKey(),i=days.findIndex(d=>d.date===t);if(i>=0)return i;return t<'2026-08-17'?0:days.length-1})();
-const short=d=>new Date(d+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric'});
-const long=d=>new Date(d+'T12:00:00').toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
-const key=(date,i)=>`r14_${date}_${i}`;
-
-function renderDatebar(){
-  $('#datebar').innerHTML=days.map((d,i)=>`<button class="daybtn ${i===selected?'active':''}" data-i="${i}"><b>${d.day}</b><small>${short(d.date)}</small></button>`).join('');
-  document.querySelectorAll('.daybtn').forEach(b=>b.onclick=()=>{selected=+b.dataset.i;renderDatebar();renderToday();});
-  const active=document.querySelector('.daybtn.active');if(active)active.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
-}
-
-function workoutRows(d){return (d.ex||[]).map((x,i)=>`<label class="check"><input type="checkbox" data-k="${key(d.date,i)}"><span><b>${x[0]}</b><small>${x[1]}</small></span></label>`).join('')}
-
-function renderToday(){
-  const d=days[selected];
-  const isLift=d.type==='lift';
-  const targetCarbs=d.cal===2350?'~245 g':'~190 g';
-  let html=`<div class="card hero"><div class="eyebrow">${long(d.date)}</div><h2>${d.title}</h2><div><span class="pill">${d.cal.toLocaleString()} kcal</span><span class="pill blue">${d.protein} g protein</span><span class="pill amber">${targetCarbs} carbs</span></div><p class="muted">${d.cardio}</p></div>`;
-  if(d.note)html+=`<div class="notice warning">${d.note}</div><div class="spacer8"></div>`;
-  html+=`<div class="card"><h2>Today’s non-negotiables</h2>${[
-    [`Hit ${d.protein} g protein`,`Spread across 4 meals if practical.`],
-    [`Stay near ${d.cal.toLocaleString()} calories`,`Track oils, sauces, snacks and drinks.`],
-    ['5 g creatine','Any time of day. Consistency matters.'],
-    ['8+ hours sleep target','Recovery protects training performance and muscle.'],
-    [d.cardio,'Do not turn recovery work into a hard session.']
-  ].map((x,i)=>`<label class="check"><input type="checkbox" data-k="${key(d.date,100+i)}"><span><b>${x[0]}</b><small>${x[1]}</small></span></label>`).join('')}</div>`;
-  if(isLift||d.type==='special'){
-    if((d.warm||[]).length)html+=`<details open><summary>Warm-up</summary><div class="inside">${d.warm.map(x=>`<div class="row"><div>${x}</div><div class="sets">✓</div></div>`).join('')}</div></details>`;
-    html+=`<div class="card"><h2>Workout</h2>${workoutRows(d)}</div>`;
-    if(d.cool)html+=`<div class="card"><h2>Finish</h2><p>${d.cool}</p></div>`;
-    html+=`<div class="notice success"><b>Effort:</b> compounds 1–2 RIR. Isolation 0–2 RIR. Keep form clean and protect strength.</div>`;
-  }else{
-    html+=`<div class="card"><h2>${d.type==='rest'?'Rest':'Recovery pace'}</h2><p>${d.cardio}</p></div>`;
-  }
-  $('#todayBody').innerHTML=html;
-  document.querySelectorAll('#todayBody input[type=checkbox]').forEach(c=>{c.checked=!!store.get(c.dataset.k);c.onchange=()=>store.set(c.dataset.k,c.checked)});
-}
-
-function renderPlan(){
-  $('#allDays').innerHTML=Object.entries(templates).map(([day,d])=>`<details><summary>${day} · ${d.title}</summary><div class="inside"><p><b>Calories:</b> ${d.cal.toLocaleString()} · <b>Protein:</b> ${d.protein} g</p><p><b>Cardio/recovery:</b> ${d.cardio}</p>${(d.warm||[]).length?`<p><b>Warm-up:</b> ${d.warm.join(' · ')}</p>`:''}${(d.ex||[]).map(x=>`<div class="row"><div>${x[0]}</div><div class="sets">${x[1]}</div></div>`).join('')}${d.cool?`<p><b>Finish:</b> ${d.cool}</p>`:''}</div></details>`).join('')+`<div class="card"><h2>Final-week overrides</h2><p><b>Sep 1:</b> lower day stays controlled at 2 RIR.</p><p><b>Sep 2:</b> 35-minute easy walk.</p><p><b>Sep 3:</b> reduced-volume Upper B.</p><p><b>Sep 4:</b> measurements/photos + optional short upper-body pump. No hard cardio.</p></div>`;
-}
-
-function renderEntries(){
-  const all=store.get('r14_entries')||[];
-  $('#entries').innerHTML=all.length?all.slice().reverse().map(e=>`<div class="row"><div><b>${e.date}</b><small style="display:block;color:var(--muted)">${[e.calories&&`${e.calories} kcal`,e.protein&&`${e.protein}g P`,e.sleep&&`${e.sleep}h sleep`,e.steps&&`${e.steps} steps`].filter(Boolean).join(' · ')}</small></div><div class="sets">${e.weight?`${e.weight} lb`:''}</div></div>`).join(''):'No entries yet.';
-}
-
-$('#save').onclick=()=>{
-  const e={date:todayKey(),weight:$('#weight').value,waist:$('#waist').value,calories:$('#calories').value,protein:$('#protein').value,sleep:$('#sleep').value,steps:$('#steps').value,pain:$('#pain').value,strength:$('#strength').value,notes:$('#notes').value};
-  const all=store.get('r14_entries')||[];
-  const i=all.findIndex(x=>x.date===e.date);if(i>=0)all[i]=e;else all.push(e);store.set('r14_entries',all);
-  renderEntries();
-  ['weight','waist','calories','protein','sleep','steps','pain','strength','notes'].forEach(id=>$('#'+id).value='');
-};
-
-document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
-  document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$('#'+b.dataset.screen).classList.add('active');
-  if(b.dataset.screen==='progress')renderEntries();
-});
-
-renderDatebar();renderToday();renderPlan();renderEntries();
+const dateObj=s=>new Date(s+'T12:00:00');const short=s=>dateObj(s).toLocaleDateString(undefined,{month:'short',day:'numeric'});const long=s=>dateObj(s).toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});const dow=s=>dateObj(s).toLocaleDateString(undefined,{weekday:'short'});
+let selected=(()=>{const t=todayKey(),i=days.findIndex(x=>x.d===t);return i>=0?i:(t<'2026-08-17'?0:days.length-1)})();const ck=(d,i)=>`r14v3_${d}_${i}`;
+function renderDatebar(){ $('#datebar').innerHTML=days.map((x,i)=>`<button class="daybtn ${i===selected?'active':''}" data-i="${i}"><b>${dow(x.d)}</b><small>${short(x.d)}</small></button>`).join('');document.querySelectorAll('.daybtn').forEach(b=>b.onclick=()=>{selected=+b.dataset.i;renderDatebar();renderToday()});const a=document.querySelector('.daybtn.active');if(a)a.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'}) }
+function renderToday(){const x=days[selected],dayNum=selected+1;let html=`<div class="card hero"><div class="eyebrow">Day ${dayNum} of 19 · ${long(x.d)}</div><h2>${x.title}</h2><div class="big4"><div class="stat green"><b>${x.eat.toLocaleString()}</b><span>CALORIES TO EAT</span></div><div class="stat blue"><b>${x.p} g</b><span>PROTEIN</span></div><div class="stat gold"><b>${x.burn}</b><span>ACTIVE CAL BURN</span></div><div class="stat"><b>${x.cardio}</b><span>CARDIO</span></div></div><div style="margin-top:10px"><span class="tag">${x.c}g carbs</span><span class="tag">${x.f}g fat</span><span class="tag">${x.lift}</span></div></div>`;
+html+=`<div class="notice"><b>Burn target = active calories on your watch, not total daily burn.</b> Complete the prescribed training/cardio. Do not add punishment cardio just to beat the range.</div><div class="spacer"></div>`;
+if(x.note)html+=`<div class="notice gold">${x.note}</div><div class="spacer"></div>`;
+html+=`<div class="card"><h2>Today’s checklist</h2>${[[`Eat about ${x.eat.toLocaleString()} kcal`,`Stay close; one perfect number is not required.`],[`Hit ${x.p} g protein`,`This one is non-negotiable.`],[`Cardio: ${x.cardio}`,x.cardio.includes('easy')?'Conversational effort. No tempo or intervals.':'Follow the target exactly.'],[`Active burn: ${x.burn} kcal`,`Use your watch as a rough guardrail.`],['5 g creatine + 3–4 L water','Keep sodium normal and consistent.'],['8+ hours sleep','Recovery is part of keeping muscle.']].map((a,i)=>`<label class="check"><input type="checkbox" data-k="${ck(x.d,100+i)}"><span><b>${a[0]}</b><small>${a[1]}</small></span></label>`).join('')}</div>`;
+if(x.ex.length){html+=`<div class="card"><h2>${x.lift}</h2><p class="muted tiny">Compounds: 1–2 RIR. Isolation: 0–2 RIR. Rest 2–3 min compounds, 60–90 sec isolation.</p>${x.ex.map((e,i)=>`<label class="check"><input type="checkbox" data-k="${ck(x.d,i)}"><span><b>${e[0]}</b><small>${e[1]}</small></span></label>`).join('')}</div>`}else html+=`<div class="card"><h2>No lifting today</h2><p>${x.cardio}</p></div>`;
+$('#todayBody').innerHTML=html;document.querySelectorAll('#todayBody input[type=checkbox]').forEach(c=>{c.checked=!!store.get(c.dataset.k);c.onchange=()=>store.set(c.dataset.k,c.checked)}) }
+function renderSchedule(){const groups=[['Week 1 · Aug 17–23',0,7],['Week 2 · Aug 24–30',7,14],['Final push · Aug 31–Sep 4',14,19]];$('#scheduleBody').innerHTML=groups.map(g=>`<div class="sectionLabel">${g[0]}</div><div class="card week">${days.slice(g[1],g[2]).map(x=>`<div class="row"><div><div class="dayName">${dow(x.d)} ${short(x.d)} · ${x.title}</div><div class="sub">${x.cardio} · ${x.lift}</div></div><div style="text-align:right"><div class="sets">${x.eat} kcal</div><div class="sub">burn ${x.burn}</div></div></div>`).join('')}</div>`).join('')}
+function renderEntries(){const all=store.get('r14v3_entries')||[];$('#entries').innerHTML=all.length?all.slice().reverse().map(e=>`<div class="row"><div><b>${e.date}</b><div class="muted tiny">${[e.calories&&`${e.calories} eaten`,e.burn&&`${e.burn} active`,e.protein&&`${e.protein}g P`,e.sleep&&`${e.sleep}h sleep`].filter(Boolean).join(' · ')}</div></div><div class="sets">${e.weight?`${e.weight} lb`:''}</div></div>`).join(''):'No entries yet.'}
+$('#save').onclick=()=>{const e={date:todayKey(),weight:$('#weight').value,waist:$('#waist').value,calories:$('#calories').value,protein:$('#protein').value,burn:$('#burn').value,miles:$('#miles').value,sleep:$('#sleep').value,strength:$('#strength').value,notes:$('#notes').value};const all=store.get('r14v3_entries')||[];const i=all.findIndex(z=>z.date===e.date);if(i>=0)all[i]=e;else all.push(e);store.set('r14v3_entries',all);renderEntries();['weight','waist','calories','protein','burn','miles','sleep','strength','notes'].forEach(id=>$('#'+id).value='')};
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(z=>z.classList.remove('active'));b.classList.add('active');document.querySelectorAll('.screen').forEach(z=>z.classList.remove('active'));$('#'+b.dataset.screen).classList.add('active');if(b.dataset.screen==='log')renderEntries()});
+renderDatebar();renderToday();renderSchedule();renderEntries();
 </script>
 </body>
 </html>
