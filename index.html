@@ -39,7 +39,7 @@
     <header>
       <div class="eyebrow">Aug 24 → Sep 6 · 14 days</div>
       <h1>R14 Cut + Build</h1>
-      <div class="muted">Lift hard. Do cardio after. Recover. Repeat.</div>
+      <div class="muted">Lift hard. Run or walk as assigned. Eat flexibly. Hit the totals.</div>
     </header>
     <main>
       <section id="today" class="screen active"><div id="datebar" class="datebar"></div><div id="todayBody"></div></section>
@@ -54,24 +54,32 @@
         </div>
       </section>
       <section id="food" class="screen">
-        <div class="card hero"><h2>Nutrition</h2><div class="stats"><div class="stat"><b>2,300</b><small>starting calories</small></div><div class="stat"><b>190–210g</b><small>protein</small></div></div></div>
+        <div class="card hero"><h2>Flexible Nutrition</h2><div class="stats"><div class="stat"><b>2,300</b><small>daily target</small></div><div class="stat"><b>190–210g</b><small>protein</small></div></div></div>
         <div class="card">
-          <p><b>Breakfast:</b> Greek yogurt + protein + frozen fruit + banana smoothie.</p>
-          <p><b>Lunch:</b> lean protein + controlled carb.</p>
-          <p><b>Dinner:</b> lean beef/chicken + measured rice or potatoes + vegetables.</p>
+          <div class="eyebrow">Your normal structure</div>
+          <h2>Big breakfast · no forced lunch · dinner</h2>
+          <p><b>Breakfast:</b> roughly 800–1,000 calories and 60–80g protein. Your home breakfast is ideal, but Chick-fil-A or another restaurant is allowed.</p>
+          <p><b>Lunch:</b> you do not have to eat one. If hunger or work demands change, use a protein shake or small protein option without treating it as a failure.</p>
+          <p><b>Dinner:</b> build it around a large lean-protein serving, then add the carbs and food you actually want.</p>
+          <p><b>Protein top-up:</b> Greek yogurt or a shake later only when needed to reach 190–210g.</p>
           <p><b>Movement:</b> 8,000 steps minimum; 10,000 preferred. Prescribed cardio counts.</p>
-          <div class="note">Do not crash the calories lower during these 14 days. Consistency, protein, lifting quality, sleep, and the full cardio dose give you the best chance to look leaner while keeping muscle full.</div>
+          <div class="note">There are no fear foods and no “cheat” label. Chick-fil-A, Chipotle, a tortilla, fries, or dessert can fit. Protein and the daily calorie total decide whether the day supports your goal—not whether every ingredient looks like fitness food.</div>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Restaurant rule</div>
+          <h2>Eat what you want—anchor it</h2>
+          <ol class="rules"><li>Choose the food you actually want.</li><li>Make sure the meal contains a substantial protein source.</li><li>Fit the full meal into the 2,300-calorie day instead of trying to “burn it off.”</li><li>If one meal is large, make the other meal simpler—not smaller than your protein needs.</li><li>Expect temporary scale or waist changes after a salty meal. That is water, not overnight fat gain.</li></ol>
         </div>
         <div class="card">
           <div class="eyebrow">Lower-stomach truth</div>
           <h2>Train abs; lose fat globally</h2>
           <p class="muted">Ab work strengthens and thickens the abdominal wall, but it cannot reliably choose where fat leaves first. One small 2023 male-only trial suggested localized trunk-fat loss, while an earlier randomized trial found ab training improved endurance without reducing abdominal fat. That is not strong enough evidence to promise lower-belly spot reduction.</p>
-          <p class="muted">The dependable approach is the plan you now have: resistance training to preserve/build muscle, 305 prescribed aerobic minutes across the 14 days, daily movement, and a controlled calorie intake.</p>
+          <p class="muted">The dependable approach is the plan you now have: resistance training to preserve/build muscle, a planned mix of running and walking, daily movement, and a controlled calorie intake.</p>
           <p><a href="https://pubmed.ncbi.nlm.nih.gov/21804427/" target="_blank" rel="noopener">2011 abdominal-exercise RCT</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/38010201/" target="_blank" rel="noopener">2023 localized-fat RCT</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/39724371/" target="_blank" rel="noopener">2024 aerobic dose-response meta-analysis</a></p>
         </div>
       </section>
       <section id="log" class="screen">
-        <div class="card"><h2>Body log</h2><div class="grid2"><input id="weight" type="number" step=".1" placeholder="Weight"><input id="waist" type="number" step=".1" placeholder="Waist"></div><div class="grid2" style="margin-top:8px"><input id="protein" type="number" placeholder="Protein"><input id="steps" type="number" placeholder="Steps"></div><textarea id="notes" placeholder="Back, hunger, recovery..." style="margin-top:8px"></textarea><button id="saveBody" class="btn">Save day</button></div>
+        <div class="card"><h2>Body log</h2><div class="grid2"><input id="weight" type="number" step=".1" placeholder="Weight"><input id="waist" type="number" step=".1" placeholder="Waist"></div><div class="grid2" style="margin-top:8px"><input id="calories" type="number" placeholder="Calories"><input id="protein" type="number" placeholder="Protein"></div><input id="steps" type="number" placeholder="Steps" style="margin-top:8px"><textarea id="notes" placeholder="Back, hunger, recovery..." style="margin-top:8px"></textarea><button id="saveBody" class="btn">Save day</button></div>
         <div class="card"><h2>Trend</h2><div id="trend" class="muted"></div></div>
       </section>
     </main>
@@ -79,7 +87,7 @@
   <nav class="bottom"><div class="nav"><button class="active" data-screen="today">Today</button><button data-screen="back">Back</button><button data-screen="food">Food</button><button data-screen="log">Log</button></div></nav>
   <script>
     const W={
-      Mon:{name:'Push + Abs',cardio:'30 min brisk Zone 2 walk immediately after lifting.',ex:[
+      Mon:{name:'Push + Abs',cardio:'25 min easy Zone 2 run after lifting, or at least 3 hours later.',ex:[
         ['Incline machine press',3,'6–10','compound','Chest up; shoulder blades stay against the pad.'],
         ['Flat machine press',3,'8–12','compound','Control the lowering; do not bounce out of the bottom.'],
         ['Seated machine shoulder press',3,'8–12','compound','Keep ribs down and back supported.'],
@@ -88,7 +96,7 @@
         ['Overhead cable triceps extension',3,'10–15','isolation','Keep upper arms still and get a full stretch.'],
         ['Cable or machine crunch',3,'10–15','isolation','Curl ribs toward pelvis; do not pull with the arms.']
       ]},
-      Tue:{name:'Pull + Biceps',cardio:'30 min brisk Zone 2 walk immediately after lifting.',ex:[
+      Tue:{name:'Pull + Biceps',cardio:'30 min brisk walk immediately after lifting.',ex:[
         ['Neutral-grip pulldown',4,'6–10','compound','Drive elbows down; keep the torso quiet.'],
         ['Chest-supported row',4,'8–12','compound','Pause at the body without lifting off the pad.'],
         ['Single-arm cable pulldown',3,'10–12','compound','Reach long, then pull the elbow toward the hip.'],
@@ -106,7 +114,7 @@
         ['Reverse crunch',3,'10–15','isolation','Roll the pelvis up without swinging the legs.'],
         ['Cable or machine crunch',3,'10–15','isolation','Curl ribs toward pelvis; keep hips still.']
       ]},
-      Thu:{name:'Shoulders + Arms',cardio:'30 min brisk Zone 2 walk immediately after lifting.',ex:[
+      Thu:{name:'Shoulders + Arms',cardio:'25 min easy Zone 2 run after lifting, or at least 3 hours later.',ex:[
         ['Seated machine shoulder press',3,'6–10','compound','Keep ribs down and back supported.'],
         ['Cable lateral raise',4,'12–20','isolation','Smooth reps; keep tension on the side delt.'],
         ['Reverse pec deck',3,'12–20','isolation','Rear delts drive the motion; do not shrug.'],
@@ -115,7 +123,7 @@
         ['Overhead cable triceps extension',3,'10–15','isolation','Stretch fully without flaring the ribs.'],
         ['Rope pressdown',3,'10–15','isolation','Lock the elbows and separate the rope at the bottom.']
       ]},
-      Fri:{name:'Upper Density + Abs',cardio:'30 min brisk Zone 2 walk immediately after lifting.',ex:[
+      Fri:{name:'Upper Density + Abs',cardio:'30 min brisk walk immediately after lifting.',ex:[
         ['Incline machine press',3,'6–10','compound','Strong, clean reps; stop before form changes.'],
         ['Neutral-grip pulldown',3,'6–10','compound','Drive elbows down without leaning back.'],
         ['Flat machine press',3,'8–12','compound','Control the lowering and keep shoulders set.'],
@@ -126,7 +134,7 @@
         ['Rope pressdown',2,'10–15','isolation','Full extension with shoulders quiet.'],
         ['Reverse crunch',3,'10–15','isolation','Slow pelvic curl; no momentum.']
       ]},
-      Sat:{name:'Recovery + Cardio',cardio:'55 min Zone 2 walk or bike. You can talk in full sentences, but it should feel purposeful.',ex:[]},
+      Sat:{name:'Recovery Run + Walk',cardio:'35–45 min easy Zone 2 run, then 10 min relaxed walking. No pace target.',ex:[]},
       Sun:{name:'Complete Rest',cardio:'No gym and no required cardio. Natural walking only.',ex:[]}
     };
 
@@ -166,7 +174,7 @@
       $('#todayBody').innerHTML=`
         <div class="card hero"><div class="eyebrow">${d.day} · ${short(d.date)}</div><h2>${w.name}</h2><div class="stats"><div class="stat"><b>2,300</b><small>calories</small></div><div class="stat"><b>190–210g</b><small>protein</small></div></div></div>
         ${w.ex.length?`<div class="card"><div class="eyebrow">How to train</div><h2>Hard, clean, controlled</h2><div class="order"><b>1</b><span>Warm up 5–8 minutes, then do 2–4 ramp-up sets before the first compound. Warm-up cardio is not the prescribed cardio.</span><b>2</b><span>Complete the exercises in the order shown. No max attempts and no ugly reps.</span><b>3</b><span>Use the effort and rest rule shown under every exercise.</span></div></div><div class="card"><h2>Today's workout</h2>${w.ex.map(exHTML).join('')}<div class="note">Technical failure means another clean rep is not possible. Stop immediately if your back position, range of motion, or control changes.</div></div>`:''}
-        <div class="card"><div class="eyebrow">Cardio timing</div><h2>After lifting</h2><p><b>${w.cardio}</b></p>${w.ex.length?'<p class="muted">Do not replace this with a hard mile. The goal is extra aerobic volume and calorie expenditure without reducing lifting quality or adding unnecessary recovery cost. If cardio must be separate, do it at least 3 hours later.</p>':''}</div>
+        <div class="card"><div class="eyebrow">Cardio timing</div><h2>${w.cardio.includes('run')?'Run day':'Walk / low-impact day'}</h2><p><b>${w.cardio}</b></p>${w.ex.length?'<p class="muted">Lift first when both happen together. Runs stay genuinely easy—no tempo, intervals, or fast-mile substitution during this block. Lower-body day remains walk/bike only. If your back or hip feels aggravated or weak, replace the run with walking or rest instead of forcing it.</p>':''}<p class="muted">Cardio increases expenditure and fitness, but it does not purchase unlimited food. The 2,300-calorie target still controls fat loss.</p></div>
         <button id="markDone" class="btn donebtn">Mark workout done</button>`;
       $('#markDone').onclick=()=>{setDone(d.date,true);renderBar();renderToday();setTimeout(()=>{const next=days.findIndex((x,i)=>i>selected&&!isDone(x.date));if(next>=0){selected=next;renderBar();renderToday();window.scrollTo(0,0)}},450)};
     }
@@ -175,13 +183,13 @@
     function avg(a){return a.length?a.reduce((x,y)=>x+y,0)/a.length:null}
     function renderLog(){
       const all=bodyLogs(),d=days[selected].date,v=all[d]||{};
-      ['weight','waist','protein','steps','notes'].forEach(k=>$('#'+k).value=v[k]||'');
+      ['weight','waist','calories','protein','steps','notes'].forEach(k=>$('#'+k).value=v[k]||'');
       const arr=Object.entries(all).sort((a,b)=>a[0].localeCompare(b[0])),weights=arr.map(x=>Number(x[1].weight)).filter(x=>x>0),a7=avg(weights.slice(-7)),p7=avg(weights.slice(-14,-7));
       let msg=a7?`Current 7-day average: ${a7.toFixed(1)} lb.`:'Log morning weight daily under the same conditions to build the trend.';
       if(a7&&p7)msg+=` Previous: ${p7.toFixed(1)} lb. Change: ${(a7-p7).toFixed(1)} lb.`;
       $('#trend').textContent=msg;
     }
-    $('#saveBody').onclick=()=>{const all=bodyLogs(),d=days[selected].date;all[d]={weight:$('#weight').value,waist:$('#waist').value,protein:$('#protein').value,steps:$('#steps').value,notes:$('#notes').value};set('r14body',all);renderLog()};
+    $('#saveBody').onclick=()=>{const all=bodyLogs(),d=days[selected].date;all[d]={weight:$('#weight').value,waist:$('#waist').value,calories:$('#calories').value,protein:$('#protein').value,steps:$('#steps').value,notes:$('#notes').value};set('r14body',all);renderLog()};
     document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===b.dataset.screen));document.querySelectorAll('.nav button').forEach(n=>n.classList.toggle('active',n===b));if(b.dataset.screen==='log')renderLog();window.scrollTo(0,0)});
     renderBar();renderToday();
     if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
