@@ -1,4 +1,4 @@
-const CACHE = 'apex-v7-meals-progress-20260922';
+const CACHE = 'r14-movement-20260922';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 const INDEX = new URL('./index.html', self.location.href).href;
 
@@ -12,15 +12,14 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
     const keys = await caches.keys();
-    await Promise.all(keys.filter(key => key.startsWith('apex-') && key !== CACHE).map(key => caches.delete(key)));
+    await Promise.all(keys.filter(key => key.startsWith('apex-') || key.startsWith('r14-')).filter(key => key !== CACHE).map(key => caches.delete(key)));
     await self.clients.claim();
   })());
 });
 self.addEventListener('fetch', event => {
   const request = event.request;
   const url = new URL(request.url);
-  if (request.method !== 'GET' || url.origin !== self.location.origin ||
-      !url.href.startsWith(self.registration.scope)) return;
+  if (request.method !== 'GET' || url.origin !== self.location.origin || !url.href.startsWith(self.registration.scope)) return;
   event.respondWith((async () => {
     const cache = await caches.open(CACHE);
     try {
@@ -36,3 +35,4 @@ self.addEventListener('fetch', event => {
     }
   })());
 });
+
