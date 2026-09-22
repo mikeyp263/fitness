@@ -3,11 +3,19 @@
   "short_name": "Recomp 14",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0b0d10",
-  "theme_color": "#0b0d10",
-  "description": "A simple 14-day workout, nutrition, supplement and business tracker.",
+  "background_color": "#f2f3ef",
+  "theme_color": "#131a20",
+  "description": "A progressive 52-week strength, mobility, mile and 5K training plan.",
   "icons": [
-    {"src":"icon-192.png","sizes":"192x192","type":"image/png"},
-    {"src":"icon-512.png","sizes":"512x512","type":"image/png"}
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
   ]
 }

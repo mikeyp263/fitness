@@ -1,4 +1,4 @@
-const CACHE = 'r14-movement-20260922';
+const CACHE = 'r14-year-20260922-v1';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 const INDEX = new URL('./index.html', self.location.href).href;
 
