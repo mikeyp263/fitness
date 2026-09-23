@@ -1,4 +1,4 @@
-const CACHE = 'r14-arms-20260923-v7';
+const CACHE = 'r14-weeks-20260923-v8';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 const INDEX = new URL('./index.html', self.location.href).href;
 
