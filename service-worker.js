@@ -1,4 +1,4 @@
-const CACHE = 'r14-complete-athlete-20260923-v13';
+const CACHE = 'r14-complete-athlete-20260923-v14';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 const INDEX = new URL('./index.html', self.location.href).href;
 
