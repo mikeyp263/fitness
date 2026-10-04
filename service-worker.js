@@ -1,4 +1,4 @@
-const CACHE = 'r14-oct5-reset-20261001-v15';
+const CACHE = 'r14-fastpace-sub18-20261004-v16';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 const INDEX = new URL('./index.html', self.location.href).href;
 
