@@ -1,4 +1,4 @@
-const CACHE = 'r14-calendar-scroll-20261004-v17';
+const CACHE = 'r14-hybrid-layout-lifting-20261005-v18';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 const INDEX = new URL('./index.html', self.location.href).href;
 
