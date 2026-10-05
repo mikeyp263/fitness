@@ -562,7 +562,7 @@ function renderRuns(){
 
 // ===== HYBRID LIFTING + SIMPLIFIED APP v18 =====
 function liftingPhase(w){
- if(w<=2)return {name:'Fast Pace build',goal:'Keep upper-body growth moving; maintain heavy lower-body strength with low soreness.',lower:'LOW-MODERATE',upper:'NORMAL',rir:'2-3'};
+ if(w<=2)return {name:'Fast Pace build',goal:'Keep upper-body growth moving; use only enough lower-body strength work to maintain force without wrecking Tuesday workouts or Saturday running.',lower:'LOW',upper:'NORMAL',rir:'2-3'};
  if(w===3)return {name:'Race-week strength taper',goal:'Keep the nervous system familiar with load while removing fatigue before Saturday.',lower:'MINIMAL',upper:'LOW',rir:'4'};
  if(w===4)return {name:'Post-race reload',goal:'Restore normal lifting without chasing soreness.',lower:'LOW',upper:'MODERATE',rir:'3'};
  if(w<=12)return {name:'Athletic strength + hypertrophy',goal:'Build muscle and force while acceleration, jumps and control progress.',lower:'HIGH QUALITY',upper:'GROWTH',rir:'2'};
@@ -626,6 +626,14 @@ function yearLift(w,day){
 
  // Wednesday · Legs. Intentionally changes the most as running load rises.
  if(day===3){
+   if(w<=2)return [
+    doseLift(lowerA[0],2,'4-6',3,'2-3 min','HEAVY FORCE'),
+    doseLift(lowerA[2],2,'6-10',3,'90-120 sec','HAMSTRINGS'),
+    doseLift(lowerA[1],1,'6 / side',3,'90 sec','SINGLE-LEG'),
+    doseLift(slrdl,1,'6 / side',3,'90 sec','HIP CONTROL'),
+    doseLift(lowerA[4],2,'8-12',3,'60-90 sec','CALF / ANKLE'),
+    doseLift(lowerA[5],2,'8-12 / side',3,'45-60 sec','TRUNK')
+   ];
    if(race)return [
     doseLift(lowerA[0],2,'4',4,'3 min','NEURAL MAINTENANCE'),
     doseLift(lowerA[2],1,'6-8',4,'2 min'),
@@ -746,6 +754,7 @@ navigate=function(view){
  if(view==='lift')renderLift();
  _oldNavigate(view);
 };
+renderToday();renderPlan();
 const navigateBeforeRuns=navigate;
 </script>
 </body></html>
