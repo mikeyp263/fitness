@@ -1,4 +1,4 @@
-const CACHE = 'r14-hybrid-layout-lifting-20261005-v18';
+const CACHE = 'r14-oct7-reset-20261006-v19';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 const INDEX = new URL('./index.html', self.location.href).href;
 
