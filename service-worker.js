@@ -1,4 +1,4 @@
-const CACHE = 'r14-performance-system-20261009-v20';
+const CACHE = 'r14-oct10-v21-navigation-fix';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 const INDEX = new URL('./index.html', self.location.href).href;
 
