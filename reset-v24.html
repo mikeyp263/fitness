@@ -27,7 +27,7 @@ input{width:100%;border:2px solid var(--ink);padding:10px;background:#fff}.input
 </style></head>
 <body>
 <div class="wrap">
-<header class="mast"><b>R14 / RESET LAB</b><span class="badge">V24 · STARTS TODAY 10/10</span></header>
+<header class="mast"><b>R14 / RESET LAB</b><span class="badge">V24D · DAILY SLEEP TIMES</span></header>
 <section class="hero">
 <div class="ey">COMPLETELY NEW PROGRAM // SATURDAY OCT 10</div>
 <h1>START<br>AGAIN.</h1>
@@ -40,7 +40,7 @@ input{width:100%;border:2px solid var(--ink);padding:10px;background:#fff}.input
 <section id="today" class="section active">
 <div class="card"><div class="eyebrow">DATES</div><div class="strip" id="strip"></div></div>
 <div class="card" id="dayCard"></div>
-<div class="card"><div class="eyebrow">SLEEP / WAKE RULE</div><h2>Target + latest allowed.</h2><div class="sleepgrid"><div class="sleepbox"><strong id="idealSleep"></strong><span id="idealSleepLabel"></span></div><div class="sleepbox latest"><strong id="latestSleep"></strong><span id="latestSleepLabel"></span></div></div><div class="fallback" id="sleepFallback"></div></div>
+<div class="card"><div class="eyebrow">SLEEP / WAKE RULE</div><h2>Exact target + hard fallback.</h2><div class="sleepgrid"><div class="sleepbox"><strong id="targetBed"></strong><span>TARGET BED · NIGHT BEFORE</span></div><div class="sleepbox latest"><strong id="latestBed"></strong><span>LATEST BED · NIGHT BEFORE</span></div><div class="sleepbox"><strong id="targetWake"></strong><span>TARGET WAKE</span></div><div class="sleepbox latest"><strong id="latestWake"></strong><span>LATEST WAKE</span></div></div><div class="fallback" id="sleepFallback"></div></div>
 <div class="card"><div class="eyebrow">DAY FLOW</div><h2>Do it in this order.</h2><div id="timeline"></div></div>
 <div class="card"><div class="eyebrow">DAILY SCORE</div><h2>Five wins.</h2><div class="checks" id="checks"></div></div>
 </section>
@@ -61,7 +61,7 @@ input{width:100%;border:2px solid var(--ink);padding:10px;background:#fff}.input
 <div class="card"><div class="eyebrow">VO₂ PROJECT</div><h2>59 → 70.</h2><div class="vo2hero"><div class="vbox"><strong id="vo2Now">59</strong><span>CURRENT ESTIMATE</span></div><div class="vbox"><strong>70</strong><span>NORTH STAR</span></div><div class="vbox"><strong id="vo2Gap">11</strong><span>GAP</span></div></div><div class="inputrow"><input id="vo2Input" type="number" min="30" max="90" step="0.1" placeholder="Update your current VO₂ estimate"><button class="save" id="saveVo2">SAVE</button></div>
 <div class="vo2box"><b>Programming rule:</b><p class="small">Fast Pace comes first for the next 13 days. After the race, the endurance plan shifts toward a VO₂-focused block: lots of easy running, one true VO₂ interval day, one threshold day, long easy aerobic work, strides/sprints, and progressive mileage. Harder is not automatically better.</p></div>
 <div class="rules"><div class="rule"><b>Block 1 · Fast Pace</b><p>Restore rhythm, race-specific intervals, threshold, taper.</p></div><div class="rule"><b>Block 2 · Reload</b><p>1–2 weeks to restore consistent mileage after the race.</p></div><div class="rule"><b>Block 3 · VO₂ Development</b><p>6–10 weeks. Mostly easy volume + one VO₂max interval session (generally 2–4 min reps) + one threshold stimulus + long run.</p></div><div class="rule"><b>Retest</b><p>Use repeatable race results and, when practical, a real lab VO₂ test. Treat watch VO₂ as a trend, not absolute truth.</p></div></div></div>
-<div class="card"><div class="eyebrow">WEEKDAY OPERATING SYSTEM</div><h2>Automatic by 8:30.</h2><div class="row"><time>5:30</time><div><b>Target wake Monday–Friday</b><p>Latest allowed: 6:00 AM. After 6:00, use the fallback plan instead of rushing.</p></div></div><div class="row"><time>5:45</time><div><b>Leave</b><p>LA Fitness is budgeted as 10 minutes away.</p></div></div><div class="row"><time>6:00</time><div><b>Train</b><p>Mon/Thu lift + easy run. Tue/Fri quality run AM and lift PM. Wed Legs.</p></div></div><div class="row"><time>7:20</time><div><b>Home</b><p>Shower, breakfast, dress, pack.</p></div></div><div class="row"><time>8:20</time><div><b>Work Top 3</b><p>One must-win + two secondary tasks.</p></div></div><div class="row"><time>8:30</time><div><b>Leave for work</b><p>Hard deadline.</p></div></div><div class="row"><time>PM</time><div><b>Second block</b><p>Tue/Fri lift. Other weekdays: 30–45 min personal block.</p></div></div><div class="row"><time>8:45</time><div><b>Prepare tomorrow</b><p>Clothes, bag, keys, breakfast, water.</p></div></div><div class="row"><time>9:15</time><div><b>Target lights out</b><p>Latest allowed: 10:00 PM. Protect the 5:30 wake.</p></div></div></div>
+<div class="card"><div class="eyebrow">WEEKDAY OPERATING SYSTEM</div><h2>Automatic by 8:30.</h2><div class="row"><time>5:30</time><div><b>Target wake Monday–Friday</b><p>Latest allowed wake: 6:00 AM.</p></div></div><div class="row"><time>5:45</time><div><b>Leave</b><p>LA Fitness is budgeted as 10 minutes away.</p></div></div><div class="row"><time>6:00</time><div><b>Train</b><p>Mon/Thu lift + easy run. Tue/Fri quality run AM and lift PM. Wed Legs.</p></div></div><div class="row"><time>7:20</time><div><b>Home</b><p>Shower, breakfast, dress, pack.</p></div></div><div class="row"><time>8:20</time><div><b>Work Top 3</b><p>One must-win + two secondary tasks.</p></div></div><div class="row"><time>8:30</time><div><b>Leave for work</b><p>Hard deadline.</p></div></div><div class="row"><time>PM</time><div><b>Second block</b><p>Tue/Fri lift. Other weekdays: 30–45 min personal block.</p></div></div><div class="row"><time>8:45</time><div><b>Prepare tomorrow</b><p>Clothes, bag, keys, breakfast, water.</p></div></div><div class="row"><time>9:30</time><div><b>Target bedtime Monday–Thursday</b><p>Latest allowed: 10:00 PM. Race-eve Friday is earlier.</p></div></div></div>
 <div class="card"><div class="eyebrow">WELL-BEING</div><h2>Performance requires recovery.</h2><div class="rules"><div class="rule"><b>Food</b><p>No crash cut before the race. High protein and enough carbohydrate around hard running.</p></div><div class="rule"><b>After race</b><p>Use a modest deficit if waist loss is still the priority. Track weekly-average weight + waist.</p></div><div class="rule"><b>Mobility</b><p>5–10 min comfortable hips, ankles, upper back and shoulders most days.</p></div><div class="rule"><b>Sleep</b><p>Do not steal sleep to manufacture productivity.</p></div></div></div>
 </section>
 </div>
@@ -103,17 +103,36 @@ function full(d){return parse(d).toLocaleDateString('en-US',{weekday:'long',mont
 function label(k){return({push:'Push',pull:'Pull',legs:'Legs',arms:'Shoulders + Arms',chestback:'Chest + Back'})[k]||k}
 function itemsFor(d){const p=dayPlan(d);if(p.special)return restart;let a=[...(lifts[p.lift]||[])];if(p.raceWeek){const n={push:4,pull:4,legs:3,arms:4,chestback:3}[p.lift]||a.length;a=a.slice(0,n).map((x,i)=>[x[0],i<2?x[1].replace(/^3/,'2').replace(/^2/,'1–2'):'1 × '+(x[1].split('×')[1]||'8–12').trim()])}return a}
 function sleepRule(d){
- if(d==='2026-10-10')return {ideal:'10:15 AM',idealLabel:'IDEAL WAKE TODAY',latest:'11:00 AM',latestLabel:'LATEST WAKE TODAY',fallback:'It is already after 2 AM. Sleep now. Do not set an early alarm to prove discipline. If you wake after 11:00, still train today, but skip the strides if you feel flat.'};
- if(d==='2026-10-11')return {ideal:'7:45 AM',idealLabel:'IDEAL WAKE',latest:'8:30 AM',latestLabel:'LATEST WAKE',fallback:'Sunday night: target lights out 9:15 PM, latest 9:45 PM. Monday wake is 5:30 AM.'};
- if(d==='2026-10-24')return {ideal:'9:15 PM',idealLabel:'LIGHTS OUT FRIDAY',latest:'9:45 PM',latestLabel:'LATEST FRIDAY',fallback:'Race morning wake = 5:30 AM. Do not trade sleep for extra prep.'};
- const dow=parse(d).getDay();
- if(dow>=1&&dow<=5)return {ideal:'9:15 PM',idealLabel:'TARGET LIGHTS OUT',latest:'10:00 PM',latestLabel:'LATEST ALLOWED',fallback:'Wake target = 5:30 AM. Latest allowed wake = 6:00 AM. If you wake after 6:00, do not cram everything in; move the non-priority lift to after work and keep the morning to the priority run or shortened session.'};
- if(dow===6)return {ideal:'10:30 PM',idealLabel:'TARGET LIGHTS OUT',latest:'11:30 PM',latestLabel:'LATEST ALLOWED',fallback:'Saturday wake can float. Try to keep it within about 1–2 hours of weekday wake once the race is over.'};
- return {ideal:'9:15 PM',idealLabel:'TARGET LIGHTS OUT',latest:'9:45 PM',latestLabel:'LATEST ALLOWED',fallback:'Sunday wake can be flexible, but keep it early enough to make Monday 5:30 AM realistic.'};
+ const weekday={bed:'9:30 PM',latestBed:'10:00 PM',wake:'5:30 AM',latestWake:'6:00 AM',
+ fallback:'Normal workday rule. If you wake after 6:00 AM, do not cram the full morning. Keep the priority run or shortened lift, and move secondary work to after work.'};
+ const rules={
+  '2026-10-10':{bed:'2:30 AM',latestBed:'3:00 AM',wake:'10:30 AM',latestWake:'11:00 AM',
+   fallback:'Special reset day. You are planning to sleep around 2:30 AM. Get the sleep. If you wake after 11:00, still train today, but keep the restart lift easy and skip strides if you feel flat.'},
+  '2026-10-11':{bed:'11:00 PM',latestBed:'11:45 PM',wake:'8:00 AM',latestWake:'8:45 AM',
+   fallback:'Recovery/reset Sunday. The goal is to shift earlier without wrecking sleep. Sunday night then moves to the weekday schedule.'},
+  '2026-10-12':weekday,
+  '2026-10-13':weekday,
+  '2026-10-14':weekday,
+  '2026-10-15':weekday,
+  '2026-10-16':weekday,
+  '2026-10-17':{bed:'10:15 PM',latestBed:'11:00 PM',wake:'7:00 AM',latestWake:'8:00 AM',
+   fallback:'Saturday is flexible, but do not sleep half the day and destroy Sunday/Monday rhythm.'},
+  '2026-10-18':{bed:'10:30 PM',latestBed:'11:15 PM',wake:'7:30 AM',latestWake:'8:30 AM',
+   fallback:'Recovery Sunday. Keep the morning reasonable so 9:30 PM Sunday night and 5:30 AM Monday are realistic.'},
+  '2026-10-19':weekday,
+  '2026-10-20':weekday,
+  '2026-10-21':weekday,
+  '2026-10-22':weekday,
+  '2026-10-23':{bed:'9:00 PM',latestBed:'9:45 PM',wake:'5:30 AM',latestWake:'6:00 AM',
+   fallback:'Race-eve priority: sleep beats extra chores, scrolling, stretching or prep. Everything should already be packed.'},
+  '2026-10-24':{bed:'9:00 PM',latestBed:'9:45 PM',wake:'5:30 AM',latestWake:'5:45 AM',
+   fallback:'Race morning. 5:45 AM is the latest wake I want because the race starts at 8:00 AM and you need breakfast, travel and warm-up time.'}
+ };
+ return rules[d]||weekday;
 }
 function flow(d){
  const p=dayPlan(d),day=parse(d).getDay();
- if(d===START)return[['10:15 target','Wake','Latest allowed today: 11:00 AM. Sleep now; do not force an early alarm.'],['+30–60','Breakfast + hydrate','Normal food. Give yourself time to wake up.'],['WHEN READY','Restart lift','Full-body primer. 3–4 reps left on every set.'],['AFTER LIFT','Run','2 miles easy. Add 4×15 sec relaxed strides only if you feel smooth.'],['AFTER','Meal + shower','Protein + carbohydrate + fluids.'],['60 MIN','Life reset','Laundry, groceries, clean space, work/gym bags and calendar.'],['EVENING','Easy walk / mobility','Optional 10–20 minutes.'],['10:30','Wind down','Sunday is recovery/reset; Monday begins the weekday system.']];
+ if(d===START)return[['10:30 target','Wake','Latest allowed today: 11:00 AM. Bed target was 2:30 AM; absolute latest 3:00 AM.'],['+30–60','Breakfast + hydrate','Normal food. Give yourself time to wake up.'],['WHEN READY','Restart lift','Full-body primer. 3–4 reps left on every set.'],['AFTER LIFT','Run','2 miles easy. Add 4×15 sec relaxed strides only if you feel smooth.'],['AFTER','Meal + shower','Protein + carbohydrate + fluids.'],['60 MIN','Life reset','Laundry, groceries, clean space, work/gym bags and calendar.'],['EVENING','Easy walk / mobility','Optional 10–20 minutes.'],['10:30','Wind down','Sunday is recovery/reset; Monday begins the weekday system.']];
  if(d===RACE)return[['5:30','Wake','Familiar breakfast + fluids.'],['6:15','Gear check','Shoes, bib, watch, warm layer, water.'],['6:30','Leave','Give yourself buffer.'],['7:15','Warm-up','Easy jog, drills, strides.'],['8:00','FAST PACE 5K','Race.']];
  if(day===0)return[['FLEX','Wake','Recovery-day rhythm.'],['AM','Walk + mobility','20–30 min easy.'],['10:00','Meal prep / laundry','Make Monday automatic.'],['11:30','Weekly plan','Work Top 3 + training windows.'],['8:45','Prep Monday','Remove morning decisions.'],['9:30','Lights out','Monday = 5:30 AM.']];
  const q=day===2||day===5,out=[['5:30','Wake','Water, bathroom, small carb if needed. No scrolling.'],['5:45','Leave','10-minute drive budgeted.']];
@@ -129,12 +148,12 @@ function render(){
  $('strip').innerHTML=allDates().map(x=>'<button class="day '+(x===d?'active ':'')+(x===RACE?'race':'')+'" data-date="'+x+'"><span>'+wd(x).toUpperCase()+'</span><b>'+parse(x).getDate()+'</b><em>OCT</em></button>').join('');
  document.querySelectorAll('[data-date]').forEach(b=>b.onclick=()=>select(b.dataset.date));
  $('dayCard').innerHTML='<div class="eyebrow">'+(d===START?'REAL START':d===RACE?'RACE DAY':'SELECTED')+'</div><h2>'+full(d)+'</h2><h3>'+p.title+'</h3><p class="small muted">'+p.note+'</p>'+(p.run?'<div class="runbox"><b>RUN</b><p class="small">'+p.run+'</p></div>':'')+(items.length?'<div class="liftbox"><b>LIFT'+(p.special?' · FULL-BODY RESTART':' · '+label(p.lift))+'</b>'+items.map(x=>'<div class="exercise"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('')+'</div>':'');
- $('idealSleep').textContent=sr.ideal;$('idealSleepLabel').textContent=sr.idealLabel;$('latestSleep').textContent=sr.latest;$('latestSleepLabel').textContent=sr.latestLabel;$('sleepFallback').textContent=sr.fallback;
+ $('targetBed').textContent=sr.bed;$('latestBed').textContent=sr.latestBed;$('targetWake').textContent=sr.wake;$('latestWake').textContent=sr.latestWake;$('sleepFallback').textContent=sr.fallback;
  $('timeline').innerHTML=flow(d).map(x=>'<div class="row"><time>'+x[0]+'</time><div><b>'+x[1]+'</b><p>'+x[2]+'</p></div></div>').join('');
  const defs=[['train','Training / recovery done'],['top3','Work Top 3 written'],['walk','10-minute walk'],['food','Protein + planned meals'],['prep','Tomorrow prepared']],st=state.checks[d]||{};
  $('checks').innerHTML=defs.map(x=>'<button class="check" data-c="'+x[0]+'" aria-pressed="'+!!st[x[0]]+'">'+(st[x[0]]?'✓ ':'')+x[1]+'</button>').join('');
  document.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{state.checks[d]={...(state.checks[d]||{}),[b.dataset.c]:!state.checks[d]?.[b.dataset.c]};save();render()});
- $('block').innerHTML=allDates().map(x=>{const z=dayPlan(x);return '<div class="planrow"><div class="d">'+wd(x).toUpperCase()+' '+parse(x).getDate()+'</div><div><b>'+z.title+'</b><p>'+[z.run,z.lift?label(z.lift):null,z.note].filter(Boolean).join(' · ')+'</p></div><button data-open="'+x+'">›</button></div>'}).join('');
+ $('block').innerHTML=allDates().map(x=>{const z=dayPlan(x),s=sleepRule(x);return '<div class="planrow"><div class="d">'+wd(x).toUpperCase()+' '+parse(x).getDate()+'</div><div><b>'+z.title+'</b><p><strong>Sleep '+s.bed+' (latest '+s.latestBed+') · Wake '+s.wake+' (latest '+s.latestWake+')</strong></p><p>'+[z.run,z.lift?label(z.lift):null,z.note].filter(Boolean).join(' · ')+'</p></div><button data-open="'+x+'">›</button></div>'}).join('');
  document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>select(b.dataset.open));
  $('restart').innerHTML=restart.map(x=>'<div class="exercise"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('');
  $('lifts').innerHTML=['push','pull','legs','arms','chestback'].map(k=>'<div style="padding:12px 0;border-top:1px solid var(--line)"><h3>'+label(k)+'</h3>'+lifts[k].map(x=>'<div class="exercise"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('')+'</div>').join('');
