@@ -25,15 +25,15 @@ input{width:100%;border:2px solid var(--ink);padding:10px;background:#fff}.input
 </style></head>
 <body>
 <div class="wrap">
-<header class="mast"><b>R14 / RESET LAB</b><span class="badge">V24 · NEW START 10/11</span></header>
+<header class="mast"><b>R14 / RESET LAB</b><span class="badge">V24 · STARTS TODAY 10/10</span></header>
 <section class="hero">
-<div class="ey">COMPLETELY NEW PROGRAM // SUNDAY OCT 11</div>
+<div class="ey">COMPLETELY NEW PROGRAM // SATURDAY OCT 10</div>
 <h1>START<br>AGAIN.</h1>
-<p>You have been off lifting and running for about two weeks. <b>Tomorrow is the real restart</b> with both lifting and running. Fast Pace on Oct 24 is the short-term test. A VO₂ max around <b>70</b> is the long-term north star.</p>
-<div class="metrics"><div class="metric"><b>10/11</b><span>REAL START</span></div><div class="metric"><b>10/24</b><span>FAST PACE 5K</span></div><div class="metric"><b>~59</b><span>VO₂ ESTIMATE NOW</span></div><div class="metric"><b>70</b><span>VO₂ NORTH STAR</span></div></div>
+<p>You have been off lifting and running for about two weeks. <b>Today is the real restart</b> with both lifting and running. Fast Pace on Oct 24 is the short-term test. A VO₂ max around <b>70</b> is the long-term north star.</p>
+<div class="metrics"><div class="metric"><b>10/10</b><span>REAL START</span></div><div class="metric"><b>10/24</b><span>FAST PACE 5K</span></div><div class="metric"><b>~59</b><span>VO₂ ESTIMATE NOW</span></div><div class="metric"><b>70</b><span>VO₂ NORTH STAR</span></div></div>
 </section>
-<div class="alert"><b>No make-up work.</b> No mile test tomorrow. Sunday is a controlled full-body re-entry lift + 2 easy miles. Monday returns to your normal weekday split.</div>
-<div class="fast"><button class="primary" id="startBtn">OPEN SUNDAY</button><button id="monBtn">OPEN MONDAY</button><button id="raceBtn">OPEN RACE DAY</button></div>
+<div class="alert"><b>No make-up work.</b> No mile test tomorrow. Saturday is a controlled full-body re-entry lift + 2 easy miles. Sunday is recovery/reset. Monday returns to your normal weekday split.</div>
+<div class="fast"><button class="primary" id="startBtn">OPEN TODAY</button><button id="sunBtn">OPEN SUNDAY</button><button id="monBtn">OPEN MONDAY</button></div>
 
 <section id="today" class="section active">
 <div class="card"><div class="eyebrow">DATES</div><div class="strip" id="strip"></div></div>
@@ -42,10 +42,10 @@ input{width:100%;border:2px solid var(--ink);padding:10px;background:#fff}.input
 <div class="card"><div class="eyebrow">DAILY SCORE</div><h2>Five wins.</h2><div class="checks" id="checks"></div></div>
 </section>
 
-<section id="calendar" class="section"><div class="card"><div class="eyebrow">FAST PACE BLOCK</div><h2>Oct 11 → Oct 24</h2><div id="block"></div></div></section>
+<section id="calendar" class="section"><div class="card"><div class="eyebrow">FAST PACE BLOCK</div><h2>Oct 10 → Oct 24</h2><div id="block"></div></div></section>
 
 <section id="training" class="section">
-<div class="card"><div class="eyebrow">SUNDAY RESTART</div><h2>Lift + run, but leave hungry.</h2><p class="small muted">3–4 reps in reserve on every set. You should leave the gym feeling better than you entered.</p><div id="restart"></div></div>
+<div class="card"><div class="eyebrow">SATURDAY RESTART</div><h2>Lift + run, but leave hungry.</h2><p class="small muted">3–4 reps in reserve on every set. You should leave the gym feeling better than you entered.</p><div id="restart"></div></div>
 <div class="card"><div class="eyebrow">RACE BUILD RUNNING</div><h2>Fast Pace in 13 days.</h2><div class="runbox"><b>Sub-18 stretch pace</b><p class="small">5:47.5/mi · 3:36/km · 86.4 sec/400 · 2:52.8/800. We do not force those splits simply because they are the goal.</p></div><div class="rules">
 <div class="rule"><b>Tue 10/13 · 6×400</b><p>4 mi total. 88–90 sec first 4 reps, 200m easy jog. Reps 5–6 can move to 86–88 only if you are still smooth.</p></div>
 <div class="rule"><b>Fri 10/16 · 3×5 min threshold</b><p>3.5 mi total, 90 sec easy jog. Comfortably hard, not a 5K race simulation.</p></div>
@@ -65,7 +65,7 @@ input{width:100%;border:2px solid var(--ink);padding:10px;background:#fff}.input
 
 <nav class="bottom"><button data-tab="today" class="active">TODAY</button><button data-tab="calendar">CALENDAR</button><button data-tab="training">TRAINING</button><button data-tab="system">SYSTEM</button></nav>
 <script>
-const $=id=>document.getElementById(id),START='2026-10-11',RACE='2026-10-24',KEY='r14-reset-v24';
+const $=id=>document.getElementById(id),START='2026-10-10',RACE='2026-10-24',KEY='r14-reset-v24b';
 const parse=s=>new Date(s+'T12:00:00'),fmt=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 let state={selected:START,checks:{},vo2:59};try{state={...state,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{};const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
 const restart=[['Leg press','2 × 8–10'],['Chest-supported row','2 × 8–10'],['Flat machine press','2 × 8–10'],['Seated leg curl','2 × 10–12'],['Cable lateral raise','2 × 12–15'],['Calf raise','2 × 10–12'],['Pallof press','2 × 8 / side']];
@@ -77,7 +77,8 @@ arms:[['Seated DB shoulder press','3 × 6–10'],['Cable lateral raise','3 × 12
 chestback:[['Incline machine press','3 × 6–10'],['Chest-supported row','3 × 6–10'],['Flat machine press','2 × 8–12'],['Neutral-grip pulldown','2 × 8–12'],['Pec deck / cable fly','2 × 10–15'],['Reverse pec deck','2 × 12–20']]
 };
 const plan={
-'2026-10-11':{title:'RESTART · Lift + Run',wake:'FLEXIBLE',run:'2 mi easy. If smooth, finish with 4×15 sec relaxed strides with full walk/jog recovery.',special:true,note:'First day back after ~2 weeks. Every lift stays 3–4 reps from failure.'},
+'2026-10-10':{title:'DAY ONE · Restart Lift + Run',wake:'FLEXIBLE',run:'2 mi easy. If smooth, finish with 4×15 sec relaxed strides with full walk/jog recovery.',special:true,note:'First day back after ~2 weeks. Every lift stays 3–4 reps from failure.'},
+'2026-10-11':{title:'Recovery + Weekly Reset',wake:'FLEXIBLE',note:'20–30 min easy walk + mobility. Meal prep, laundry, work/gym bag, calendar, early bed.'},
 '2026-10-12':{title:'Push',wake:'5:30 AM',lift:'push',note:'No run. Sunday already gave you the re-entry run.'},
 '2026-10-13':{title:'6×400 + Pull',wake:'5:30 AM',run:'4 mi total · 6×400 in 88–90 sec, 200m easy jog. Reps 5–6 may be 86–88 only if smooth.',lift:'pull',note:'AM run priority. Pull after work.'},
 '2026-10-14':{title:'Legs',wake:'5:30 AM',lift:'legs',note:'Low-volume strength. Do not chase soreness.'},
@@ -100,9 +101,9 @@ function label(k){return({push:'Push',pull:'Pull',legs:'Legs',arms:'Shoulders + 
 function itemsFor(d){const p=dayPlan(d);if(p.special)return restart;let a=[...(lifts[p.lift]||[])];if(p.raceWeek){const n={push:4,pull:4,legs:3,arms:4,chestback:3}[p.lift]||a.length;a=a.slice(0,n).map((x,i)=>[x[0],i<2?x[1].replace(/^3/,'2').replace(/^2/,'1–2'):'1 × '+(x[1].split('×')[1]||'8–12').trim()])}return a}
 function flow(d){
  const p=dayPlan(d),day=parse(d).getDay();
- if(d===START)return[['FLEX','Wake','Sleep enough. No forced alarm.'],['+30–60','Breakfast + hydrate','Normal food. Give yourself time to wake up.'],['WHEN READY','Restart lift', 'Full-body primer. 3–4 reps left on every set.'],['AFTER LIFT','Run','2 miles easy. Add 4×15 sec relaxed strides only if you feel smooth.'],['AFTER','Meal + shower','Protein + carbohydrate + fluids.'],['60 MIN','Life reset','Laundry, groceries, clean space, work/gym bags and calendar.'],['8:45','Prep Monday','Clothes, bag, keys, breakfast, water.'],['9:30','Lights out','Monday = 5:30 AM.']];
+ if(d===START)return[['FLEX','Wake','Sleep enough. No forced alarm.'],['+30–60','Breakfast + hydrate','Normal food. Give yourself time to wake up.'],['WHEN READY','Restart lift','Full-body primer. 3–4 reps left on every set.'],['AFTER LIFT','Run','2 miles easy. Add 4×15 sec relaxed strides only if you feel smooth.'],['AFTER','Meal + shower','Protein + carbohydrate + fluids.'],['60 MIN','Life reset','Laundry, groceries, clean space, work/gym bags and calendar.'],['EVENING','Easy walk / mobility','Optional 10–20 minutes.'],['10:30','Wind down','Sunday is recovery/reset; Monday begins the weekday system.']];
  if(d===RACE)return[['5:30','Wake','Familiar breakfast + fluids.'],['6:15','Gear check','Shoes, bib, watch, warm layer, water.'],['6:30','Leave','Give yourself buffer.'],['7:15','Warm-up','Easy jog, drills, strides.'],['8:00','FAST PACE 5K','Race.']];
- if(day===0)return[['FLEX','Wake','Recovery-day rhythm.'],['AM','Walk + mobility','20–30 min easy.'],['10:00','Meal prep / laundry','Make Monday automatic.'],['11:30','Weekly plan','Work Top 3 + training windows.'],['8:45','Prep Monday','Remove morning decisions.'],['9:30','Lights out','Monday = 5:30.']];
+ if(day===0)return[['FLEX','Wake','Recovery-day rhythm.'],['AM','Walk + mobility','20–30 min easy.'],['10:00','Meal prep / laundry','Make Monday automatic.'],['11:30','Weekly plan','Work Top 3 + training windows.'],['8:45','Prep Monday','Remove morning decisions.'],['9:30','Lights out','Monday = 5:30 AM.']];
  const q=day===2||day===5,out=[['5:30','Wake','Water, bathroom, small carb if needed. No scrolling.'],['5:45','Leave','10-minute drive budgeted.']];
  if(q){out.push(['6:00','AM RUN',p.run||'No run.']);out.push(['7:10','Home','Shower, breakfast, dress, pack.'])}
  else{out.push(['6:00','AM TRAINING',[p.lift?label(p.lift):null,p.run].filter(Boolean).join(' + ')||'Recovery.']);out.push(['7:20','Home','Shower, breakfast, dress, pack.'])}
@@ -128,7 +129,7 @@ function render(){
 }
 function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.bottom button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));window.scrollTo({top:0,behavior:'instant'})}
 document.querySelectorAll('.bottom button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
-$('startBtn').onclick=()=>select(START);$('monBtn').onclick=()=>select('2026-10-12');$('raceBtn').onclick=()=>select(RACE);
+$('startBtn').onclick=()=>select(START);$('sunBtn').onclick=()=>select('2026-10-11');$('monBtn').onclick=()=>select('2026-10-12');
 $('saveVo2').onclick=()=>{const v=Number($('vo2Input').value);if(v>=30&&v<=90){state.vo2=v;save();render()}};
 render();
 </script></body></html>
