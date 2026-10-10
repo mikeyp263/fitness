@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f4f0e6"><title>R14 RESET LAB V24</title>
+<style>
+:root{--paper:#f4f0e6;--ink:#11110f;--red:#e63b2e;--blue:#174ee7;--lime:#c7f33b;--muted:#6f6b62;--line:#cfc9bd;--card:#fffdf7;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:90px}button,input{font:inherit}button{cursor:pointer}.wrap{max-width:980px;margin:auto;padding:16px 16px 40px}
+.mast{display:flex;justify-content:space-between;align-items:center;padding:6px 0 12px;border-bottom:5px solid var(--ink);margin-bottom:16px}.mast b{font-size:18px;letter-spacing:-.04em}.badge{background:var(--red);color:#fff;border:2px solid var(--ink);padding:6px 9px;font:900 10px var(--mono)}
+.hero{border:3px solid var(--ink);background:var(--lime);box-shadow:8px 8px 0 var(--ink);padding:22px;margin:0 7px 22px 0}.hero .ey{font:900 10px var(--mono);letter-spacing:.14em}.hero h1{font-size:clamp(42px,11vw,80px);line-height:.88;letter-spacing:-.075em;margin:10px 0 14px}.hero p{font-size:14px;max-width:700px;margin:0}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}.metric{background:#fff;border:2px solid var(--ink);padding:11px}.metric b{display:block;font-size:18px}.metric span{font:800 8px var(--mono);color:var(--muted)}
+.alert{border:2px solid var(--ink);background:#fff1be;padding:13px;margin:14px 0;font-size:12px}.alert b{color:var(--red)}
+.fast{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:12px 0}.fast button{border:2px solid var(--ink);background:#fff;padding:10px;font-weight:850}.fast .primary{background:var(--blue);color:white}
+.section{display:none}.section.active{display:block}.card{border:2px solid var(--ink);background:var(--card);box-shadow:4px 4px 0 #aaa397;padding:17px;margin:14px 4px 14px 0}.eyebrow{font:900 9px var(--mono);letter-spacing:.14em;color:var(--blue);text-transform:uppercase}.card h2{font-size:22px;letter-spacing:-.04em;margin:3px 0 7px}.card h3{font-size:14px;margin:0 0 5px}.muted{color:var(--muted)}.small{font-size:11px}
+.strip{display:flex;gap:7px;overflow:auto;scrollbar-width:none;padding:2px 0 5px}.strip::-webkit-scrollbar{display:none}.day{flex:0 0 70px;border:2px solid var(--ink);background:#fff;padding:9px 4px;text-align:center}.day span{display:block;font:900 9px var(--mono)}.day b{display:block;font-size:23px}.day em{font:700 8px var(--mono);font-style:normal;color:var(--muted)}.day.active{background:var(--blue);color:white}.day.active em{color:#dce5ff}.day.race{border-color:var(--red)}
+.row{display:grid;grid-template-columns:76px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--line)}.row:first-child{border-top:0}.row time{font:900 10px var(--mono);color:var(--red)}.row b{font-size:12px}.row p{font-size:11px;color:var(--muted);margin:3px 0 0;line-height:1.45}
+.runbox,.liftbox,.vo2box{padding:12px;margin:10px 0;border-left:6px solid}.runbox{background:#eef2ff;border-color:var(--blue)}.liftbox{background:#fff0ed;border-color:var(--red)}.vo2box{background:#f4ffd3;border-color:#79a800}
+.exercise{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:10px 0;border-top:1px solid var(--line)}.exercise:first-child{border-top:0}.exercise b{font-size:12px}.exercise span{font:800 10px var(--mono);color:var(--blue);text-align:right}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}.check{border:2px solid var(--ink);background:#fff;padding:10px;text-align:left;font-size:11px}.check[aria-pressed="true"]{background:#d9ffe7}
+.planrow{display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}.planrow:first-child{border-top:0}.planrow .d{font:900 9px var(--mono)}.planrow b{font-size:12px}.planrow p{font-size:10px;color:var(--muted);margin:3px 0 0}.planrow button{border:0;background:none;color:var(--blue);font-size:20px}
+.rules{display:grid;gap:8px}.rule{border:2px solid var(--ink);background:#fff;padding:12px}.rule b{font-size:12px}.rule p{font-size:10px;color:var(--muted);margin:4px 0 0}
+.vo2hero{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}.vbox{border:2px solid var(--ink);padding:12px;background:white}.vbox strong{display:block;font-size:30px;line-height:1}.vbox span{font:800 8px var(--mono);color:var(--muted)}
+input{width:100%;border:2px solid var(--ink);padding:10px;background:#fff}.inputrow{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:10px}.save{border:2px solid var(--ink);background:var(--blue);color:white;padding:10px 13px;font-weight:900}
+.bottom{position:fixed;z-index:50;bottom:calc(10px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(94%,520px);display:grid;grid-template-columns:repeat(4,1fr);gap:5px;background:var(--ink);padding:6px}.bottom button{border:0;background:transparent;color:#aaa;padding:10px 3px;font:850 10px inherit}.bottom button.active{background:var(--red);color:white}
+@media(max-width:600px){.metrics{grid-template-columns:1fr 1fr}.fast{grid-template-columns:1fr 1fr}.fast button:first-child{grid-column:1/-1}.checks{grid-template-columns:1fr}.vo2hero{grid-template-columns:1fr 1fr 1fr}.vbox strong{font-size:25px}}
+</style></head>
+<body>
+<div class="wrap">
+<header class="mast"><b>R14 / RESET LAB</b><span class="badge">V24 · NEW START 10/11</span></header>
+<section class="hero">
+<div class="ey">COMPLETELY NEW PROGRAM // SUNDAY OCT 11</div>
+<h1>START<br>AGAIN.</h1>
+<p>You have been off lifting and running for about two weeks. <b>Tomorrow is the real restart</b> with both lifting and running. Fast Pace on Oct 24 is the short-term test. A VO₂ max around <b>70</b> is the long-term north star.</p>
+<div class="metrics"><div class="metric"><b>10/11</b><span>REAL START</span></div><div class="metric"><b>10/24</b><span>FAST PACE 5K</span></div><div class="metric"><b>~59</b><span>VO₂ ESTIMATE NOW</span></div><div class="metric"><b>70</b><span>VO₂ NORTH STAR</span></div></div>
+</section>
+<div class="alert"><b>No make-up work.</b> No mile test tomorrow. Sunday is a controlled full-body re-entry lift + 2 easy miles. Monday returns to your normal weekday split.</div>
+<div class="fast"><button class="primary" id="startBtn">OPEN SUNDAY</button><button id="monBtn">OPEN MONDAY</button><button id="raceBtn">OPEN RACE DAY</button></div>
+
+<section id="today" class="section active">
+<div class="card"><div class="eyebrow">DATES</div><div class="strip" id="strip"></div></div>
+<div class="card" id="dayCard"></div>
+<div class="card"><div class="eyebrow">DAY FLOW</div><h2>Do it in this order.</h2><div id="timeline"></div></div>
+<div class="card"><div class="eyebrow">DAILY SCORE</div><h2>Five wins.</h2><div class="checks" id="checks"></div></div>
+</section>
+
+<section id="calendar" class="section"><div class="card"><div class="eyebrow">FAST PACE BLOCK</div><h2>Oct 11 → Oct 24</h2><div id="block"></div></div></section>
+
+<section id="training" class="section">
+<div class="card"><div class="eyebrow">SUNDAY RESTART</div><h2>Lift + run, but leave hungry.</h2><p class="small muted">3–4 reps in reserve on every set. You should leave the gym feeling better than you entered.</p><div id="restart"></div></div>
+<div class="card"><div class="eyebrow">RACE BUILD RUNNING</div><h2>Fast Pace in 13 days.</h2><div class="runbox"><b>Sub-18 stretch pace</b><p class="small">5:47.5/mi · 3:36/km · 86.4 sec/400 · 2:52.8/800. We do not force those splits simply because they are the goal.</p></div><div class="rules">
+<div class="rule"><b>Tue 10/13 · 6×400</b><p>4 mi total. 88–90 sec first 4 reps, 200m easy jog. Reps 5–6 can move to 86–88 only if you are still smooth.</p></div>
+<div class="rule"><b>Fri 10/16 · 3×5 min threshold</b><p>3.5 mi total, 90 sec easy jog. Comfortably hard, not a 5K race simulation.</p></div>
+<div class="rule"><b>Tue 10/20 · 3×600 sharpener</b><p>3 mi total. 2:10–2:12, 2:30–3:00 jog, then 4×100 relaxed-fast.</p></div>
+</div></div>
+<div class="card"><div class="eyebrow">LIFTING</div><h2>Normal identity. Smart dose.</h2><p class="small muted">Mon Push · Tue Pull · Wed Legs · Thu Shoulders + Arms · Fri Chest + Back. Race week keeps the days but cuts the work.</p><div id="lifts"></div></div>
+</section>
+
+<section id="system" class="section">
+<div class="card"><div class="eyebrow">VO₂ PROJECT</div><h2>59 → 70.</h2><div class="vo2hero"><div class="vbox"><strong id="vo2Now">59</strong><span>CURRENT ESTIMATE</span></div><div class="vbox"><strong>70</strong><span>NORTH STAR</span></div><div class="vbox"><strong id="vo2Gap">11</strong><span>GAP</span></div></div><div class="inputrow"><input id="vo2Input" type="number" min="30" max="90" step="0.1" placeholder="Update your current VO₂ estimate"><button class="save" id="saveVo2">SAVE</button></div>
+<div class="vo2box"><b>Programming rule:</b><p class="small">Fast Pace comes first for the next 13 days. After the race, the endurance plan shifts toward a VO₂-focused block: lots of easy running, one true VO₂ interval day, one threshold day, long easy aerobic work, strides/sprints, and progressive mileage. Harder is not automatically better.</p></div>
+<div class="rules"><div class="rule"><b>Block 1 · Fast Pace</b><p>Restore rhythm, race-specific intervals, threshold, taper.</p></div><div class="rule"><b>Block 2 · Reload</b><p>1–2 weeks to restore consistent mileage after the race.</p></div><div class="rule"><b>Block 3 · VO₂ Development</b><p>6–10 weeks. Mostly easy volume + one VO₂max interval session (generally 2–4 min reps) + one threshold stimulus + long run.</p></div><div class="rule"><b>Retest</b><p>Use repeatable race results and, when practical, a real lab VO₂ test. Treat watch VO₂ as a trend, not absolute truth.</p></div></div></div>
+<div class="card"><div class="eyebrow">WEEKDAY OPERATING SYSTEM</div><h2>Automatic by 8:30.</h2><div class="row"><time>5:30</time><div><b>Wake Monday–Friday</b><p>Water, bathroom, small carb if needed. No scrolling.</p></div></div><div class="row"><time>5:45</time><div><b>Leave</b><p>LA Fitness is budgeted as 10 minutes away.</p></div></div><div class="row"><time>6:00</time><div><b>Train</b><p>Mon/Thu lift + easy run. Tue/Fri quality run AM and lift PM. Wed Legs.</p></div></div><div class="row"><time>7:20</time><div><b>Home</b><p>Shower, breakfast, dress, pack.</p></div></div><div class="row"><time>8:20</time><div><b>Work Top 3</b><p>One must-win + two secondary tasks.</p></div></div><div class="row"><time>8:30</time><div><b>Leave for work</b><p>Hard deadline.</p></div></div><div class="row"><time>PM</time><div><b>Second block</b><p>Tue/Fri lift. Other weekdays: 30–45 min personal block.</p></div></div><div class="row"><time>8:45</time><div><b>Prepare tomorrow</b><p>Clothes, bag, keys, breakfast, water.</p></div></div><div class="row"><time>9:30</time><div><b>Lights out target</b><p>Protect the 5:30 wake.</p></div></div></div>
+<div class="card"><div class="eyebrow">WELL-BEING</div><h2>Performance requires recovery.</h2><div class="rules"><div class="rule"><b>Food</b><p>No crash cut before the race. High protein and enough carbohydrate around hard running.</p></div><div class="rule"><b>After race</b><p>Use a modest deficit if waist loss is still the priority. Track weekly-average weight + waist.</p></div><div class="rule"><b>Mobility</b><p>5–10 min comfortable hips, ankles, upper back and shoulders most days.</p></div><div class="rule"><b>Sleep</b><p>Do not steal sleep to manufacture productivity.</p></div></div></div>
+</section>
+</div>
+
+<nav class="bottom"><button data-tab="today" class="active">TODAY</button><button data-tab="calendar">CALENDAR</button><button data-tab="training">TRAINING</button><button data-tab="system">SYSTEM</button></nav>
+<script>
+const $=id=>document.getElementById(id),START='2026-10-11',RACE='2026-10-24',KEY='r14-reset-v24';
+const parse=s=>new Date(s+'T12:00:00'),fmt=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+let state={selected:START,checks:{},vo2:59};try{state={...state,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{};const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
+const restart=[['Leg press','2 × 8–10'],['Chest-supported row','2 × 8–10'],['Flat machine press','2 × 8–10'],['Seated leg curl','2 × 10–12'],['Cable lateral raise','2 × 12–15'],['Calf raise','2 × 10–12'],['Pallof press','2 × 8 / side']];
+const lifts={
+push:[['Flat machine press','3 × 6–8'],['Incline machine press','2 × 8–10'],['Pec deck / cable fly','2 × 10–15'],['Cable lateral raise','2 × 12–20'],['Rope pressdown','2 × 8–12'],['Overhead cable triceps','1–2 × 10–15']],
+pull:[['Pull-up progression','3 × 5–8'],['Chest-supported row','3 × 6–10'],['Neutral-grip pulldown','2 × 8–12'],['Reverse pec deck','2 × 12–20'],['Preacher curl','3 × 8–12'],['Hammer curl','2 × 10–15']],
+legs:[['Leg press','2 × 4–6'],['Seated leg curl','2 × 6–10'],['Supported split squat','1 × 6 / side'],['Supported single-leg RDL','1 × 6 / side'],['Calf raise','2 × 8–12'],['Pallof press','2 × 8–12 / side']],
+arms:[['Seated DB shoulder press','3 × 6–10'],['Cable lateral raise','3 × 12–20'],['Reverse pec deck','2 × 12–20'],['Bayesian curl','3 × 10–15'],['Hammer curl','2 × 10–15'],['Rope pressdown','3 × 10–15'],['Overhead cable triceps','2 × 10–15']],
+chestback:[['Incline machine press','3 × 6–10'],['Chest-supported row','3 × 6–10'],['Flat machine press','2 × 8–12'],['Neutral-grip pulldown','2 × 8–12'],['Pec deck / cable fly','2 × 10–15'],['Reverse pec deck','2 × 12–20']]
+};
+const plan={
+'2026-10-11':{title:'RESTART · Lift + Run',wake:'FLEXIBLE',run:'2 mi easy. If smooth, finish with 4×15 sec relaxed strides with full walk/jog recovery.',special:true,note:'First day back after ~2 weeks. Every lift stays 3–4 reps from failure.'},
+'2026-10-12':{title:'Push',wake:'5:30 AM',lift:'push',note:'No run. Sunday already gave you the re-entry run.'},
+'2026-10-13':{title:'6×400 + Pull',wake:'5:30 AM',run:'4 mi total · 6×400 in 88–90 sec, 200m easy jog. Reps 5–6 may be 86–88 only if smooth.',lift:'pull',note:'AM run priority. Pull after work.'},
+'2026-10-14':{title:'Legs',wake:'5:30 AM',lift:'legs',note:'Low-volume strength. Do not chase soreness.'},
+'2026-10-15':{title:'Shoulders + Arms + Easy',wake:'5:30 AM',run:'2.5 mi easy conversational.',lift:'arms',note:'AM lift first, easy run after.'},
+'2026-10-16':{title:'Threshold + Chest/Back',wake:'5:30 AM',run:'3.5 mi total · 3×5 min threshold, 90 sec easy jog. Controlled.',lift:'chestback',note:'AM run. Chest/back after work.'},
+'2026-10-17':{title:'Easy Aerobic',wake:'FLEXIBLE',run:'3.5 mi easy.',note:'No lifting. Finish comfortable.'},
+'2026-10-18':{title:'Rest + Reset',wake:'FLEXIBLE',note:'Walk, mobility, meal prep, laundry, calendar, early bed.'},
+'2026-10-19':{title:'Push + Easy Strides',wake:'5:30 AM',run:'2 mi easy + 4×20 sec relaxed strides.',lift:'push',raceWeek:true,note:'Race-week lifting volume reduced.'},
+'2026-10-20':{title:'3×600 Tune-up + Pull',wake:'5:30 AM',run:'3 mi total · 3×600 in 2:10–2:12, 2:30–3:00 jog + 4×100 relaxed-fast.',lift:'pull',raceWeek:true,note:'AM run. Reduced Pull PM.'},
+'2026-10-21':{title:'Legs · Maintenance',wake:'5:30 AM',lift:'legs',raceWeek:true,note:'Very small neural dose.'},
+'2026-10-22':{title:'Shoulders/Arms + Race Strides',wake:'5:30 AM',run:'1.5 mi easy + 4×20 sec strides.',lift:'arms',raceWeek:true,note:'Reduced volume. Leave springy.'},
+'2026-10-23':{title:'Chest/Back Primer',wake:'5:30 AM',lift:'chestback',raceWeek:true,note:'Tiny primer. No soreness.'},
+'2026-10-24':{title:'FAST PACE 5K',wake:'5:30 AM',run:'~1 mi warm-up + drills + 4 strides + 5K race + easy cooldown. Sub-18 stretch pace = 5:47.5/mi.',raceDay:true,note:'Race by current fitness. First kilometer controlled, compete late.'}
+};
+function allDates(){let a=[],d=parse(START),e=parse(RACE);for(;d<=e;d.setDate(d.getDate()+1))a.push(fmt(d));return a}
+function dayPlan(d){return plan[d]||{title:'Recovery',wake:'FLEXIBLE',note:'No required training.'}}
+function wd(d){return parse(d).toLocaleDateString('en-US',{weekday:'short'})}
+function full(d){return parse(d).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}
+function label(k){return({push:'Push',pull:'Pull',legs:'Legs',arms:'Shoulders + Arms',chestback:'Chest + Back'})[k]||k}
+function itemsFor(d){const p=dayPlan(d);if(p.special)return restart;let a=[...(lifts[p.lift]||[])];if(p.raceWeek){const n={push:4,pull:4,legs:3,arms:4,chestback:3}[p.lift]||a.length;a=a.slice(0,n).map((x,i)=>[x[0],i<2?x[1].replace(/^3/,'2').replace(/^2/,'1–2'):'1 × '+(x[1].split('×')[1]||'8–12').trim()])}return a}
+function flow(d){
+ const p=dayPlan(d),day=parse(d).getDay();
+ if(d===START)return[['FLEX','Wake','Sleep enough. No forced alarm.'],['+30–60','Breakfast + hydrate','Normal food. Give yourself time to wake up.'],['WHEN READY','Restart lift', 'Full-body primer. 3–4 reps left on every set.'],['AFTER LIFT','Run','2 miles easy. Add 4×15 sec relaxed strides only if you feel smooth.'],['AFTER','Meal + shower','Protein + carbohydrate + fluids.'],['60 MIN','Life reset','Laundry, groceries, clean space, work/gym bags and calendar.'],['8:45','Prep Monday','Clothes, bag, keys, breakfast, water.'],['9:30','Lights out','Monday = 5:30 AM.']];
+ if(d===RACE)return[['5:30','Wake','Familiar breakfast + fluids.'],['6:15','Gear check','Shoes, bib, watch, warm layer, water.'],['6:30','Leave','Give yourself buffer.'],['7:15','Warm-up','Easy jog, drills, strides.'],['8:00','FAST PACE 5K','Race.']];
+ if(day===0)return[['FLEX','Wake','Recovery-day rhythm.'],['AM','Walk + mobility','20–30 min easy.'],['10:00','Meal prep / laundry','Make Monday automatic.'],['11:30','Weekly plan','Work Top 3 + training windows.'],['8:45','Prep Monday','Remove morning decisions.'],['9:30','Lights out','Monday = 5:30.']];
+ const q=day===2||day===5,out=[['5:30','Wake','Water, bathroom, small carb if needed. No scrolling.'],['5:45','Leave','10-minute drive budgeted.']];
+ if(q){out.push(['6:00','AM RUN',p.run||'No run.']);out.push(['7:10','Home','Shower, breakfast, dress, pack.'])}
+ else{out.push(['6:00','AM TRAINING',[p.lift?label(p.lift):null,p.run].filter(Boolean).join(' + ')||'Recovery.']);out.push(['7:20','Home','Shower, breakfast, dress, pack.'])}
+ out.push(['8:20','Work Top 3','1 must-win + 2 secondary tasks.'],['8:30','Leave for work','Hard deadline.'],['LUNCH','Eat + 10-min walk','Brief reset.']);
+ if(q&&p.lift)out.push(['AFTER WORK',label(p.lift),'Go before settling in at home.']);else out.push(['AFTER WORK','30–45 min personal block','One category only.']);
+ out.push(['8:45','Prep tomorrow','Clothes, bag, keys, breakfast, water.'],['9:30','Lights out','Protect the 5:30 wake.']);return out
+}
+function select(d){state.selected=d;save();render();show('today')}
+function render(){
+ const d=state.selected,p=dayPlan(d),items=itemsFor(d);
+ $('strip').innerHTML=allDates().map(x=>'<button class="day '+(x===d?'active ':'')+(x===RACE?'race':'')+'" data-date="'+x+'"><span>'+wd(x).toUpperCase()+'</span><b>'+parse(x).getDate()+'</b><em>OCT</em></button>').join('');
+ document.querySelectorAll('[data-date]').forEach(b=>b.onclick=()=>select(b.dataset.date));
+ $('dayCard').innerHTML='<div class="eyebrow">'+(d===START?'REAL START':d===RACE?'RACE DAY':'SELECTED')+'</div><h2>'+full(d)+'</h2><h3>'+p.title+'</h3><p class="small muted">'+p.note+'</p>'+(p.run?'<div class="runbox"><b>RUN</b><p class="small">'+p.run+'</p></div>':'')+(items.length?'<div class="liftbox"><b>LIFT'+(p.special?' · FULL-BODY RESTART':' · '+label(p.lift))+'</b>'+items.map(x=>'<div class="exercise"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('')+'</div>':'');
+ $('timeline').innerHTML=flow(d).map(x=>'<div class="row"><time>'+x[0]+'</time><div><b>'+x[1]+'</b><p>'+x[2]+'</p></div></div>').join('');
+ const defs=[['train','Training / recovery done'],['top3','Work Top 3 written'],['walk','10-minute walk'],['food','Protein + planned meals'],['prep','Tomorrow prepared']],st=state.checks[d]||{};
+ $('checks').innerHTML=defs.map(x=>'<button class="check" data-c="'+x[0]+'" aria-pressed="'+!!st[x[0]]+'">'+(st[x[0]]?'✓ ':'')+x[1]+'</button>').join('');
+ document.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{state.checks[d]={...(state.checks[d]||{}),[b.dataset.c]:!state.checks[d]?.[b.dataset.c]};save();render()});
+ $('block').innerHTML=allDates().map(x=>{const z=dayPlan(x);return '<div class="planrow"><div class="d">'+wd(x).toUpperCase()+' '+parse(x).getDate()+'</div><div><b>'+z.title+'</b><p>'+[z.run,z.lift?label(z.lift):null,z.note].filter(Boolean).join(' · ')+'</p></div><button data-open="'+x+'">›</button></div>'}).join('');
+ document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>select(b.dataset.open));
+ $('restart').innerHTML=restart.map(x=>'<div class="exercise"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('');
+ $('lifts').innerHTML=['push','pull','legs','arms','chestback'].map(k=>'<div style="padding:12px 0;border-top:1px solid var(--line)"><h3>'+label(k)+'</h3>'+lifts[k].map(x=>'<div class="exercise"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('')+'</div>').join('');
+ $('vo2Now').textContent=Number(state.vo2).toFixed(state.vo2%1?1:0);$('vo2Gap').textContent=Math.max(0,70-state.vo2).toFixed(1);$('vo2Input').value=state.vo2;
+}
+function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.bottom button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));window.scrollTo({top:0,behavior:'instant'})}
+document.querySelectorAll('.bottom button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
+$('startBtn').onclick=()=>select(START);$('monBtn').onclick=()=>select('2026-10-12');$('raceBtn').onclick=()=>select(RACE);
+$('saveVo2').onclick=()=>{const v=Number($('vo2Input').value);if(v>=30&&v<=90){state.vo2=v;save();render()}};
+render();
+</script></body></html>
