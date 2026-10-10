@@ -26,10 +26,44 @@ input{width:100%;border:2px solid var(--ink);padding:10px;background:#fff}.input
 .sleepgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.sleepbox{border:2px solid var(--ink);background:#fff;padding:12px}.sleepbox strong{display:block;font-size:24px;line-height:1}.sleepbox span{font:800 8px var(--mono);color:var(--muted)}.sleepbox.latest{background:#fff1be}.fallback{border:2px dashed var(--ink);padding:11px;margin-top:10px;font-size:10px;color:var(--muted)}
 
 .apex{border:3px solid var(--ink);background:var(--red);color:#fff;padding:16px;margin:14px 0;box-shadow:5px 5px 0 var(--ink)}.apex .eyebrow{color:#fff7c5}.apex h2{font-size:26px;margin:4px 0 7px}.apex p{font-size:11px;margin:0;color:#ffe5df}.apexgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:12px}.apexpill{border:2px solid #fff;background:#0002;padding:10px}.apexpill b{display:block;font-size:13px}.apexpill span{font:800 8px var(--mono);opacity:.85}@media(max-width:600px){.apexgrid{grid-template-columns:1fr 1fr}}
+
+.launch{position:fixed;inset:0;z-index:9999;background:#0b0b09;color:#f7f3e9;display:grid;place-items:center;padding:22px;overflow:hidden}
+.launch.hide{display:none}
+.launch:before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 50% 30%,#24350a 0,transparent 28%),linear-gradient(135deg,#0b0b09,#151512);animation:drift 5s ease-in-out infinite alternate}
+.launch-inner{position:relative;width:min(92vw,620px);border:2px solid #f7f3e9;padding:22px;background:#0b0b09e8;box-shadow:8px 8px 0 #c7f33b}
+.launch-mark{font:900 11px var(--mono);letter-spacing:.18em;color:#c7f33b}
+.launch h1{font-size:clamp(42px,11vw,74px);line-height:.9;letter-spacing:-.075em;margin:12px 0 16px}
+.launch-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.launch-box{border:1px solid #62625b;padding:10px}
+.launch-box span{display:block;font:800 8px var(--mono);color:#94948b;margin-bottom:4px}
+.launch-box b{font-size:13px}
+.bootline{font:800 10px var(--mono);color:#b7b7ae;min-height:18px;margin:14px 0}
+.launch-cue{border-left:4px solid #e63b2e;padding:10px 12px;background:#181815;font-size:13px;line-height:1.45;margin:12px 0}
+.enter{width:100%;border:2px solid #f7f3e9;background:#c7f33b;color:#0b0b09;padding:14px;font-weight:950;letter-spacing:.04em;opacity:0;transform:translateY(8px);pointer-events:none;transition:.25s}
+.enter.ready{opacity:1;transform:none;pointer-events:auto}
+.launch-mini{font:800 9px var(--mono);color:#77776f;margin-top:8px;text-align:center}
+@keyframes drift{from{transform:translate3d(-1%,0,0) scale(1)}to{transform:translate3d(1%,1%,0) scale(1.04)}}
+@media(prefers-reduced-motion:reduce){.launch:before{animation:none}.enter{transition:none}}
 </style></head>
 <body>
+<div class="launch" id="launch">
+  <div class="launch-inner">
+    <div class="launch-mark">R14 // APEX ONLINE</div>
+    <h1 id="launchTitle">SYSTEM<br>CHECK.</h1>
+    <div class="bootline" id="bootline">INITIALIZING...</div>
+    <div class="launch-grid">
+      <div class="launch-box"><span>TODAY</span><b id="launchDate">—</b></div>
+      <div class="launch-box"><span>ENTRY</span><b id="launchEntry">01</b></div>
+      <div class="launch-box"><span>MISSION</span><b id="launchMission">—</b></div>
+      <div class="launch-box"><span>FAST PACE</span><b id="launchCountdown">—</b></div>
+    </div>
+    <div class="launch-cue" id="launchCue">Loading today’s cue...</div>
+    <button class="enter" id="enterToday">ENTER TODAY</button>
+    <div class="launch-mini">This check-in runs every time you open the app.</div>
+  </div>
+</div>
 <div class="wrap">
-<header class="mast"><b>R14 / RESET LAB</b><span class="badge">V24E · APEX SYSTEM</span></header>
+<header class="mast"><b>R14 / RESET LAB</b><span class="badge">V24F · APEX CHECK-IN</span></header>
 <section class="hero">
 <div class="ey">COMPLETELY NEW PROGRAM // SATURDAY OCT 10</div>
 <h1>START<br>AGAIN.</h1>
@@ -167,5 +201,47 @@ function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.t
 document.querySelectorAll('.bottom button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
 $('startBtn').onclick=()=>select(START);$('sunBtn').onclick=()=>select('2026-10-11');$('monBtn').onclick=()=>select('2026-10-12');
 $('saveVo2').onclick=()=>{const v=Number($('vo2Input').value);if(v>=30&&v<=90){state.vo2=v;save();render()}};
+
+function bootExperience(){
+ const launch=$('launch');
+ if(!launch)return;
+ const now=new Date(),today=fmt(now);
+ const valid=allDates();
+ const launchDate=valid.includes(today)?today:(today<START?START:RACE);
+ const p=dayPlan(launchDate);
+ const countKey='r14-open-count-'+today;
+ let n=Number(localStorage.getItem(countKey)||0)+1;
+ localStorage.setItem(countKey,String(n));
+ const cues=[
+  'Do the next thing. Not everything.',
+  'Easy means easy. Hard means precise.',
+  'No catch-up. Execute today.',
+  'Build the engine. Keep the muscle.',
+  'Leave today better than you entered it.',
+  'Consistency is the advantage.',
+  'Precision beats hype.',
+  'Win the morning, then keep the rest of the day simple.'
+ ];
+ const cue=cues[(n-1)%cues.length];
+ const raceDays=Math.max(0,Math.ceil((parse(RACE)-parse(launchDate))/86400000));
+ $('launchDate').textContent=full(launchDate);
+ $('launchEntry').textContent=String(n).padStart(2,'0');
+ $('launchMission').textContent=p.title;
+ $('launchCountdown').textContent=raceDays===0?'RACE DAY':raceDays+' DAYS';
+ $('launchCue').textContent=cue;
+ const steps=['SYNCING TODAY','LOADING TRAINING','CHECKING SLEEP WINDOW','LOCKING FAST PACE TARGET','READY'];
+ let i=0;
+ const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const finish=()=>{$('bootline').textContent='READY';$('launchTitle').innerHTML=n===1?'DAY<br>ENGAGED.':'WELCOME<br>BACK.';$('enterToday').classList.add('ready')};
+ if(reduced){finish()}else{
+   $('bootline').textContent=steps[0]+'...';
+   const timer=setInterval(()=>{i++;if(i>=steps.length-1){clearInterval(timer);finish()}else $('bootline').textContent=steps[i]+'...'},260);
+ }
+ $('enterToday').onclick=()=>{
+   state.selected=launchDate;save();render();show('today');
+   launch.classList.add('hide');
+ };
+}
 render();
+bootExperience();
 </script></body></html>
