@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#081016">
+<title>R14 DAY ONE // Fast Pace</title>
+<style>
+:root{
+ --bg:#071017;--panel:#0d1820;--panel2:#11212b;--ink:#f5f7f2;--muted:#8fa1ad;
+ --line:#20323d;--acid:#d8ff45;--orange:#ff6b35;--sky:#4cc9f0;--good:#67e8a6;
+ --radius:20px;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:
+ radial-gradient(circle at 85% -10%,#14394b 0,transparent 32%),
+ linear-gradient(180deg,#071017 0,#09131a 100%);
+ color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ min-height:100vh;padding-bottom:98px}
+button,input{font:inherit}
+button{-webkit-tap-highlight-color:transparent;cursor:pointer}
+.shell{max-width:980px;margin:0 auto;padding:18px 16px 40px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:4px 0 18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:-.04em}
+.logo{width:38px;height:38px;border:1px solid #37505e;border-radius:12px;display:grid;place-items:center;background:#0c1921;color:var(--acid);font-family:var(--mono)}
+.build{font:700 10px var(--mono);letter-spacing:.08em;color:#071017;background:var(--acid);padding:7px 9px;border-radius:999px}
+.hero{position:relative;overflow:hidden;border:1px solid #27414f;background:linear-gradient(135deg,#10212b,#0a141b 70%);border-radius:26px;padding:24px;margin-bottom:14px}
+.hero:after{content:"DAY ONE";position:absolute;right:-4px;top:4px;font-size:60px;font-weight:950;letter-spacing:-.08em;color:#ffffff06;pointer-events:none}
+.kicker{font:800 10px var(--mono);letter-spacing:.16em;color:var(--acid);text-transform:uppercase}
+h1{font-size:clamp(36px,9vw,66px);line-height:.96;letter-spacing:-.065em;margin:10px 0 12px}
+.hero p{color:#aec0ca;max-width:650px;margin:0 0 18px;font-size:14px}
+.hero-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.metric{border:1px solid #263d48;background:#0a161d;border-radius:14px;padding:12px}
+.metric b{display:block;font-size:19px;letter-spacing:-.04em}
+.metric span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
+.notice{display:flex;gap:10px;align-items:flex-start;background:#181d12;border:1px solid #39461d;border-radius:16px;padding:14px;margin:12px 0;color:#dce7b9;font-size:12px}
+.notice strong{color:var(--acid)}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.quick button{border:1px solid var(--line);background:#0b171e;color:var(--ink);border-radius:13px;padding:12px 8px;font-weight:750;font-size:12px}
+.quick button.primary{background:var(--orange);border-color:var(--orange);color:white}
+.section{display:none}
+.section.active{display:block}
+.card{background:linear-gradient(180deg,#0e1a22,#0b161d);border:1px solid var(--line);border-radius:20px;padding:18px;margin:12px 0}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}
+.card h2{font-size:20px;letter-spacing:-.035em;margin:0 0 4px}
+.card h3{font-size:14px;margin:0 0 5px}
+.muted{color:var(--muted)}
+.small{font-size:11px}
+.tag{font:750 9px var(--mono);color:var(--acid);border:1px solid #3e5120;background:#141d0e;border-radius:999px;padding:6px 8px;white-space:nowrap}
+.timeline{display:grid}
+.time{display:grid;grid-template-columns:70px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.time:first-child{border-top:0}
+.time time{font:750 10px var(--mono);color:var(--sky);padding-top:2px}
+.time b{font-size:12px}
+.time p{font-size:11px;color:var(--muted);margin:3px 0 0;line-height:1.45}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.check{border:1px solid var(--line);background:#0a151c;color:var(--ink);border-radius:12px;padding:11px;text-align:left;font-size:11px}
+.check[aria-pressed="true"]{background:#132317;border-color:#2f6743;color:#caffd9}
+.cal-scroll{display:flex;gap:8px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.cal-scroll::-webkit-scrollbar{display:none}
+.day{flex:0 0 69px;border:1px solid var(--line);background:#0a151c;color:var(--muted);border-radius:14px;padding:10px 5px;text-align:center}
+.day span{font:750 9px var(--mono);display:block}
+.day b{display:block;color:var(--ink);font-size:23px;margin:2px 0}
+.day em{font-style:normal;font:700 8px var(--mono);color:#667b87}
+.day.active{background:var(--acid);border-color:var(--acid);color:#0a1115}
+.day.active b,.day.active em{color:#0a1115}
+.day.race{border-color:#82402a}
+.day.race:not(.active) b{color:#ff9b78}
+.planrow{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:10px;align-items:center;padding:13px 0;border-top:1px solid var(--line)}
+.planrow:first-child{border-top:0}
+.planrow .d{font:700 9px var(--mono);color:var(--muted)}
+.planrow b{font-size:12px}
+.planrow p{font-size:10px;color:var(--muted);margin:3px 0 0}
+.planrow .go{border:0;background:none;color:var(--sky);font-size:20px}
+.exercise{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:11px 0;border-top:1px solid var(--line)}
+.exercise:first-child{border-top:0}
+.exercise b{font-size:12px}
+.exercise span{font:700 10px var(--mono);color:var(--sky);text-align:right}
+.exercise small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.zone{border-left:3px solid var(--orange);padding:10px 12px;background:#161412;border-radius:0 12px 12px 0;margin:10px 0;font-size:11px;color:#d9c9c0}
+.pacegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.pace{border:1px solid var(--line);border-radius:12px;padding:11px}
+.pace b{display:block;font-size:17px}
+.pace span{font-size:9px;color:var(--muted)}
+input{width:100%;border:1px solid var(--line);background:#071118;color:var(--ink);padding:11px;border-radius:11px}
+.formrow{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;align-items:end}
+.save{border:0;background:var(--acid);color:#071017;border-radius:11px;padding:11px 13px;font-weight:850}
+.road{display:grid;gap:8px}
+.roaditem{border:1px solid var(--line);border-radius:13px;padding:12px}
+.roaditem b{font-size:12px}
+.roaditem p{font-size:10px;color:var(--muted);margin:4px 0 0}
+.nav{position:fixed;z-index:50;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom));width:min(94%,520px);display:grid;grid-template-columns:repeat(4,1fr);gap:5px;background:#081117e8;backdrop-filter:blur(16px);border:1px solid #263a45;border-radius:18px;padding:6px;box-shadow:0 16px 50px #0009}
+.nav button{border:0;background:transparent;color:#71838d;border-radius:12px;padding:10px 4px;font-size:10px;font-weight:800}
+.nav button.active{background:#15242d;color:var(--acid)}
+@media(max-width:560px){
+ .hero-grid{grid-template-columns:1fr 1fr 1fr}
+ .metric{padding:10px 8px}.metric b{font-size:16px}
+ .quick{grid-template-columns:1fr 1fr}.quick button:first-child{grid-column:1/-1}
+ .checks{grid-template-columns:1fr}
+ .formrow{grid-template-columns:1fr 1fr}.save{grid-column:1/-1}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+ <header class="top">
+  <div class="brand"><span class="logo">R14</span><span>PERFORMANCE OS</span></div>
+  <span class="build">NEW BUILD // V22</span>
+ </header>
+
+ <section class="hero">
+  <div class="kicker">START // SATURDAY OCTOBER 10</div>
+  <h1>DAY ONE.<br>FOR REAL.</h1>
+  <p>This is a clean reset. The target race is <b>Fast Pace 5K on October 24</b>. The bigger mission is to become leaner, more muscular, faster, more athletic, healthier and more productive without making your life chaotic.</p>
+  <div class="hero-grid">
+   <div class="metric"><b>OCT 24</b><span>Fast Pace 5K</span></div>
+   <div class="metric"><b>SUB-18</b><span>Stretch target</span></div>
+   <div class="metric"><b>5:30</b><span>M-F default wake</span></div>
+  </div>
+ </section>
+
+ <div class="notice"><div>●</div><div><strong>Today is Saturday.</strong> No forced wake time today. Sleep, get up when you are rested, eat, then complete Day 1. The strict weekday system starts Monday.</div></div>
+
+ <div class="quick">
+  <button class="primary" id="todayBtn">Open today</button>
+  <button id="tomorrowBtn">Open Sunday</button>
+  <button id="mondayBtn">Open Monday</button>
+ </div>
+
+ <section id="today" class="section active">
+  <div class="card" id="dateCard"></div>
+  <div class="card">
+   <div class="card-head"><div><div class="kicker">DAILY SYSTEM</div><h2>Your day, in order.</h2></div><span class="tag" id="wakeTag"></span></div>
+   <div class="timeline" id="timeline"></div>
+  </div>
+  <div class="card">
+   <div class="card-head"><div><div class="kicker">WIN THE DAY</div><h2>Five checks.</h2></div></div>
+   <div class="checks" id="checks"></div>
+  </div>
+ </section>
+
+ <section id="calendar" class="section">
+  <div class="card">
+   <div class="card-head"><div><div class="kicker">LOOK AHEAD</div><h2>Every day through race day.</h2></div></div>
+   <div class="cal-scroll" id="calendarStrip"></div>
+  </div>
+  <div class="card">
+   <div class="card-head"><div><div class="kicker">RACE BLOCK</div><h2>Oct 10 → Oct 24</h2></div><span class="tag">FAST PACE</span></div>
+   <div id="raceBlock"></div>
+  </div>
+ </section>
+
+ <section id="train" class="section">
+  <div class="card">
+   <div class="card-head"><div><div class="kicker">RUNNING</div><h2>Fast Pace build.</h2></div><span class="tag">14 DAYS</span></div>
+   <div class="zone"><b>18:00 5K pace:</b> 5:47.5/mi · 3:36/km · 86.4/400 · 2:52.8/800. This is a stretch target until today's mile gives us current fitness.</div>
+   <div class="formrow">
+    <label class="small muted">Mile min<input id="mileMin" type="number" min="3" max="15" placeholder="5"></label>
+    <label class="small muted">Mile sec<input id="mileSec" type="number" min="0" max="59" placeholder="15"></label>
+    <button class="save" id="saveMile">Save mile</button>
+   </div>
+   <div id="paceOutput" style="margin-top:12px"></div>
+  </div>
+  <div class="card">
+   <div class="card-head"><div><div class="kicker">LIFTING</div><h2>Muscle without sabotaging the race.</h2></div></div>
+   <p class="small muted">Split stays fixed: Monday Push, Tuesday Pull, Wednesday Legs, Thursday Shoulders + Arms, Friday Chest + Back. Race week cuts volume hard, not the weekday identity.</p>
+   <div id="liftWeek"></div>
+  </div>
+  <div class="card">
+   <div class="card-head"><div><div class="kicker">AFTER FAST PACE</div><h2>The bigger athlete build.</h2></div></div>
+   <div class="road">
+    <div class="roaditem"><b>Week after race · recover + reload</b><p>Easy running, reduced lifting, restore sleep and appetite, no testing.</p></div>
+    <div class="roaditem"><b>Next block · athletic strength + muscle</b><p>Acceleration, jumps, deceleration, body control, unilateral strength, calves/ankles, heavy force and real hypertrophy.</p></div>
+    <div class="roaditem"><b>Then · mile/5K + speed integration</b><p>Daniels running continues while sprint, COD, power and relative strength are maintained and progressed.</p></div>
+   </div>
+  </div>
+ </section>
+
+ <section id="life" class="section">
+  <div class="card">
+   <div class="card-head"><div><div class="kicker">WEEKDAY RULES</div><h2>Make workdays automatic.</h2></div><span class="tag">OUT BY 8:30</span></div>
+   <div class="timeline">
+    <div class="time"><time>5:30</time><div><b>Wake Monday–Friday</b><p>One wake time. Water, bathroom, small carb if training immediately. No scrolling.</p></div></div>
+    <div class="time"><time>5:45</time><div><b>Leave for gym/run</b><p>LA Fitness is budgeted as 10 minutes away.</p></div></div>
+    <div class="time"><time>6:00</time><div><b>Training begins</b><p>Monday/Thursday combine lift + easy run. Tuesday/Friday prioritize the run and lift after work. Wednesday is Legs.</p></div></div>
+    <div class="time"><time>7:25</time><div><b>Home</b><p>Shower, breakfast, pack food, get dressed.</p></div></div>
+    <div class="time"><time>8:20</time><div><b>Write Top 3</b><p>One must-win work task + two secondary tasks.</p></div></div>
+    <div class="time"><time>8:30</time><div><b>Leave for work</b><p>Hard departure time.</p></div></div>
+    <div class="time"><time>LUNCH</time><div><b>Eat + 10-minute walk</b><p>Get away from the screen briefly.</p></div></div>
+    <div class="time"><time>PM</time><div><b>Second block</b><p>Tue/Fri: lifting. Other weekdays: 30–45 minutes of one personal category only.</p></div></div>
+    <div class="time"><time>8:45</time><div><b>Prepare tomorrow</b><p>Clothes, bag, keys, breakfast, water. Remove decisions.</p></div></div>
+    <div class="time"><time>9:30</time><div><b>Lights out target</b><p>Protect the 5:30 wake. Do not trade sleep for fake productivity.</p></div></div>
+   </div>
+  </div>
+
+  <div class="card">
+   <div class="card-head"><div><div class="kicker">BODY COMPOSITION</div><h2>Lean out without flattening performance.</h2></div></div>
+   <div class="road">
+    <div class="roaditem"><b>Until race day</b><p>No crash cut. Eat enough carbohydrate around workouts and keep protein high. Performance comes first for two weeks.</p></div>
+    <div class="roaditem"><b>Protein</b><p>Use roughly 1.8–2.2 g/kg/day as the practical range.</p></div>
+    <div class="roaditem"><b>After race</b><p>Resume a modest 5–10% calorie deficit if waist loss is the priority. Track weekly-average weight + waist, not single-day scale noise.</p></div>
+   </div>
+  </div>
+
+  <div class="card">
+   <div class="card-head"><div><div class="kicker">PRODUCTIVITY</div><h2>Simple enough to repeat.</h2></div></div>
+   <div class="road">
+    <div class="roaditem"><b>1 must-win task</b><p>Decide it before leaving home. When work allows, make it the first protected focus block.</p></div>
+    <div class="roaditem"><b>2 secondary tasks</b><p>Useful, but they do not steal the morning from the must-win.</p></div>
+    <div class="roaditem"><b>One personal block</b><p>Admin, learning, finances, chores or a project. Pick one category for 30–45 minutes. Do not bounce between five things.</p></div>
+   </div>
+  </div>
+ </section>
+</div>
+
+<nav class="nav">
+ <button data-tab="today" class="active">TODAY</button>
+ <button data-tab="calendar">CALENDAR</button>
+ <button data-tab="train">TRAIN</button>
+ <button data-tab="life">LIFE</button>
+</nav>
+
+<script>
+const $=id=>document.getElementById(id);
+const fmt=d=>d.toISOString().slice(0,10);
+const parse=s=>new Date(s+'T12:00:00');
+const START='2026-10-10',RACE='2026-10-24';
+const KEY='r14-dayone-v22';
+let state={selected:START,checks:{},mile:null};
+try{state={...state,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{}
+const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
+
+const lifts={
+ push:[
+  ['Flat machine press','3 × 5–8'],['Incline machine press','2 × 8–12'],['Pec deck / cable fly','2 × 10–15'],
+  ['Cable lateral raise','3 × 12–20'],['Rope pressdown','3 × 8–12'],['Overhead cable triceps','2 × 10–15']
+ ],
+ pull:[
+  ['Pull-up progression','3 × 5–8'],['Chest-supported row','3 × 6–10'],['Neutral-grip pulldown','2 × 8–12'],
+  ['Reverse pec deck','2 × 12–20'],['Preacher curl','3 × 8–12'],['Hammer curl','2 × 10–15']
+ ],
+ legs:[
+  ['Leg press','2 × 4–6'],['Seated leg curl','2 × 6–10'],['Supported split squat','1 × 6 / side'],
+  ['Supported single-leg RDL','1 × 6 / side'],['Calf raise','2 × 8–12'],['Pallof press','2 × 8–12 / side']
+ ],
+ arms:[
+  ['Seated DB shoulder press','3 × 6–10'],['Cable lateral raise','3 × 12–20'],['Reverse pec deck','2 × 12–20'],
+  ['Bayesian cable curl','3 × 10–15'],['Hammer curl','2 × 10–15'],['Rope pressdown','3 × 10–15'],['Overhead cable triceps','2 × 10–15']
+ ],
+ chestback:[
+  ['Incline machine press','3 × 6–10'],['Chest-supported row','3 × 6–10'],['Flat machine press','2 × 8–12'],
+  ['Neutral-grip pulldown','2 × 8–12'],['Pec deck / cable fly','2 × 10–15'],['Reverse pec deck','2 × 12–20']
+ ]
+};
+const raceLifts={
+ push:[['Flat machine press','2 × 5–8'],['Incline machine press','1 × 8–10'],['Lateral raise','1 × 12–15'],['Rope pressdown','1 × 10–12']],
+ pull:[['Pull-up progression','2 × 5–8'],['Chest-supported row','2 × 6–10'],['Preacher curl','1 × 8–12'],['Reverse pec deck','1 × 12–15']],
+ legs:[['Leg press','2 × 4'],['Seated leg curl','1 × 6–8'],['Calf raise','2 × 8–10']],
+ arms:[['Shoulder press','1 × 6–8'],['Lateral raise','1 × 12–15'],['Bayesian curl','2 × 10–12'],['Rope pressdown','2 × 10–12']],
+ chestback:[['Incline press','1 × 6–8'],['Chest-supported row','1 × 6–8'],['Pec fly','1 × 10']]
+};
+
+const plan={
+ '2026-10-10':{name:'DAY ONE · Baseline mile',wake:'FLEXIBLE',run:'4 mi total · 15–20 min easy + drills + 4×20 sec strides + 1 measured mile hard/even + cooldown.',lift:null,note:'Sleep first. Wake when rested. This mile sets current training paces.'},
+ '2026-10-11':{name:'Recovery + weekly reset',wake:'FLEXIBLE',run:null,lift:null,note:'20–30 min easy walk + mobility. Meal prep, laundry, bags, calendar.'},
+ '2026-10-12':{name:'Push + easy run',wake:'5:30 AM',run:'2.5 mi easy + 6×20 sec relaxed strides.',lift:'push',note:'AM: lift first, then easy run.'},
+ '2026-10-13':{name:'4×800 + Pull',wake:'5:30 AM',run:'4.5 mi total · 4×800. Start 2:55–2:58; move toward 2:52–2:55 only if Saturday mile supports it. 2:30 jog.',lift:'pull',note:'AM run is priority. Pull after work.'},
+ '2026-10-14':{name:'Legs',wake:'5:30 AM',run:null,lift:'legs',note:'Low-volume heavy strength. Do not chase soreness.'},
+ '2026-10-15':{name:'Shoulders + Arms + easy',wake:'5:30 AM',run:'2.5 mi easy conversational.',lift:'arms',note:'AM lift + easy run.'},
+ '2026-10-16':{name:'Threshold + Chest/Back',wake:'5:30 AM',run:'3.5 mi total · 3×1K at current Daniels T pace · 60–75 sec jog.',lift:'chestback',note:'AM threshold. Chest/back after work.'},
+ '2026-10-17':{name:'Easy aerobic',wake:'FLEXIBLE',run:'3 mi easy.',lift:null,note:'No lifting. Finish better than you started.'},
+ '2026-10-18':{name:'Rest + reset',wake:'FLEXIBLE',run:null,lift:null,note:'Walk, mobility, meal prep, next-week setup.'},
+ '2026-10-19':{name:'Push + easy strides',wake:'5:30 AM',run:'2 mi easy + 4×20 sec relaxed strides.',lift:'push',raceWeek:true,note:'Race-week lifting volume is reduced.'},
+ '2026-10-20':{name:'Tune-up + Pull',wake:'5:30 AM',run:'3 mi total · 3×600 in 2:10–2:12, 2:30–3:00 jog + 4×100 fast/relaxed.',lift:'pull',raceWeek:true,note:'AM run. Pull after work, reduced volume.'},
+ '2026-10-21':{name:'Legs · neural maintenance',wake:'5:30 AM',run:null,lift:'legs',raceWeek:true,note:'Very small dose. Leave fresh.'},
+ '2026-10-22':{name:'Shoulders/Arms + race strides',wake:'5:30 AM',run:'1.5 mi easy + 4×20 sec relaxed strides.',lift:'arms',raceWeek:true,note:'Everything should feel crisp.'},
+ '2026-10-23':{name:'Chest/Back primer',wake:'5:30 AM',run:null,lift:'chestback',raceWeek:true,note:'Tiny primer only. No soreness.'},
+ '2026-10-24':{name:'FAST PACE 5K',wake:'5:30 AM',run:'~1 mi warm-up + drills + 4 strides + 5K race + easy cooldown. 18:00 stretch pace = 5:47.5/mi.',lift:null,race:true,note:'Race day. First kilometer controlled. Compete late.'},
+ '2026-10-25':{name:'Recovery',wake:'FLEXIBLE',run:null,lift:null,note:'Walk, eat, hydrate, sleep. No testing.'}
+};
+
+function dates(){
+ const a=[],s=parse(START),e=parse('2026-10-25');
+ for(let d=new Date(s);d<=e;d.setDate(d.getDate()+1))a.push(fmt(d));
+ return a;
+}
+function weekday(date){return parse(date).toLocaleDateString('en-US',{weekday:'short'})}
+function longDate(date){return parse(date).toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric'})}
+function dayPlan(date){return plan[date]||{name:'Post-race build',wake:parse(date).getDay()>=1&&parse(date).getDay()<=5?'5:30 AM':'FLEXIBLE',run:null,lift:null,note:'Post-race programming continues after recovery.'}}
+
+function timelineFor(date){
+ const p=dayPlan(date),day=parse(date).getDay();
+ if(date==='2026-10-10')return[
+  ['WHEN UP','Wake + water','No alarm required today. Get enough sleep first.'],
+  ['+30–60','Breakfast / coffee','Keep it familiar. Give yourself time to wake up.'],
+  ['WHEN READY','Baseline mile session',p.run],
+  ['AFTER','Recovery meal','Protein + carbohydrate + fluids.'],
+  ['60 MIN','Life reset','Laundry, groceries, clean space, bags, calendar. No scrolling during the block.'],
+  ['EVENING','Easy walk / mobility','10–20 minutes if it feels good.'],
+  ['10:30','Wind down','Aim to move toward the weekday sleep rhythm.']
+ ];
+ if(date==='2026-10-11'||day===0)return[
+  ['FLEX','Wake','Do not turn recovery into lying around all day.'],
+  ['AM','Walk + mobility','20–30 minutes easy.'],
+  ['10:00','Meal prep / laundry','Make Monday automatic.'],
+  ['11:30','Weekly plan','Write work Top 3, training windows and grocery needs.'],
+  ['8:45','Prep Monday','Clothes, bag, breakfast, keys, water.'],
+  ['9:30','Lights out','Monday wake = 5:30 AM.']
+ ];
+ if(date==='2026-10-24')return[
+  ['5:30','Wake','Familiar race breakfast + fluids.'],
+  ['6:15','Gear check','Shoes, bib, watch, warm layer, water.'],
+  ['6:30','Leave','Give yourself buffer.'],
+  ['7:15','Warm-up','Easy jog, drills, strides.'],
+  ['8:00','FAST PACE 5K','Race.']
+ ];
+ const quality=(day===2||day===5);
+ const list=[
+  ['5:30','Wake','Water, bathroom, small carb if needed. No scrolling.'],
+  ['5:45','Leave','10-minute drive budgeted.']
+ ];
+ if(quality){
+  list.push(['6:00','AM RUN',p.run||'No run scheduled.']);
+  list.push(['7:10','Home','Shower, breakfast, dress, pack.']);
+ }else{
+  list.push(['6:00','AM TRAINING',[p.lift?liftLabel(p.lift):null,p.run].filter(Boolean).join(' + ')||'Recovery.']);
+  list.push(['7:20','Home','Shower, breakfast, dress, pack.']);
+ }
+ list.push(['8:20','Work Top 3','Write 1 must-win + 2 secondary tasks.']);
+ list.push(['8:30','Leave for work','Hard departure time.']);
+ list.push(['LUNCH','Eat + 10-min walk','Step away from the screen.']);
+ if(quality&&p.lift)list.push(['AFTER WORK',liftLabel(p.lift),'Go before settling in at home.']);
+ else list.push(['AFTER WORK','30–45 min personal block','One category only: admin, learning, finances, chores or project.']);
+ list.push(['8:45','Prep tomorrow','Clothes, bag, breakfast, keys, water.']);
+ list.push(['9:30','Lights out','Protect the 5:30 wake.']);
+ return list;
+}
+function liftLabel(k){return({push:'Push',pull:'Pull',legs:'Legs',arms:'Shoulders + Arms',chestback:'Chest + Back'})[k]||k}
+
+function renderDate(){
+ const date=state.selected,p=dayPlan(date),isToday=date===START;
+ $('dateCard').innerHTML=
+  '<div class="card-head"><div><div class="kicker">'+(date===START?'DAY ONE':date===RACE?'RACE DAY':'SELECTED DAY')+'</div><h2>'+longDate(date)+'</h2></div><span class="tag">'+p.wake+'</span></div>'+
+  '<h3>'+p.name+'</h3><p class="muted small">'+p.note+'</p>'+
+  (p.run?'<div class="zone"><b>RUN</b><br>'+p.run+'</div>':'')+
+  (p.lift?'<div class="zone" style="border-left-color:var(--sky);background:#0d171d"><b>LIFT · '+liftLabel(p.lift)+'</b><br>'+((p.raceWeek?'Race-week reduced volume':'Normal pre-race volume'))+'</div>':'');
+ $('wakeTag').textContent=p.wake;
+ $('timeline').innerHTML=timelineFor(date).map(x=>'<div class="time"><time>'+x[0]+'</time><div><b>'+x[1]+'</b><p>'+x[2]+'</p></div></div>').join('');
+ const defs=[['train','Training / recovery done'],['top3','Work Top 3 written'],['walk','10-minute walk'],['food','Protein + planned meals'],['prep','Tomorrow prepared']];
+ const checked=state.checks[date]||{};
+ $('checks').innerHTML=defs.map(([k,label])=>'<button class="check" data-check="'+k+'" aria-pressed="'+!!checked[k]+'">'+(checked[k]?'✓ ':'')+label+'</button>').join('');
+ document.querySelectorAll('[data-check]').forEach(b=>b.onclick=()=>{state.checks[date]={...(state.checks[date]||{}),[b.dataset.check]:!state.checks[date]?.[b.dataset.check]};save();renderDate()});
+}
+function selectDate(date){state.selected=date;save();renderAll();showTab('today')}
+
+function renderCalendar(){
+ $('calendarStrip').innerHTML=dates().map(d=>'<button class="day '+(d===state.selected?'active ':'')+(d===RACE?'race':'')+'" data-date="'+d+'"><span>'+weekday(d).toUpperCase()+'</span><b>'+parse(d).getDate()+'</b><em>'+parse(d).toLocaleDateString('en-US',{month:'short'}).toUpperCase()+'</em></button>').join('');
+ document.querySelectorAll('[data-date]').forEach(b=>b.onclick=()=>selectDate(b.dataset.date));
+ $('raceBlock').innerHTML=dates().map(d=>{const p=dayPlan(d);return '<div class="planrow"><div class="d">'+weekday(d).toUpperCase()+' '+parse(d).getDate()+'</div><div><b>'+p.name+'</b><p>'+[p.run,p.lift?liftLabel(p.lift):null,p.note].filter(Boolean).join(' · ')+'</p></div><button class="go" data-open="'+d+'">›</button></div>'}).join('');
+ document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>selectDate(b.dataset.open));
+}
+function renderLiftWeek(){
+ const rows=['2026-10-12','2026-10-13','2026-10-14','2026-10-15','2026-10-16'];
+ $('liftWeek').innerHTML=rows.map(d=>{
+  const p=plan[d],arr=lifts[p.lift]||[];
+  return '<div style="padding:13px 0;border-top:1px solid var(--line)"><div class="card-head" style="margin:0"><div><div class="kicker">'+weekday(d).toUpperCase()+'</div><h3>'+liftLabel(p.lift)+'</h3></div><span class="tag">'+(p.lift==='legs'?'LOWER FATIGUE':'GROWTH')+'</span></div>'+
+  arr.map(x=>'<div class="exercise"><div><b>'+x[0]+'</b></div><span>'+x[1]+'</span></div>').join('')+'</div>';
+ }).join('');
+}
+function calcVDOT(dist,sec){const t=sec/60,v=dist/t,vo2=-4.60+.182258*v+.000104*v*v,frac=.8+.1894393*Math.exp(-.012778*t)+.2989558*Math.exp(-.1932605*t);return vo2/frac}
+function velFor(vdot,pct){const target=vdot*pct,a=.000104,b=.182258,c=-4.60-target;return(-b+Math.sqrt(b*b-4*a*c))/(2*a)}
+function pace(vdot,pct){const v=velFor(vdot,pct);return 1609.344/v*60}
+function ps(s){let m=Math.floor(s/60),ss=Math.round(s%60);if(ss===60){m++;ss=0}return m+':'+String(ss).padStart(2,'0')}
+function renderPaces(){
+ if(!state.mile){$('paceOutput').innerHTML='<p class="small muted">Run today’s mile, save the result here, and this page will show your current E / T / I / R paces.</p>';return}
+ $('mileMin').value=Math.floor(state.mile/60);$('mileSec').value=state.mile%60;
+ const v=calcVDOT(1609.344,state.mile),e1=pace(v,.74),e2=pace(v,.59),t=pace(v,.88),i=pace(v,1),r=pace(v,1.10);
+ $('paceOutput').innerHTML='<div class="pacegrid"><div class="pace"><b>'+v.toFixed(1)+'</b><span>VDOT</span></div><div class="pace"><b>'+ps(e1)+'–'+ps(e2)+'</b><span>E / mile</span></div><div class="pace"><b>'+ps(t)+'</b><span>T / mile</span></div><div class="pace"><b>'+ps(i)+'</b><span>I / mile</span></div><div class="pace"><b>'+ps(r)+'</b><span>R / mile</span></div><div class="pace"><b>'+Math.round(i*400/1609.344)+'s</b><span>I 400 split</span></div></div>';
+}
+$('saveMile').onclick=()=>{const m=Number($('mileMin').value),s=Number($('mileSec').value);if(!(m>=3&&s>=0&&s<60))return;state.mile=m*60+s;save();renderPaces()};
+function showTab(id){
+ document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));
+ document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));
+ window.scrollTo({top:0,behavior:'instant'});
+}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+$('todayBtn').onclick=()=>selectDate(START);
+$('tomorrowBtn').onclick=()=>selectDate('2026-10-11');
+$('mondayBtn').onclick=()=>selectDate('2026-10-12');
+function renderAll(){renderDate();renderCalendar();renderLiftWeek();renderPaces()}
+renderAll();
+</script>
+</body>
+</html>
