@@ -81,6 +81,21 @@ input{width:100%;border:2px solid var(--ink);padding:10px;background:#fff}.input
 .launch[data-mode="threshold"]:before{background:radial-gradient(circle at 50% 20%,#5e0c2d,transparent 35%),#0b0b09}
 .launch[data-mode="taper"]:before{background:radial-gradient(circle at 50% 20%,#153a68,transparent 35%),#0b0b09}
 @media(max-width:600px){.scene-bottom{grid-template-columns:1fr 1fr}.account-grid{grid-template-columns:1fr 1fr}.daily-scene{min-height:340px}}
+
+.date-card{padding-bottom:12px}
+.simple-plan{border:3px solid var(--ink);background:#fff;margin:16px 4px 18px 0;box-shadow:6px 6px 0 var(--sceneA);padding:18px}
+.simple-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.simple-head h2{font-size:27px;margin:2px 0;letter-spacing:-.05em}
+.simple-order{font:900 9px var(--mono);background:var(--ink);color:#fff;padding:7px 9px;white-space:nowrap}
+.simple-grid{display:grid;grid-template-columns:1.1fr 1.1fr .9fr;gap:8px;margin:15px 0}
+.simple-tile{border:2px solid var(--ink);padding:13px;min-height:102px;display:flex;flex-direction:column;justify-content:space-between}.simple-tile span{font:900 8px var(--mono);color:var(--muted)}.simple-tile strong{font-size:27px;line-height:1;letter-spacing:-.055em}.simple-tile small{font-size:9px;color:var(--muted);line-height:1.25}
+.run-tile{background:#eef2ff}.gym-tile{background:#fff0ed}.sleep-tile{background:#f4ffd3}
+.simple-session{border-top:2px solid var(--ink);padding:15px 0 3px}.simple-session-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:7px}.simple-session-head b{font-size:17px}.simple-session-head span{font:800 9px var(--mono);color:var(--blue)}
+.simple-session p{font-size:11px;color:var(--muted);margin:4px 0 0;line-height:1.45}
+.gym-list{margin-top:8px}.gym-line{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:9px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}.gym-line:first-child{border-top:0}.gym-num{font:900 9px var(--mono);color:var(--muted)}.gym-line b{font-size:12px}.gym-line em{font:850 10px var(--mono);font-style:normal;color:var(--blue)}
+.details-card{padding:0;overflow:hidden}.details-card summary{list-style:none;cursor:pointer;padding:16px;display:flex;justify-content:space-between;align-items:center;gap:12px}.details-card summary::-webkit-details-marker{display:none}.details-card summary b{display:block;font-size:14px}.details-card summary small{display:block;color:var(--muted);font-size:10px;margin-top:2px}.details-card[open] summary{border-bottom:1px solid var(--line)}.details-card[open]>div{padding:0 16px 14px}
+.compact-account{padding:14px}.compact-account .account-grid{margin-top:10px}.compact-account .account-top h2{font-size:18px}
+.daily-scene{min-height:230px;padding:18px}.scene-name{font-size:clamp(40px,11vw,70px);margin:12px 0 8px}.scene-bottom{margin-top:14px}.scene-line{font-size:12px}.scene-command{margin-top:10px}
+@media(max-width:600px){.simple-grid{grid-template-columns:1fr 1fr}.sleep-tile{grid-column:1/-1;min-height:80px}.simple-head{align-items:flex-start}.simple-order{font-size:8px}.simple-tile strong{font-size:24px}}
 </style></head>
 <body>
 <div class="launch" id="launch">
@@ -102,7 +117,7 @@ input{width:100%;border:2px solid var(--ink);padding:10px;background:#fff}.input
   </div>
 </div>
 <div class="wrap">
-<header class="mast"><b>R14 / RESET LAB</b><span class="badge">V25 · DAILY WORLDS</span></header>
+<header class="mast"><b>R14 / RESET LAB</b><span class="badge">V26 · SIMPLE / DEEP</span></header>
 <section class="hero experience-hero" id="experienceHero">
 <div class="ey" id="sceneKicker">R14 // DAILY WORLD</div>
 <h1 id="sceneTitle">TODAY<br>MATTERS.</h1>
@@ -114,13 +129,40 @@ input{width:100%;border:2px solid var(--ink);padding:10px;background:#fff}.input
 <div class="fast"><button class="primary" id="startBtn">TODAY'S WORLD</button><button id="sunBtn">RECOVERY WORLD</button><button id="monBtn">MONDAY WORLD</button></div>
 
 <section id="today" class="section active">
-<div class="card"><div class="eyebrow">DATES</div><div class="strip" id="strip"></div></div>
+<div class="card date-card"><div class="eyebrow">CHOOSE DAY</div><div class="strip" id="strip"></div></div>
+
 <div class="daily-scene" id="dailyScene"></div>
-<div class="account-card" id="accountCard"></div>
-<div class="card" id="dayCard"></div>
-<div class="card"><div class="eyebrow">SLEEP / WAKE RULE</div><h2>Exact target + hard fallback.</h2><div class="sleepgrid"><div class="sleepbox"><strong id="targetBed"></strong><span>TARGET BED · NIGHT BEFORE</span></div><div class="sleepbox latest"><strong id="latestBed"></strong><span>LATEST BED · NIGHT BEFORE</span></div><div class="sleepbox"><strong id="targetWake"></strong><span>TARGET WAKE</span></div><div class="sleepbox latest"><strong id="latestWake"></strong><span>LATEST WAKE</span></div></div><div class="fallback" id="sleepFallback"></div></div>
-<div class="card"><div class="eyebrow">DAY FLOW</div><h2>Do it in this order.</h2><div id="timeline"></div></div>
-<div class="card"><div class="eyebrow">DAILY SCORE</div><h2>Five wins.</h2><div class="checks" id="checks"></div></div>
+
+<div class="simple-plan" id="simplePlan">
+ <div class="simple-head">
+  <div><div class="eyebrow">TODAY AT A GLANCE</div><h2 id="simpleTitle">Your plan.</h2></div>
+  <span class="simple-order" id="simpleOrder"></span>
+ </div>
+ <div class="simple-grid">
+  <div class="simple-tile run-tile"><span>RUN</span><strong id="runAmount">—</strong><small id="runShort">—</small></div>
+  <div class="simple-tile gym-tile"><span>GYM</span><strong id="gymName">—</strong><small id="gymCount">—</small></div>
+  <div class="simple-tile sleep-tile"><span>WAKE</span><strong id="wakeSimple">—</strong><small id="wakeLatestSimple">—</small></div>
+ </div>
+ <div id="runSimpleCard"></div>
+ <div id="gymSimpleCard"></div>
+</div>
+
+<div class="account-card compact-account" id="accountCard"></div>
+
+<div class="card sleep-simple">
+ <div class="card-head"><div><div class="eyebrow">SLEEP</div><h2>Tonight + tomorrow.</h2></div></div>
+ <div class="sleepgrid"><div class="sleepbox"><strong id="targetBed"></strong><span>TARGET BED · NIGHT BEFORE</span></div><div class="sleepbox latest"><strong id="latestBed"></strong><span>LATEST BED · NIGHT BEFORE</span></div><div class="sleepbox"><strong id="targetWake"></strong><span>TARGET WAKE</span></div><div class="sleepbox latest"><strong id="latestWake"></strong><span>LATEST WAKE</span></div></div>
+ <div class="fallback" id="sleepFallback"></div>
+</div>
+
+<details class="card details-card">
+ <summary><span><b>Full day schedule</b><small>Work, meals, training order, productivity</small></span><span>＋</span></summary>
+ <div id="timeline" style="margin-top:12px"></div>
+</details>
+
+<div class="card">
+ <div class="eyebrow">FINISH THE DAY</div><h2>Five simple checks.</h2><div class="checks" id="checks"></div>
+</div>
 </section>
 
 <section id="calendar" class="section"><div class="card"><div class="eyebrow">FAST PACE BLOCK</div><h2>Oct 10 → Oct 24</h2><div id="block"></div></div></section>
@@ -252,7 +294,43 @@ function flow(d){
  if(q&&p.lift)out.push(['AFTER WORK',label(p.lift),'Go before settling in at home.']);else out.push(['AFTER WORK','30–45 min personal block','One category only.']);
  out.push(['8:45','Prep tomorrow','Clothes, bag, keys, breakfast, water.'],['9:30','Lights out','Protect the 5:30 wake.']);return out
 }
-function select(d){state.selected=d;save();render();show('today')}
+function runAmountFor(d,p){
+ if(p.raceDay)return '5K RACE';
+ if(!p.run)return 'OFF';
+ const m=p.run.match(/(\d+(?:\.\d+)?)\s*mi/i);
+ return m?m[1]+' MI':'RUN';
+}
+function runShortFor(p){
+ if(!p.run)return 'No run scheduled';
+ const t=p.run.toLowerCase();
+ if(t.includes('6×400'))return '6 × 400 · speed';
+ if(t.includes('3×600'))return '3 × 600 · sharpener';
+ if(t.includes('threshold'))return 'threshold';
+ if(t.includes('strides')&&t.includes('easy'))return 'easy + strides';
+ if(t.includes('easy'))return 'easy';
+ if(p.raceDay)return 'Fast Pace';
+ return 'scheduled run';
+}
+function orderFor(d,p){
+ if(p.special)return 'LIFT → RUN';
+ const day=parse(d).getDay();
+ if((day===2||day===5)&&p.run&&p.lift)return 'AM RUN · PM LIFT';
+ if(p.run&&p.lift)return 'LIFT → RUN';
+ if(p.lift)return 'LIFT';
+ if(p.run)return 'RUN';
+ return 'RECOVER';
+}
+function select(d,opts={}){
+ const y=window.scrollY;
+ state.selected=d;save();render();
+ if(opts.fromCalendar){
+   show('today');
+   requestAnimationFrame(()=>{const el=$('simplePlan');if(el)el.scrollIntoView({block:'start',behavior:'instant'})});
+ }else{
+   show('today');
+   requestAnimationFrame(()=>window.scrollTo({top:y,behavior:'instant'}));
+ }
+}
 function render(){
  const d=state.selected,p=dayPlan(d),items=itemsFor(d),sr=sleepRule(d);
 
@@ -268,23 +346,32 @@ function render(){
  $('dailyScene').innerHTML='<div class="scene-no">'+full(d).toUpperCase()+' // '+w.code+'</div><div class="scene-name">'+w.headline.replace('\n','<br>')+'</div><div class="scene-line">'+w.line+'</div><div class="scene-command">'+w.command+'</div><div class="scene-bottom"><div class="scene-chip"><span>MISSION</span><b>'+p.title+'</b></div><div class="scene-chip"><span>WHY</span><b>'+w.why+'</b></div><div class="scene-chip"><span>MODE</span><b>'+w.feel+'</b></div></div>';
  const missedLabel=stats.missed.length?stats.missed.map(x=>'<span class="missed-chip">'+wd(x).toUpperCase()+' '+parse(x).getDate()+'</span>').join(''):'<span class="small status-good">No missed check-ins yet.</span>';
  $('accountCard').innerHTML='<div class="account-top"><div><div class="eyebrow" style="color:#aaa">ACCOUNTABILITY</div><h2 class="'+(stats.missed.length?'status-warn':'status-good')+'">'+(stats.missed.length?'You disappeared. Own it.':'You are showing up.')+'</h2></div><b>'+stats.openPct+'%</b></div><div class="account-grid"><div class="account-stat"><strong>'+stats.streak+'</strong><span>CHECK-IN STREAK</span></div><div class="account-stat"><strong>'+stats.opened.length+'</strong><span>DAYS OPENED</span></div><div class="account-stat"><strong>'+stats.missed.length+'</strong><span>DAYS MISSED</span></div><div class="account-stat"><strong>'+stats.trainPct+'%</strong><span>TRAINING LOGGED</span></div></div><div class="missed-list">'+missedLabel+'</div>';
+ $('simpleTitle').textContent=p.title;
+ $('simpleOrder').textContent=orderFor(d,p);
+ $('runAmount').textContent=runAmountFor(d,p);
+ $('runShort').textContent=runShortFor(p);
+ $('gymName').textContent=p.special?'FULL BODY':p.lift?label(p.lift).toUpperCase():'OFF';
+ $('gymCount').textContent=items.length?items.length+' exercises':'No gym session';
+ $('wakeSimple').textContent=sr.wake;
+ $('wakeLatestSimple').textContent='latest '+sr.latestWake;
+ $('runSimpleCard').innerHTML=p.run?'<div class="simple-session"><div class="simple-session-head"><div><div class="eyebrow">RUN EXACTLY THIS</div><b>'+runAmountFor(d,p)+' · '+runShortFor(p)+'</b></div><span>'+orderFor(d,p)+'</span></div><p>'+p.run+'</p></div>':'<div class="simple-session"><div class="simple-session-head"><div><div class="eyebrow">RUN</div><b>No run today.</b></div></div><p>Do not add mileage just because you feel like you should.</p></div>';
+ $('gymSimpleCard').innerHTML=items.length?'<div class="simple-session"><div class="simple-session-head"><div><div class="eyebrow">GYM EXACTLY THIS</div><b>'+(p.special?'Full-body restart':label(p.lift))+'</b></div><span>'+items.length+' MOVES</span></div><div class="gym-list">'+items.map((x,i)=>'<div class="gym-line"><span class="gym-num">'+String(i+1).padStart(2,'0')+'</span><b>'+x[0]+'</b><em>'+x[1]+'</em></div>').join('')+'</div></div>':'<div class="simple-session"><div class="simple-session-head"><div><div class="eyebrow">GYM</div><b>No lifting today.</b></div></div></div>';
  $('strip').innerHTML=allDates().map(x=>'<button class="day '+(x===d?'active ':'')+(x===RACE?'race':'')+'" data-date="'+x+'"><span>'+wd(x).toUpperCase()+'</span><b>'+parse(x).getDate()+'</b><em>OCT</em></button>').join('');
  document.querySelectorAll('[data-date]').forEach(b=>b.onclick=()=>select(b.dataset.date));
- $('dayCard').innerHTML='<div class="eyebrow">'+(d===START?'REAL START':d===RACE?'RACE DAY':'SELECTED')+'</div><h2>'+full(d)+'</h2><h3>'+p.title+'</h3><p class="small muted">'+p.note+'</p>'+(p.run?'<div class="runbox"><b>RUN</b><p class="small">'+p.run+'</p></div>':'')+(items.length?'<div class="liftbox"><b>LIFT'+(p.special?' · FULL-BODY RESTART':' · '+label(p.lift))+'</b>'+items.map(x=>'<div class="exercise"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('')+'</div>':'');
  $('targetBed').textContent=sr.bed;$('latestBed').textContent=sr.latestBed;$('targetWake').textContent=sr.wake;$('latestWake').textContent=sr.latestWake;$('sleepFallback').textContent=sr.fallback;
  $('timeline').innerHTML=flow(d).map(x=>'<div class="row"><time>'+x[0]+'</time><div><b>'+x[1]+'</b><p>'+x[2]+'</p></div></div>').join('');
  const defs=[['train','Training / recovery done'],['top3','Work Top 3 written'],['walk','10-minute walk'],['food','Protein + planned meals'],['prep','Tomorrow prepared']],st=state.checks[d]||{};
  $('checks').innerHTML=defs.map(x=>'<button class="check" data-c="'+x[0]+'" aria-pressed="'+!!st[x[0]]+'">'+(st[x[0]]?'✓ ':'')+x[1]+'</button>').join('');
  document.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{state.checks[d]={...(state.checks[d]||{}),[b.dataset.c]:!state.checks[d]?.[b.dataset.c]};save();render()});
  $('block').innerHTML=allDates().map(x=>{const z=dayPlan(x),s=sleepRule(x);return '<div class="planrow"><div class="d">'+wd(x).toUpperCase()+' '+parse(x).getDate()+'</div><div><b>'+z.title+'</b><p><strong>Sleep '+s.bed+' (latest '+s.latestBed+') · Wake '+s.wake+' (latest '+s.latestWake+')</strong></p><p>'+[z.run,z.lift?label(z.lift):null,z.note].filter(Boolean).join(' · ')+'</p></div><button data-open="'+x+'">›</button></div>'}).join('');
- document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>select(b.dataset.open));
+ document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>select(b.dataset.open,{fromCalendar:true}));
  $('restart').innerHTML=restart.map(x=>'<div class="exercise"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('');
  $('lifts').innerHTML=['push','pull','legs','arms','chestback'].map(k=>'<div style="padding:12px 0;border-top:1px solid var(--line)"><h3>'+label(k)+'</h3>'+lifts[k].map(x=>'<div class="exercise"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('')+'</div>').join('');
  $('vo2Now').textContent=Number(state.vo2).toFixed(state.vo2%1?1:0);$('vo2Gap').textContent=Math.max(0,70-state.vo2).toFixed(1);$('vo2Input').value=state.vo2;
 }
-function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.bottom button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));window.scrollTo({top:0,behavior:'instant'})}
-document.querySelectorAll('.bottom button').forEach(b=>b.onclick=()=>show(b.dataset.tab));
-$('startBtn').onclick=()=>select(START);$('sunBtn').onclick=()=>select('2026-10-11');$('monBtn').onclick=()=>select('2026-10-12');
+function show(id){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.bottom button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id))}
+document.querySelectorAll('.bottom button').forEach(b=>b.onclick=()=>{show(b.dataset.tab);requestAnimationFrame(()=>document.getElementById(b.dataset.tab)?.scrollIntoView({block:'start',behavior:'instant'}))});
+$('startBtn').onclick=()=>select(START,{fromCalendar:true});$('sunBtn').onclick=()=>select('2026-10-11',{fromCalendar:true});$('monBtn').onclick=()=>select('2026-10-12',{fromCalendar:true});
 $('saveVo2').onclick=()=>{const v=Number($('vo2Input').value);if(v>=30&&v<=90){state.vo2=v;save();render()}};
 
 function bootExperience(){
@@ -327,6 +414,7 @@ function bootExperience(){
  $('enterToday').onclick=()=>{
    state.selected=launchDate;save();render();show('today');
    launch.classList.add('hide');
+   requestAnimationFrame(()=>document.getElementById('simplePlan')?.scrollIntoView({block:'start',behavior:'instant'}));
  };
 }
 render();
