@@ -71,7 +71,7 @@ details.more{border-top:2px solid var(--ink);margin-top:13px}details.more summar
 </div>
 
 <div class="wrap">
- <header class="top"><b>R14 / APEX</b><span class="version">V28 · PACE / HR</span></header>
+ <header class="top"><b>R14 / APEX</b><span class="version">V29 · NO TRACK NEEDED</span></header>
 
  <section id="today" class="screen active">
   <div class="datebar" id="datebar"></div>
@@ -98,7 +98,7 @@ details.more{border-top:2px solid var(--ink);margin-top:13px}details.more summar
   <div class="statcard"><div class="ey">ACCOUNTABILITY</div><h2 id="statusTitle">Start Monday.</h2><div class="stats" id="stats"></div><div class="missed" id="missed"></div></div>
   <div class="statcard"><div class="ey">NORTH STARS</div><h2>What this is building.</h2>
    <div class="goal"><b>FAST PACE · OCT 24</b><p>Sub-18 is the stretch target. Current fitness determines race execution.</p></div>
-   <div class="goal"><b>VO₂ MAX · 70</b><p>Long-term target. Build the aerobic engine with consistent volume, threshold and VO₂-specific work after the race.</p></div><div class="goal"><b>PACE VS HEART RATE</b><p>Easy days: HR/effort wins — generally 135–150 bpm with ~200 max. Threshold: pace + effort, HR only as a check. Short intervals: splits + mechanics; HR lags too much to steer the rep.</p></div>
+   <div class="goal"><b>VO₂ MAX · 70</b><p>Long-term target. Build the aerobic engine with consistent volume, threshold and VO₂-specific work after the race.</p></div><div class="goal"><b>PACE VS HEART RATE</b><p>Easy days: HR/effort wins — generally 135–150 bpm with ~200 max. Threshold: pace + effort, HR only as a check. Short intervals: time + mechanics; HR lags too much to steer the rep.</p></div>
    <div class="goal"><b>PHYSIQUE</b><p>More muscle, less body fat, pronounced definition — without sacrificing performance.</p></div>
    <div class="goal"><b>ATHLETICISM</b><p>Speed, power, body control and relative strength expand after the race block.</p></div>
   </div>
@@ -139,14 +139,14 @@ const raceLifts={
 
 const plan={
  '2026-10-12':{title:'Day 1 · Push + Easy',run:'2 mi easy + 4 × 15 sec relaxed strides if smooth.',miles:'2 MI',runLabel:'easy + strides',pace:'7:45–8:30/mi · HR 135–150 · RPE 2–3. HR/effort wins if pace disagrees.',lift:'push',order:'LIFT → RUN',note:'First day back. Leave 3 reps in reserve on lifting and keep the run truly easy.'},
- '2026-10-13':{title:'5 × 400 + Pull',run:'4 mi total · warm up easy, then 5 × 400 in 88–90 sec with 200 m easy jog. Rep 5 may move to 86–88 only if you are smooth. Cool down to 4 mi.',miles:'4 MI',runLabel:'5 × 400',pace:'Warm-up/cooldown 7:45–8:30/mi, HR 135–150. Reps 88–90 sec (5:54–6:02/mi). Ignore HR during the 400s; use pace + RPE 7–8.',lift:'pull',order:'AM RUN · PM LIFT',note:'First quality session after the layoff. Control beats proving fitness.'},
+ '2026-10-13':{title:'5 × 90 sec + Pull',run:'4 mi total · 10–12 min easy, then 5 × 90 sec at controlled 5K effort with 90 sec easy jog. Cool down until you reach 4 mi.',miles:'4 MI',runLabel:'5 × 90 sec',pace:'Easy running 7:45–8:30/mi, HR 135–150. Hard reps = RPE 7–8/10, smooth 5K effort. Do not use HR to pace the 90-sec reps.',lift:'pull',order:'AM RUN · PM LIFT',note:'No track needed. Use a flat road, path, treadmill or loop. Control beats proving fitness.'},
  '2026-10-14':{title:'Legs',run:null,miles:'OFF',runLabel:'no run',lift:'legs',order:'LIFT',note:'Low-volume lower strength. Do not chase soreness.'},
  '2026-10-15':{title:'Shoulders + Arms + Easy',run:'2.5 mi easy conversational.',miles:'2.5 MI',runLabel:'easy',pace:'7:30–8:15/mi · HR 135–150 · RPE 2–3. Do not push faster just because you feel good.',lift:'arms',order:'LIFT → RUN',note:'Build the physique and keep aerobic frequency.'},
  '2026-10-16':{title:'Threshold + Chest/Back',run:'3.5 mi total · warm up, then 3 × 5 min threshold with 90 sec easy jog. Cool down to 3.5 mi.',miles:'3.5 MI',runLabel:'3 × 5 min T',pace:'Threshold 6:15–6:25/mi · RPE ~7/10. HR may rise toward ~170–180 late in each rep, but do not chase HR. Easy portions HR 135–150.',lift:'chestback',order:'AM RUN · PM LIFT',note:'Comfortably hard, controlled threshold. Never race the final rep.'},
  '2026-10-17':{title:'Easy Aerobic',run:'3.5 mi easy. Finish with 4 × 15 sec relaxed strides only if your legs feel good.',miles:'3.5 MI',runLabel:'easy',pace:'7:30–8:15/mi · HR 135–150 · RPE 2–3. Keep the strides relaxed-fast, not sprinting.',lift:null,order:'RUN',note:'Build the engine without creating fatigue.'},
  '2026-10-18':{title:'Recovery',run:null,miles:'OFF',runLabel:'rest',lift:null,order:'RECOVER',note:'Walk, mobility, meal prep and an early night.'},
  '2026-10-19':{title:'Push + Easy Strides',run:'2 mi easy + 4 × 20 sec relaxed strides.',miles:'2 MI',runLabel:'easy + strides',pace:'7:30–8:15/mi · HR 135–150 · RPE 2–3. Strides are smooth and quick with full recovery.',lift:'push',raceWeek:true,order:'LIFT → RUN',note:'Race week. Reduced gym volume and crisp running.'},
- '2026-10-20':{title:'3 × 600 + Pull',run:'3 mi total · 3 × 600 in 2:10–2:12 with 2:30–3:00 easy jog, then 4 × 100 relaxed-fast. Cool down to 3 mi.',miles:'3 MI',runLabel:'3 × 600',pace:'600s 2:10–2:12 (about 5:49–5:54/mi). Ignore HR during reps; use pace + smooth mechanics. Warm-up/cooldown HR 135–150.',lift:'pull',raceWeek:true,order:'AM RUN · PM LIFT',note:'Sharpen. Do not accumulate fatigue.'},
+ '2026-10-20':{title:'3 × 2:10 + Pull',run:'3 mi total · warm up easy, then 3 × 2:10 at controlled 5K effort with 2:30–3:00 easy jog, then 4 × 20 sec relaxed-fast strides with full recovery. Cool down to 3 mi.',miles:'3 MI',runLabel:'3 × 2:10',pace:'Hard reps = controlled 5K effort, RPE 7–8/10. Ignore HR during reps. Warm-up/cooldown HR 135–150. No track required.',lift:'pull',raceWeek:true,order:'AM RUN · PM LIFT',note:'Sharpen. Do not accumulate fatigue.'},
  '2026-10-21':{title:'Legs · Maintenance',run:null,miles:'OFF',runLabel:'no run',lift:'legs',raceWeek:true,order:'LIFT',note:'Tiny neural dose. You should leave feeling undertrained.'},
  '2026-10-22':{title:'Arms + Race Strides',run:'1.5 mi easy + 4 × 20 sec relaxed strides.',miles:'1.5 MI',runLabel:'easy + strides',pace:'7:30–8:15/mi · HR 135–150. Strides quick and relaxed; full recovery. Do not turn this into a workout.',lift:'arms',raceWeek:true,order:'LIFT → RUN',note:'Everything light, crisp and fast.'},
  '2026-10-23':{title:'Chest/Back Primer',run:null,miles:'OFF',runLabel:'race eve',lift:'chestback',raceWeek:true,order:'TINY LIFT',note:'No soreness. No bonus work. Get to bed.'},
